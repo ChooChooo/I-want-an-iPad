@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
 
   def edit
     get_skills
+    @project_skills = parse_skills
   end
 
   def create
@@ -69,10 +70,13 @@ class ProjectsController < ApplicationController
       skills = Array.new
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
+          puts "???????????"
+          puts k
+
           skills << k
         end
       end 
-      return skills.map(&:inspect).join(', ')
+      return skills.join(',')
     end
     
     def parse_skills

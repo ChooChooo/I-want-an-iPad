@@ -3,8 +3,13 @@
     <% @skills.each do |skill| %>
       <tr>
         <td><%= skill.name %></td>
-        <td><%= skill.description %></td>
-        <td><input type="checkbox" id="post_validated" name="<%= skill.name %>" /></td>
+        <% state = "" %>
+        <% unless @project_skills.blank? %>
+			<% if @project_skills.include?(skill.name) %>
+				<% state = "checked" %>
+			<% end %>
+   		<% end %>
+        <td><input type="checkbox" id="<%=skill.name %>" name="<%=skill.name %>", <%=state %> /></td>
       </tr>
     <% end %>
   </tbody>
