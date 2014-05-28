@@ -70,9 +70,6 @@ class ProjectsController < ApplicationController
       skills = Array.new
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
-          puts "???????????"
-          puts k
-
           skills << k
         end
       end 
