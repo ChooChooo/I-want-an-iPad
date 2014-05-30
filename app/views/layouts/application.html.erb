@@ -6,9 +6,15 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-	<body>
-
-	<%= yield %>
+	<body id="body_container" class="clearfix">
+	
+	<div id="nav">
+		<%= render 'layouts/nav' %>
+	</div>
+		
+	<div id="page_content">
+		<%= yield %>
+	</div>
 	
 	<% if Rails.env.development?%>
 		<div id="rd">
