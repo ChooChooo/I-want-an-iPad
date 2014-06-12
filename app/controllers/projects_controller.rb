@@ -62,8 +62,23 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project][:skills] = selected_skills
+      params[:project][:skills] = selected_skills + new_skills
       params.require(:project).permit(:name, :owner, :description, :skills)
+    end
+    
+    def new_skills
+      skills = Array.new
+      params.each do |k,v|
+        puts "???????????????????"
+        puts k
+        puts v
+        puts "???????????????????"
+        if k.is_a?(String) and k.include?("skill_name_")
+          skills << k
+          save_skill(k,v)
+        end
+      end 
+      return skills.join(',')  
     end
     
     def selected_skills
@@ -78,5 +93,13 @@ class ProjectsController < ApplicationController
     
     def parse_skills
       return @project.skills.split(",")
+    end
+    
+    def save_skill(name, description)
+      new_skills_hash = Hash.new
+      new_skills_hash = {"name"=>name, "description"=>description}
+
+      @skill = Skill.new(new_skills_hash)
+      @skill.save
     end
 end

@@ -22,7 +22,6 @@ class SkillsController < ApplicationController
 
   def create
     @skill = Skill.new(skill_params)
-
     respond_to do |format|
       if @skill.save
         format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
