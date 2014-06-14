@@ -73,10 +73,9 @@ class ProjectsController < ApplicationController
         if k.is_a?(String) and k.include?("skill_name_")
           unless v.empty?
             desc_key = "skill_description_" + /\d/.match(k).to_s
-            save_skill(v, params[desc_key])
-            #if save success
-            skills << v
-            #end
+            unless save_skill(v, params[desc_key]).nil?
+              skills << v
+            end
           end
         end
       end 
@@ -98,10 +97,15 @@ class ProjectsController < ApplicationController
     end
     
     def save_skill(name, description)
-      new_skills_hash = Hash.new
-      new_skills_hash = {"name"=>name, "description"=>description}
-
-      @skill = Skill.new(new_skills_hash)
-      @skill.save
+      @skill = Skill.find_by name: name
+      if @skill.nil?
+        new_skills_hash = Hash.new
+        new_skills_hash = {"name"=>name, "description"=>description}
+  
+        @skill = Skill.new(new_skills_hash)
+        @skill.save
+        
+        return name
+      end
     end
 end
