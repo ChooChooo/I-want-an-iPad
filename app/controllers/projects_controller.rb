@@ -93,7 +93,8 @@ class ProjectsController < ApplicationController
     end
     
     def parse_tools
-      return @project.tools.split(",")
+      return @project.tools.split(",") unless @project.tools.nil?
+      ''
     end
     
     def save_tool(name, description)
