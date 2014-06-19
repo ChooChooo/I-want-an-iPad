@@ -1,17 +1,18 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @project.name %></h2>
 
-<h1><%= @project.name %></h1>
-
+<div class="detail_type">
+  type: <%= @project.project_type.name %>
+</div>
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
   <%#= @project.owner %>
 </div>-->
 
-<div class="proj_description">
+<div class="detail_description">
   <%= @project.description %>
 </div>
 
-<h2>Tools used to build this <%= @project.project_type.name %></h2>
+<h4>Tools used:</h4>
 <div class="proj_area tools">
   	<% unless @tool_list.empty? %>
       <ul class="project_tools">
