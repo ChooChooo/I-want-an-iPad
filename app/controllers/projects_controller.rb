@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
     end
     
     def new_tools
-      tools = Array.new
+      @tools = Array.new
       params.each do |k,v|
         if k.is_a?(String) and k.include?("tool_name_")
           unless v.empty?
@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
           end
         end
       end 
-      return tools.join(',')
+      return @tools.join(',')
     end
     
     def selected_tools
