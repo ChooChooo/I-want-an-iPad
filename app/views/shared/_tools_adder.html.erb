@@ -8,8 +8,8 @@ $(document).ready(function(){
 	var tool_description = "tool_description_" + num;
   	var name_input = "<input type='text' name='" + tool_name + "'></input>";
   	var decs_input = "<textarea name='" + tool_description + "'></textarea>";
-  	var txt1="<div class='field'><label>name</label>" + name_input + "</div>";
-	var txt2="<div class='field'><label>description</label>" + decs_input + "</div>"; //description
+  	var txt1="<div class='field'><label>name</label><br/>" + name_input + "</div>";
+	var txt2="<div class='field'><label>description</label><br/>" + decs_input + "</div>"; //description
 
     $("#tool_additions").append("<div>" + txt1 + txt2 + "</div>");
   });
@@ -18,5 +18,5 @@ $(document).ready(function(){
 
 <div id="tool_adder">
 	<div id="tool_additions"></div>
-	<div id="add" style="width:100px; display:block; cursor:pointer">Create New Tool</div>
+	<div id="add" >add a new tool to this project</div>
 </div>
