@@ -27,6 +27,7 @@ class ProjectsControllerTest < ActionController::TestCase
   test "should show project" do
     get :show, id: @project
     assert_response :success
+    assert_select 'h1', @project.name
   end
 
   test "should get edit" do
