@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Perfect Project Type
+  description: There is nothing wrong with this type of project.
 
 two:
   name: MyString
