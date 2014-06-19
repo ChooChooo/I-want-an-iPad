@@ -5,7 +5,7 @@
 
 h1 {text-decoration:underline; margin-top:0px}
 
-li {isplay: block;
+li {display: block;
     float: left;
     list-style-type: none;
     width: 100%;
@@ -26,3 +26,5 @@ li {isplay: block;
       }
     
     }
+
+.tool_item{}  /* added for testing - see views/tools/index.html.erb */
