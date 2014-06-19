@@ -1,5 +1,7 @@
 X::Application.routes.draw do
   
+  resources :project_types
+
   root :to => 'home#hello'
   
   resources :tools
