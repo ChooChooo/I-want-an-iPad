@@ -95,6 +95,8 @@ class ProjectsController < ApplicationController
     def parse_tools
       return @project.tools.split(",") unless @project.tools.nil?
       ''
+
+      ###### Hey Alex!!!! Is this an okay fix? Your point-haired boss isn't sure! ###
     end
     
     def save_tool(name, description)
