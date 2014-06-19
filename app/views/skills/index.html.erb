@@ -1,27 +1,19 @@
-<h1>Skills</h1>
+<h1>tools</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<ul>
+	    <% @skills.each do |skill| %>
+			<li>
+		        <div class="s_n"><%= skill.name %></div>
+		        <div class="s_d"><%= skill.description %></div>
+				<div id="sk_ac">
+			        <div><%= link_to 'Show', skill %></div>
+			        <div><%= link_to 'Edit', edit_skill_path(skill) %></div>
+			        <div><%= link_to 'Destroy', skill, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+			    </div>
+	      	</li>
+	    <% end %>
+ 	</ul>
 
-  <tbody>
-    <% @skills.each do |skill| %>
-      <tr>
-        <td><%= skill.name %></td>
-        <td><%= link_to 'Show', skill %></td>
-        <td><%= link_to 'Edit', edit_skill_path(skill) %></td>
-        <td><%= link_to 'Destroy', skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Skill', new_skill_path %>
+<span class="b_span">
+	<%= link_to 'add another tool', new_skill_path %>
+</span>

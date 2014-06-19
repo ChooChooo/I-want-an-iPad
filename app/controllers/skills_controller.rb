@@ -24,7 +24,7 @@ class SkillsController < ApplicationController
     @skill = Skill.new(skill_params)
     respond_to do |format|
       if @skill.save
-        format.html { redirect_to @skill, notice: 'Skill was successfully created.' }
+        format.html { redirect_to @skill, notice: 'Tool has been created.' }
         format.json { render action: 'show', status: :created, location: @skill }
       else
         format.html { render action: 'new' }
@@ -36,7 +36,7 @@ class SkillsController < ApplicationController
   def update
     respond_to do |format|
       if @skill.update(skill_params)
-        format.html { redirect_to @skill, notice: 'Skill was successfully updated.' }
+        format.html { redirect_to @skill, notice: 'Tool has been  updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
