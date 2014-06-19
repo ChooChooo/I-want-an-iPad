@@ -27,3 +27,33 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<div class="proj_area">
+  <strong>Name:</strong><br/>
+  <%= @project.name %>
+</div>
+
+<!--<div class="proj_area">
+  <strong>Owner:</strong><br/>
+  <%#= @project.owner %>
+</div>-->
+
+<div class="proj_area">
+  <strong>Description:</strong><br/>
+  <%=@project.description[0..100] + "..." %>
+</div>
+
+<div class="proj_area tools">
+  <strong>tools used on this project:</strong><br/>
+  	<% unless @tool_list.empty? %>
+	  <% @tool_list.each do |tool| %>
+	  	<ul>
+	  		<li><%= link_to tool, tool_detail_path(tool) %></li>
+	  	</ul>
+	  <% end %>
+	<% end %>
+</div>
