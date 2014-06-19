@@ -1,37 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h1><%= @project.name %></h1>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @project.owner %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<p>
-  <strong>Tools used on this project:</strong>
-  	<% unless @tool_list.empty? %>
-	  <% @tool_list.each do |tool| %>
-	  	<ul>
-	  		<li><%= link_to tool, tool_detail_path(tool) %></li>
-	  	</ul>
-	  <% end %>
-	<% end %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
-
-
-
-<p id="notice"><%= notice %></p>
-
 <div class="proj_area">
   <strong>Name:</strong><br/>
   <%= @project.name %>
@@ -44,7 +12,7 @@
 
 <div class="proj_area">
   <strong>Description:</strong><br/>
-  <%=@project.description[0..100] + "..." %>
+  <%= @project.description %>
 </div>
 
 <div class="proj_area tools">
