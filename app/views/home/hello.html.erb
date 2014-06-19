@@ -1,0 +1,13 @@
+<div id="search">
+	<div id="inner_search">
+		<%= form_tag(search_path, :method => :post, :id => 'search-form') do %>
+	
+			<input id="search_term" type="text" autofocus="autofocus" />
+			
+			<span class="b_span">
+				<%= submit_tag "GO" %>
+	  		</span>
+			
+		<% end %>
+	</div>
+</div>
