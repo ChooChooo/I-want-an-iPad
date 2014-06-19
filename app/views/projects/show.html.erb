@@ -12,11 +12,11 @@
 
 <div class="proj_area">
   <strong>Description:</strong><br/>
-  <%=@project.description[0..100] + "..." %>
+  <%= @project.description %>
 </div>
 
 <div class="proj_area tools">
-  <strong>Tools used on this project:</strong>
+  <strong>tools used on this project:</strong><br/>
   	<% unless @tool_list.empty? %>
 	  <% @tool_list.each do |tool| %>
 	  	<ul>
