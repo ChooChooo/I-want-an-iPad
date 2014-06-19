@@ -7,6 +7,6 @@ class CreateProjectTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :projects, :project_type, :integer
+    add_column :projects, :project_type_id, :integer
   end
 end

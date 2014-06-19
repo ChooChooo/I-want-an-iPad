@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140619201746) do
     t.datetime "updated_at"
     t.string   "tools"
     t.integer  "project_type"
+    t.integer  "project_type_id"
   end
 
   create_table "tools", force: true do |t|
