@@ -68,18 +68,18 @@ class ProjectsController < ApplicationController
     end
     
     def new_tools
-      tools = Array.new
+      @tools = Array.new
       params.each do |k,v|
         if k.is_a?(String) and k.include?("tool_name_")
           unless v.empty?
             desc_key = "tool_description_" + /\d/.match(k).to_s
             unless save_tool(v, params[desc_key]).nil?
-              tools << v
+              @tools << v
             end
           end
         end
       end 
-      return tools.join(',')
+      return @tools.join(',')
     end
     
     def selected_tools
