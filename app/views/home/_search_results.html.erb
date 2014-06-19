@@ -1,8 +1,11 @@
-<b><%=@search_term %></b>
+<h4>you searched for: <b>"<%=@search_term %>"</b></h4>
 
 <% unless @results.blank? %>
 	<% @results.each do |result| %>
-		<%=@results.to_yaml %>
+		<div class="search_result">
+			<label class="sr_name"><%=result.name %></label>
+			<div class="sr_name"><%=result.description[0..100] + "..." %></div>
+		</div>
 	<% end %>
 <% end %>
 
