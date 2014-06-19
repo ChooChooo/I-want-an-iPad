@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<div class="proj_area">
+  <strong>Name:</strong><br/>
   <%= @project.name %>
-</p>
+</div>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @project.owner %>
-</p>
+<!--<div class="proj_area">
+  <strong>Owner:</strong><br/>
+  <%#= @project.owner %>
+</div>-->
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<div class="proj_area">
+  <strong>Description:</strong><br/>
+  <%=@project.description[0..100] + "..." %>
+</div>
 
-<p>
+<div class="proj_area tools">
   <strong>Tools used on this project:</strong>
   	<% unless @tool_list.empty? %>
 	  <% @tool_list.each do |tool| %>
@@ -24,7 +24,4 @@
 	  	</ul>
 	  <% end %>
 	<% end %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+</div>
