@@ -6,9 +6,10 @@ class ProjectTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  test 'project attributes must not be empt' do
+  test 'project attributes must have values present' do
     project = Project.new
     assert project.invalid?
+    assert project.errors[:name].any?
     assert project.errors[:owner].any?
     assert project.errors[:description].any?
   end
