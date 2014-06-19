@@ -38,6 +38,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_select 'h1', @project.name
     assert_select 'h2', "Tools used to build this #{@project.project_type.name}"
     assert_select '.proj_description', @project.description
+    assert_select '.project_tool', @project.tools.split(',').count
   end
 
   test "should get edit" do

@@ -21,8 +21,8 @@ class ToolsControllerTest < ActionController::TestCase
     assert_difference('Tool.count') do
       post :create,
            tool: {
-               description: @tool.description,
-               name: @tool.name }
+           description: @tool.description,
+           name: @tool.name }
     end
 
     assert_redirected_to tool_path(assigns(:tool))
