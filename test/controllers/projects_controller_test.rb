@@ -17,8 +17,16 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should create project" do
+
+    puts "Type ID: #{@project.project_type.to_yaml}"
+
     assert_difference('Project.count') do
-      post :create, project: { description: @project.description, name: @project.name, owner: @project.owner }
+      post :create,
+           project: {
+               description: @project.description,
+               name: @project.name,
+               owner: @project.owner,
+               project_type_id: @project.project_type_id }
     end
 
     assert_redirected_to project_path(assigns(:project))
@@ -28,6 +36,9 @@ class ProjectsControllerTest < ActionController::TestCase
     get :show, id: @project
     assert_response :success
     assert_select 'h1', @project.name
+    assert_select 'h2', "Tools used to build this #{@project.project_type.name}"
+    assert_select '.proj_description', @project.description
+    assert_select '.project_tool', @project.tools.split(',').count
   end
 
   test "should get edit" do

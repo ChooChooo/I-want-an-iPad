@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
     def project_params
       params[:project][:tools] = selected_tools + "," + new_tools
       puts params[:project][:tools]
-      params.require(:project).permit(:name, :owner, :description, :tools)
+      params.require(:project).permit(:name, :owner, :description, :tools, :project_type_id)
     end
     
     def new_tools

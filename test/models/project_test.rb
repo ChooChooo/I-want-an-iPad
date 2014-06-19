@@ -10,6 +10,7 @@ class ProjectTest < ActiveSupport::TestCase
     project = Project.new
     assert project.invalid?
     assert project.errors[:name].any?
+    assert project.errors[:project_type_id].any?
     # assert project.errors[:owner].any?
     assert project.errors[:description].any?
   end

@@ -1,11 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Perfect Project
+  name: Perfect Project One
   owner: james.tharpe
   description: There is NOTHING wrong with this project whatsoever.
+  project_type: one
+  tools: "tool a,tool b,tool c"
 
-two:
-  name: MyString
-  owner: MyString
-  description: MyString
+#two:
+#  name: Perfect Project Two
+#  owner: james.tharpe
+#  description: There is NOTHING wrong with this project either.
+#  project_type: one
