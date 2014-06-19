@@ -1,4 +1,8 @@
 <b><%=@search_term %></b>
 
-<%# results.each |result| %>
+<% unless @results.blank? %>
+	<% @results.each do |result| %>
+		<%=@results.to_yaml %>
+	<% end %>
+<% end %>
 
