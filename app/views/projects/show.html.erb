@@ -11,7 +11,7 @@
   <%= @project.description %>
 </div>
 
-<h2>Tools used to build this <%= @project.project_type %></h2>
+<h2>Tools used to build this <%= @project.project_type.name %></h2>
 <div class="proj_area tools">
   <strong>tools used on this project:</strong><br/>
   	<% unless @tool_list.empty? %>
