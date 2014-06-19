@@ -1,12 +1,21 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("li").click(function(){
+	var path = "/projects/" + this.id;
+	window.location = "" + path + "";
+  });
+});
+</script>
+
 <h1>projects</h1>
 
 	<ul>
 	    <% @projects.each do |project| %>
-			<li>
+			<li id=<%= project.id %>>
 		        <div class="s_n"><%= project.name %></div>
 		        <div class="s_d"><%= project.description %></div>
 				<div id="sk_ac">
-			        <div><%= link_to 'Show', project %></div>
 			        <div><%= link_to 'Edit', edit_project_path(project) %></div>
 			        <div><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 			    </div>
