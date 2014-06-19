@@ -16,11 +16,11 @@
 </div>
 
 <div class="proj_area tools">
-  <strong>tools used on this project:</strong><br/>
-  	<% unless @skill_list.empty? %>
-	  <% @skill_list.each do |skill| %>
+  <strong>Tools used on this project:</strong>
+  	<% unless @tool_list.empty? %>
+	  <% @tool_list.each do |tool| %>
 	  	<ul>
-	  		<li><%= link_to skill, skill_detail_path(skill) %></li>
+	  		<li><%= link_to tool, tool_detail_path(tool) %></li>
 	  	</ul>
 	  <% end %>
 	<% end %>

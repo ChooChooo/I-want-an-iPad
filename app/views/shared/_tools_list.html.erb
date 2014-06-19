@@ -1,0 +1,16 @@
+<table>
+  <tbody>
+    <% @tools.each do |tool| %>
+      <tr>
+        <td><%= tool.name %></td>
+        <% state = "" %>
+        <% unless @project_tools.blank? %>
+			<% if @project_tools.include?(tool.name) %>
+				<% state = "checked" %>
+			<% end %>
+   		<% end %>
+        <td><input type="checkbox" id="<%=tool.name %>" name="<%=tool.name %>", <%=state %> /></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

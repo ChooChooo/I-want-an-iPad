@@ -1,4 +1,4 @@
-require 'skill'
+require 'tool'
 
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
@@ -8,17 +8,17 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @skill_list = parse_skills
+    @tool_list = parse_tools
   end
 
   def new
-    get_skills
+    get_tools
     @project = Project.new
   end
 
   def edit
-    get_skills
-    @project_skills = parse_skills
+    get_tools
+    @project_tools = parse_tools
   end
 
   def create
@@ -62,48 +62,51 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project][:skills] = selected_skills + "," + new_skills
-      puts params[:project][:skills]
-      params.require(:project).permit(:name, :owner, :description, :skills)
+      params[:project][:tools] = selected_tools + "," + new_tools
+      puts params[:project][:tools]
+      params.require(:project).permit(:name, :owner, :description, :tools)
     end
     
-    def new_skills
-      skills = Array.new
+    def new_tools
+      tools = Array.new
       params.each do |k,v|
-        if k.is_a?(String) and k.include?("skill_name_")
+        if k.is_a?(String) and k.include?("tool_name_")
           unless v.empty?
-            desc_key = "skill_description_" + /\d/.match(k).to_s
-            unless save_skill(v, params[desc_key]).nil?
-              skills << v
+            desc_key = "tool_description_" + /\d/.match(k).to_s
+            unless save_tool(v, params[desc_key]).nil?
+              tools << v
             end
           end
         end
       end 
-      return skills.join(',')  
+      return tools.join(',')
     end
     
-    def selected_skills
-      skills = Array.new
+    def selected_tools
+      tools = Array.new
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
-          skills << k
+          tools << k
         end
       end 
-      return skills.join(',')
+      return tools.join(',')
     end
     
-    def parse_skills
-      return @project.skills.split(",")
+    def parse_tools
+      return @project.tools.split(",") unless @project.tools.nil?
+      ''
+
+      ###### Hey Alex!!!! Is this an okay fix? Your point-haired boss isn't sure! ###
     end
     
-    def save_skill(name, description)
-      @skill = Skill.find_by name: name
-      if @skill.nil?
-        new_skills_hash = Hash.new
-        new_skills_hash = {"name"=>name, "description"=>description}
+    def save_tool(name, description)
+      @tool = Tool.find_by name: name
+      if @tool.nil?
+        new_tools_hash = Hash.new
+        new_tools_hash = {"name"=>name, "description"=>description}
   
-        @skill = Skill.new(new_skills_hash)
-        @skill.save
+        @tool = Tool.new(new_tools_hash)
+        @tool.save
         
         return name
       end
