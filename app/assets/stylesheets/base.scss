@@ -1,6 +1,6 @@
 .clearfix {clear:both}
 
-#body_container {width:100%; display:block; float:left;}
+#body_container {width:100%; display:block; float:left; margin-bottom: 40px;}
 
 #page_content {width:1020px; display:block; margin: 0px auto}
 
@@ -32,19 +32,19 @@
               float: left;
               margin-right:30px;
               height:50px;
-              text-align: center;
               -moz-border-radius: 10px;
               border-radius: 10px;
               cursor: pointer;
               margin-top: 30px;
               line-height:50px; 
+              clear: both;
 
               a {color:#000; text-decoration: none; font-size: 20px;; display:block; padding-left:20px; padding-right:20px}
-              input {color:#000; font-size: 20px; background-color: #5CED87; border:none; padding-left:20px; padding-right:20px}
+              input {color:#000; font-size: 20px; background-color: #5CED87; border:none; padding-left:20px; padding-right:20px; margin-top: 11px;}
       }
       
 label {font-size: 20px;}
 
 .field input {border-color:#5CED87; border-radius:10px; width: 300px; border-width:1px; margin-bottom:10px}
 
-.field textarea {border-color:#5CED87; border-radius:10px; width: 600px; height:300px; border-width:1px}
+.field textarea {border-color:#5CED87; border-radius:10px; width: 100%; height:200px; border-width:1px}
