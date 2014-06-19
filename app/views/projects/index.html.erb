@@ -14,7 +14,7 @@ $(document).ready(function(){
 	    <% @projects.each do |project| %>
 			<li id=<%= project.id %>>
 		        <div class="s_n"><%= project.name %></div>
-		        <div class="s_d"><%= project.description %></div>
+		        <div class="s_d"><%= project.description[0..300] + "..." %></div>
 				<div id="sk_ac">
 			        <div><%= link_to 'Edit', edit_project_path(project) %></div>
 			        <div><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>

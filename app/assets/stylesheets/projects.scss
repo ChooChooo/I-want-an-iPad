@@ -1,6 +1,8 @@
-#project_details {display:block; float:left; width:49%}
+#project_details {display:block; float:left; width:100%}
 
-#project_tools {display:block; float:left; width:49%}
+#project_tools {margin-top: 20px; display:block; float:left; width:100%; background-color:#B5DBF4; -moz-border-radius: 10px; border-radius: 10px; }
+
+#project_tools_inner {margin:10px}
 
 .actions {display:block; float:left; width:100%; margin:0px auto}
 
@@ -11,3 +13,7 @@ li {cursor:pointer}
 .tools li {width:30%; clear:both; border:none; background-color:#5CED87; height: 30px; margin-bottom: 3px; line-height: 30px; padding-left: 10px;
   a {text-decoration:none; color:#000; display: block;}
 }
+
+.tool {float:left; display:block; width: 100%; height:30px}
+
+.tool div {float:left; display:block; width: 400px; margin-left: 20px}
