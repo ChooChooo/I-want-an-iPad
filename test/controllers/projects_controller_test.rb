@@ -23,7 +23,8 @@ class ProjectsControllerTest < ActionController::TestCase
                description: @project.description,
                name: @project.name,
                owner: @project.owner,
-               project_type_id: @project.project_type_id }
+               project_type_id: @project.project_type_id,
+               projects_tools_attributes: [0, [{tool_id: tools(:one).id }]]}
     end
 
     assert_redirected_to project_path(assigns(:project))
