@@ -28,10 +28,22 @@ ProjectsTool.create({project: project_careerbox, tool: tool_rubymine})
 ProjectsTool.create({project: project_careerbox, tool: tool_sqlite})
 ProjectsTool.create({project: project_careerbox, tool: tool_jquery})
 
+project_careerbox = Project.create({name: "BaseCamp", description: "Basecamp is 37signals' first product, a web-based project management tool launched in 2004.[8] The Ruby on Rails framework was extracted from the Basecamp project. Basecamp's primary features are to-do lists, milestone management, forum-like messaging, file sharing, and time tracking. An API exists for Basecamp, allowing interaction with other web and desktop applications; an example of this is the creation of desktop widgets.", project_type: project_type_webapplication})
+ProjectsTool.create({project: project_careerbox, tool: tool_linux})
+ProjectsTool.create({project: project_careerbox, tool: tool_ruby})
+ProjectsTool.create({project: project_careerbox, tool: tool_rubymine})
+ProjectsTool.create({project: project_careerbox, tool: tool_mysql})
+ProjectsTool.create({project: project_careerbox, tool: tool_jquery})
+
 project_wikipedia = Project.create({name: "Wikipedia", description: "Wikipedia is a collaboratively edited, multilingual, free-access, free content Internet encyclopedia that is supported and hosted by the non-profit Wikimedia Foundation. Volunteers worldwide collaboratively write Wikipedia's 30 million articles in 287 languages, including over 4.5 million in the English Wikipedia. Anyone who can access the site can edit almost any of its articles, which on the Internet comprise[4] the largest and most popular general reference work.[5][6][7][8][9] In February 2014, The New York Times reported that Wikipedia is ranked fifth globally among all websites stating, With 18 billion page views and nearly 500 million unique visitors a month..., Wikipedia trails just Yahoo, Facebook, Microsoft and Google, the largest with 1.2 billion unique visitors.", project_type: project_type_wiki})
 ProjectsTool.create({project: project_wikipedia, tool: tool_php})
 ProjectsTool.create({project: project_wikipedia, tool: tool_linux})
 ProjectsTool.create({project: project_wikipedia, tool: tool_mysql})
+
+project_wiktionary = Project.create({name: "Wiktionary", description: "Wiktionary (a blend of the words wiki and dictionary) is a multilingual, web-based project to create a free content dictionary of all words in all languages. It is available in 158 languages and in Simple English. Like its sister project Wikipedia, Wiktionary is run by the Wikimedia Foundation, and is written collaboratively by volunteers, dubbed 'Wiktionarians'. Its wiki software, MediaWiki, allows almost anyone with access to the website to create and edit entries.", project_type: project_type_wiki})
+ProjectsTool.create({project: project_wiktionary, tool: tool_php})
+ProjectsTool.create({project: project_wiktionary, tool: tool_linux})
+ProjectsTool.create({project: project_wiktionary, tool: tool_mysql})
 
 project_reddit = Project.create({name: "Reddit", description: "Reddit is an entertainment, social networking service and news website where registered community members can submit content, such as text posts or direct links. Only registered users can then vote submissions 'up' or 'down' to organize the posts and determine their position on the site's pages. Content entries are organized by areas of interest called subreddits.", project_type: project_type_socialbookmarking})
 ProjectsTool.create({project: project_reddit, tool: tool_python})
