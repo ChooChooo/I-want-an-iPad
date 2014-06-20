@@ -1,8 +1,5 @@
 <h1><%= @project.name %></h1>
 
-<div class="detail_type">
-  type: <%= @project.project_type.name %>
-</div>
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
   <%#= @project.owner %>
@@ -17,7 +14,7 @@
   	<% unless @project.projects_tools.empty? %>
       <ul class="project_tools">
           <% @project.projects_tools.each do |project_tool| %>
-            <li class="project_tool"> <%= project_tool.tool.name %></li>
+            <li class="project_tool"> <%= link_to project_tool.tool.name, tool_path(project_tool.tool) %></li>
           <% end %>
       </ul>
 	<% end %>

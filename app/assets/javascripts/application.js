@@ -19,3 +19,8 @@ function remove_projects_tool(link) {
     $(link).prev("input[type=hidden]").val(1);
     $(link).closest(".projects_tools").hide();
 }
+
+function add_projects_tool(link) {
+    $(link).prev("input[type=hidden]").val(0);
+    $(link).closest(".projects_tools").hide();
+}

@@ -1,17 +1,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-	var num = 0;
+  var num = 0;
   $("#add").click(function(){
   	num = num + 1;
-	var tool_name = "tool_name_" + num;
-	var tool_description = "tool_description_" + num;
-  	var name_input = "<input type='text' name='" + tool_name + "'></input>";
-  	var decs_input = "<textarea name='" + tool_description + "'></textarea>";
-  	var txt1="<div class='field'><label>name</label><br/>" + name_input + "</div>";
-	var txt2="<div class='field'><label>description</label><br/>" + decs_input + "</div>"; //description
-
-    $("#tool_additions").append("<div>" + txt1 + txt2 + "</div>");
+    $("#tool_additions").append("<div>" + <%= render 'shared/projects_tools_fields', :f => f %> + "</div>");
   });
 });
 </script>
