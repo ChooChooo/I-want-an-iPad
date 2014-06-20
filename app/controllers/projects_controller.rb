@@ -62,13 +62,19 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project][:tools] = selected_tools + "," + new_tools
+      unless selected_tools.empty?
+        params[:project][:tools] = selected_tools + "," + new_tools
+      else
+        params[:project][:tools] = new_tools
+      end
+      
       puts params[:project][:tools]
       params.require(:project).permit(:name, :owner, :description, :tools, :project_type_id)
     end
     
     def new_tools
       @tools = Array.new
+      
       params.each do |k,v|
         if k.is_a?(String) and k.include?("tool_name_")
           unless v.empty?
