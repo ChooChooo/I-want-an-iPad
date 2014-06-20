@@ -25,5 +25,3 @@ production:
   username: mxxkhelrqqoqvn
   password: fEO9NWL95SFBg18vHT7Af8dsFs
   pool: 5
-  timeout: 5000
-
