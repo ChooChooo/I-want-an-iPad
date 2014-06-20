@@ -4,7 +4,7 @@ class ProjectTypesController < ApplicationController
   # GET /project_types
   # GET /project_types.json
   def index
-    @project_types = ProjectType.all
+    @project_types = ProjectType.all.order :name
   end
 
   # GET /project_types/1
