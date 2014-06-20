@@ -32,7 +32,7 @@
   
   <div id="project_tools">
     Tools:
-    <%= f.fields_for :tools do |builder| %>
+    <%= f.fields_for :projects_tools do |builder| %>
         <%= render 'shared/projects_tools_fields', :f => builder %>
     <% end %>
 

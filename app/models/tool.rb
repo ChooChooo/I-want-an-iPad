@@ -1,4 +1,5 @@
 class Tool < ActiveRecord::Base
-  has_and_belongs_to_many :projects
+  has_many :projects_tools, :inverse_of => :tool
+  has_many :projects, :through => :projects_tools
   validates :name, :description, presence: true
 end

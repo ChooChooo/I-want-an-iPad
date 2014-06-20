@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.tools.build
+    @project.projects_tools.build project: @project
   end
 
   def edit
@@ -64,6 +64,6 @@ class ProjectsController < ApplicationController
 
       # {"0"=>{"id"=>"1"}}
 
-      params.require(:project).permit(:name, :owner, :description, :project_type_id, :tools_attributes => [:id])
+      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:id])
     end
 end

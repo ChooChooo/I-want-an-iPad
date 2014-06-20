@@ -3,7 +3,6 @@ class CreateProjectsTools < ActiveRecord::Migration
     create_table :projects_tools do |t|
       t.integer :project_id
       t.integer :tool_id
-
       t.timestamps
     end
 
