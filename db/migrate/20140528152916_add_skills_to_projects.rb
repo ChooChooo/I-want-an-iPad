@@ -1,5 +1,5 @@
 class AddSkillsToProjects < ActiveRecord::Migration
   def change
-    add_column :projects, :tools, :string
+    add_column :projects, :tools, :text
   end
 end

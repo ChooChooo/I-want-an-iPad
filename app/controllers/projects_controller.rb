@@ -84,4 +84,50 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id, :_destroy])
     end
+    
+    def new_tools
+      @tools = Array.new
+      
+      params.each do |k,v|
+        if k.is_a?(String) and k.include?("tool_name_")
+          unless v.empty?
+            desc_key = "tool_description_" + /\d/.match(k).to_s
+            unless save_tool(v, params[desc_key]).nil?
+              @tools << v
+            end
+          end
+        end
+      end 
+      return @tools.join(',')
+    end
+    
+    def selected_tools
+      tools = Array.new
+      params.each do |k,v|
+        if v.is_a?(String) and v == "on"
+          tools << k
+        end
+      end 
+      return tools.join(',')
+    end
+    
+    def parse_tools
+      return @project.tools.split(",") unless @project.tools.nil?
+      ''
+
+      ###### Hey Alex!!!! Is this an okay fix? Your point-haired boss isn't sure! ###
+    end
+    
+    def save_tool(name, description)
+      @tool = Tool.find_by name: name
+      if @tool.nil?
+        new_tools_hash = Hash.new
+        new_tools_hash = {"name"=>name, "description"=>description}
+  
+        @tool = Tool.new(new_tools_hash)
+        @tool.save
+        
+        return name
+      end
+    end
 end
