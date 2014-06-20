@@ -15,10 +15,10 @@
 <h4>Tools used:</h4>
 <div class="proj_area tools">
   	<% unless @tool_list.empty? %>
-      <ul class="project_tools">
+      <div class="project_tools">
           <% @tool_list.each do |tool| %>
-            <li class="project_tool"><%= link_to tool, tool_detail_path(tool) %></li>
+            <div class="project_tool"><%= link_to tool, tool_detail_path(tool) %></div>
           <% end %>
-      </ul>
+      </div>
 	<% end %>
 </div>
