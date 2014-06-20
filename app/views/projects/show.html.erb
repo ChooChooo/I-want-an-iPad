@@ -13,10 +13,10 @@
 
 <h2>Tools used to build this <%= @project.project_type.name %></h2>
 <div class="proj_area tools">
-  	<% unless @tool_list.empty? %>
+  	<% unless @project.tools.empty? %>
       <ul class="project_tools">
-          <% @tool_list.each do |tool| %>
-            <li class="project_tool"><%= link_to tool, tool_detail_path(tool) %></li>
+          <% @project.tools.each do |tool| %>
+            <li class="project_tool"><%= link_to tool.name, tool_detail_path(tool.name) %></li>
           <% end %>
       </ul>
 	<% end %>

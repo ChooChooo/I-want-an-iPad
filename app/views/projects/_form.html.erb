@@ -31,11 +31,14 @@
   </div>
   
   <div id="project_tools">
-	  <div id="project_tools_inner">
-		<b>Add Tools:</b>
-	  	<div><%= render partial: "shared/tools_list"%></div>
-	  	<div><%= render partial: "shared/tools_adder"%></div>
-	  </div>
+    Tools:
+    <%= f.fields_for :tools do |builder| %>
+        <%= render 'shared/projects_tools_fields', :f => builder %>
+    <% end %>
+      <div id="project_tools_inner">
+        <b>Add Tools:</b>
+        <div><%= render partial: "shared/tools_adder"%></div>
+      </div>
   </div>
   	
   <div class="b_span">
