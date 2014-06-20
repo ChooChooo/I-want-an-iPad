@@ -1,5 +1,4 @@
 <div class="projects_tools">
-<%= f.label :name %>
 <%= f.collection_select :tool_id, Tool.all, :id, :name, prompt: true %>
 <%= f.hidden_field :_destroy %>
 <%= link_to_function 'remove', 'remove_projects_tool(this)' %>

@@ -15,6 +15,13 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.projects_tools.build
     @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
+    @project.projects_tools.build
   end
 
   def edit
