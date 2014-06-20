@@ -62,6 +62,8 @@ class ProjectsController < ApplicationController
     def project_params
       # params[:project][:tools] = selected_tools + "," + new_tools
 
-      params.require(:project).permit(:name, :owner, :description, :project_type_id, :tools => [:id])
+      # {"0"=>{"id"=>"1"}}
+
+      params.require(:project).permit(:name, :owner, :description, :project_type_id, :tools_attributes => [:id])
     end
 end
