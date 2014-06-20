@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PeojectsToolsTest < ActiveSupport::TestCase
+class ProjectsToolsTest < ActiveSupport::TestCase
   test 'project_tools attributes must have values present' do
     project = ProjectsTool.new
     assert project.invalid?
