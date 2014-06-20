@@ -65,6 +65,7 @@ class ToolsController < ApplicationController
     end
 
   def get_related_projects(tool)
-    @results = Project.where("description or name like ?", "%#{tool}%")
+    @results = Project.where("description like ?", "%#{tool}%").map {|project|
+      Project.new(:name => project.name, :id => project.id, :description => project.description) }
   end
 end
