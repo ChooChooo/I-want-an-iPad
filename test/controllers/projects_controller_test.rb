@@ -17,9 +17,6 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should create project" do
-
-    puts "Type ID: #{@project.project_type.to_yaml}"
-
     assert_difference('Project.count') do
       post :create,
            project: {
@@ -50,7 +47,8 @@ class ProjectsControllerTest < ActionController::TestCase
           project: {
               description: @project.description,
               name: @project.name,
-              owner: @project.owner}
+              owner: @project.owner,
+              projects_tools_attributes: [0, [{tool_id: tools(:one).id }]] }
     assert_redirected_to project_path(assigns(:project))
   end
 

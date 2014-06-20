@@ -44,6 +44,7 @@ class ProjectsController < ApplicationController
     #todo: Fix this disgusting hack!
     @project.projects_tools.each { |project_tool| ProjectsTool.delete project_tool }
     project_tools = project_params[:projects_tools_attributes]
+    puts project_tools
     project_tools.each do |project_tool|
       unless (project_tool[1][:_destroy] == '1')
         project_tool[1].delete :_destroy
@@ -111,17 +112,9 @@ class ProjectsController < ApplicationController
       return tools.join(',')
     end
     
-    def parse_tools
-      return @project.tools.split(",") unless @project.tools.nil?
-      ''
-
-      ###### Hey Alex!!!! Is this an okay fix? Your point-haired boss isn't sure! ###
-    end
-    
     def save_tool(name, description)
       @tool = Tool.find_by name: name
       if @tool.nil?
-        new_tools_hash = Hash.new
         new_tools_hash = {"name"=>name, "description"=>description}
   
         @tool = Tool.new(new_tools_hash)
