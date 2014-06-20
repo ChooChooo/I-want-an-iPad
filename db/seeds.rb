@@ -41,9 +41,9 @@ ProjectsTool.create({project: project_careerbox, tool: tool_jquery})
 ProjectsTool.create({project: project_careerbox, tool: tool_heroku})
 
 project_careerbuildergems = Project.create({name: "CareerbuilderGems", description: "With the push to move to the cloud for CareerbuilderOne, shared resources have never been more vital. With such a large number of teams operating and developing in Ruby, having a way to keep Ruby code reusable throughout the organization is imperative. Using Amazon Web Services and Opscode Chef, we expand on what has been developed on the Consumer Development team to allow teams to publish and share their Ruby gems across the organization and enable other teams to make use of their technologies to continue innovating and building more robust solutions.", project_type: project_type_packagemanager})
-ProjectsTool.create({project: project_careerbox, tool: tool_chef})
-ProjectsTool.create({project: project_careerbox, tool: tool_ruby})
-ProjectsTool.create({project: project_careerbox, tool: tool_aws})
+ProjectsTool.create({project: project_careerbuildergems, tool: tool_chef})
+ProjectsTool.create({project: project_careerbuildergems, tool: tool_ruby})
+ProjectsTool.create({project: project_careerbuildergems, tool: tool_aws})
 
 project_basecamp = Project.create({name: "BaseCamp", description: "Basecamp is 37signals' first product, a web-based project management tool launched in 2004.[8] The Ruby on Rails framework was extracted from the Basecamp project. Basecamp's primary features are to-do lists, milestone management, forum-like messaging, file sharing, and time tracking. An API exists for Basecamp, allowing interaction with other web and desktop applications; an example of this is the creation of desktop widgets.", project_type: project_type_webapplication})
 ProjectsTool.create({project: project_basecamp, tool: tool_linux})
