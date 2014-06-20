@@ -16,7 +16,7 @@
   	<% unless @project.projects_tools.empty? %>
       <ul class="project_tools">
           <% @project.projects_tools.each do |project_tool| %>
-            <li class="project_tool"><%= link_to project_tool.tool.name, tool_detail_path(project_tool.tool.name) %></li>
+            <li class="project_tool"> <%= project_tool.tool.name %></li>
           <% end %>
       </ul>
 	<% end %>

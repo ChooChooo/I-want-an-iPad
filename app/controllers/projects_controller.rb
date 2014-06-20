@@ -13,7 +13,8 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.projects_tools.build project: @project
+    @project.projects_tools.build
+    @project.projects_tools.build
   end
 
   def edit
@@ -22,8 +23,17 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
+    # @project.projects_tools.each { |t|  puts "PT Inspect: " + t.inspect }
+    # @project.projects_tools = ProjectsTool.new(project_params[:projects_tools_attributes][0])
+
     respond_to do |format|
       if @project.save
+
+        project_tools = project_params[:projects_tools_attributes]
+        #todo: Fix this disgusting hack!
+        project_tools.each { |project_tool| actual = ProjectsTool.new(project_tool[1]); actual.project_id = @project.id; actual.save }
+
+
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
       else
@@ -64,6 +74,6 @@ class ProjectsController < ApplicationController
 
       # {"0"=>{"id"=>"1"}}
 
-      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:id])
+      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id])
     end
 end
