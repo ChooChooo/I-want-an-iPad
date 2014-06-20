@@ -6,10 +6,11 @@ class ToolsController < ApplicationController
   end
 
   def show
+    @related_projects = get_related_projects(@tool.name)
   end
   
   def tool_view
-    @tool = Tool.find_by name: params[:name]
+    get_related_projects(params[:name])
     render 'show'
   end
 
@@ -62,4 +63,8 @@ class ToolsController < ApplicationController
     def tool_params
       params.require(:tool).permit(:name, :description)
     end
+
+  def get_related_projects(tool)
+    @results = Project.where("description or name like ?", "%#{tool}%")
+  end
 end
