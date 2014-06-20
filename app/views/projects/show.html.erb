@@ -9,7 +9,7 @@
   <%= @project.description %>
 </div>
 
-<h2>Tools used to build this <%= @project.project_type.name %></h2>
+<h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %></h2>
 <div class="proj_area tools">
   	<% unless @project.projects_tools.empty? %>
       <ul class="project_tools">
