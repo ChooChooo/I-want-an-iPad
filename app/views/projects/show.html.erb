@@ -1,4 +1,4 @@
-<h3>project "<%= @project.name %>"</h3>
+<h1><%= @project.name %></h1>
 
 <div class="detail_type">
   type: <%= @project.project_type.name %>
@@ -12,13 +12,13 @@
   <%= @project.description %>
 </div>
 
-<h4>Tools used:</h4>
+<h2>Tools used to build this <%= @project.project_type.name %></h2>
 <div class="proj_area tools">
-  	<% unless @tool_list.empty? %>
-      <div class="project_tools">
-          <% @tool_list.each do |tool| %>
-            <div class="project_tool"><%= link_to tool, tool_detail_path(tool) %></div>
+  	<% unless @project.projects_tools.empty? %>
+      <ul class="project_tools">
+          <% @project.projects_tools.each do |project_tool| %>
+            <li class="project_tool"> <%= project_tool.tool.name %></li>
           <% end %>
-      </div>
+      </ul>
 	<% end %>
 </div>

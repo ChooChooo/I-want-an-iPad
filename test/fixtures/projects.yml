@@ -5,7 +5,6 @@ one:
   owner: james.tharpe
   description: There is NOTHING wrong with this project whatsoever.
   project_type: one
-  tools: "tool a,tool b,tool c"
 
 #two:
 #  name: Perfect Project Two
