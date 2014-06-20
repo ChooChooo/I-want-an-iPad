@@ -8,3 +8,12 @@
 <div class="detail_description">
   <%= @tool.description %>
 </div>
+
+<div class ="related_projects">
+  <% @related_projects.each do |project| %>
+      <div class="result">
+        <label class="name"><%= link_to project.name, project %></label>
+        <div class="desc"><%=project.description[0..200] + "..." %></div>
+      </div>
+      <% end %>
+</div>
