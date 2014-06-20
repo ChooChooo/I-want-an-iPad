@@ -7,6 +7,8 @@
 #nav {
         width:1020px; display:block; margin: 0 auto 20px; height:50px;
       
+      #nav_inner {margin:0px auto; display:block; width: 82%;
+      
       span {
               background-color: #5CB2EF;
               display: block;
@@ -21,8 +23,8 @@
 
               a {line-height:50px; color:white; text-decoration: none; font-size: 20px; display:block;}
       }
-
     }
+  }
 
 #rd {width:1020px; display:block; margin: 0px auto}
 
