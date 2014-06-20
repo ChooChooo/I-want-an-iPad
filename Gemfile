@@ -31,7 +31,6 @@ group :development, :test do
   gem 'binding_of_caller', '~> 0.7.2'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'binding_of_caller', '~> 0.7.2'
   gem 'rack_session_access', '~> 0.1.1'
   gem 'pry', '~> 0.9.12.6'
   gem 'pry-debugger', '~> 0.2.2'
