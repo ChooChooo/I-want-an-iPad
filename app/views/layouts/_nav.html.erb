@@ -1,14 +1,15 @@
+
 <div id="nav_inner">
-	<span>
-		<%= link_to 'search', '../' %>
+	<span id="home">
+		<%= nav_link_to 'search', home_path %>
 	</span>
-	<span>
-		<%= link_to 'tools', '../tools' %>
+	<span id="tools">
+		<%= nav_link_to 'tools', tools_path %>
 	</span>
-	<span>
-		<%= link_to 'projects', '../projects' %>
+	<span id="projects">
+		<%= nav_link_to 'projects', projects_path %>
 	</span>
-  <span>
-		<%= link_to 'project types', '../project_types' %>
+	<span id="project_types">
+	  	<%= nav_link_to 'project types', project_types_path %>
 	</span>
 </div>

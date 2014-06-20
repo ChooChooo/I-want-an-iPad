@@ -9,6 +9,11 @@
       
       #nav_inner {margin:0px auto; display:block; width: 82%;
       
+      .selected{
+        color: #591616;
+        text-decoration:underline;
+      }
+      
       span {
               background-color: #5CB2EF;
               display: block;
@@ -54,10 +59,10 @@ label {font-size: 20px;}
 
 .result {margin:10px}
 
-.name {color:blue}
+.name {color:blue ; font-weight:bold}
 
-.desc {}
+.desc {font-size:13px}
 
-.detail_area, .detail_description, .detail_type {display:block; float:left; width:100%; margin-bottom:30px}
+.detail_area, .detail_description, .detail_type {display:block; float:left; width:100%; margin-bottom:30px; font-size:13px}
 
 #error_explanation {font-color:red}
