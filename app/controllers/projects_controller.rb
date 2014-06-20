@@ -29,10 +29,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
 
-        project_tools = project_params[:projects_tools_attributes]
-        #todo: Fix this disgusting hack!
-        project_tools.each { |project_tool| actual = ProjectsTool.new(project_tool[1]); actual.project_id = @project.id; actual.save }
-
+        set_tools
 
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render action: 'show', status: :created, location: @project }
@@ -43,9 +40,17 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def set_tools
+    #todo: Fix this disgusting hack!
+    @project.projects_tools.each { |project_tool| ProjectsTool.delete project_tool }
+    project_tools = project_params[:projects_tools_attributes]
+    project_tools.each { |project_tool| actual = ProjectsTool.new(project_tool[1]); actual.project_id = @project.id; actual.save }
+  end
+
   def update
     respond_to do |format|
       if @project.update(project_params)
+        set_tools
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
