@@ -37,8 +37,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
     assert_select 'h1', @project.name
     assert_select 'h2', "Tools used to build this #{@project.project_type.name}"
-    assert_select '.proj_description', @project.description
-    assert_select '.project_tool', @project.tools.split(',').count
+    assert_select '.detail_description', @project.description
   end
 
   test "should get edit" do
@@ -47,7 +46,11 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
-    patch :update, id: @project, project: { description: @project.description, name: @project.name, owner: @project.owner }
+    patch :update, id: @project,
+          project: {
+              description: @project.description,
+              name: @project.name,
+              owner: @project.owner}
     assert_redirected_to project_path(assigns(:project))
   end
 

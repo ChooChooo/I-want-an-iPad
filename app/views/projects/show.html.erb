@@ -1,13 +1,14 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @project.name %></h1>
 
+<div class="detail_type">
+  type: <%= @project.project_type.name %>
+</div>
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
   <%#= @project.owner %>
 </div>-->
 
-<div class="proj_description">
+<div class="detail_description">
   <%= @project.description %>
 </div>
 

@@ -6,14 +6,6 @@
 
 .actions {display:block; float:left; width:100%; margin:0px auto}
 
-li {cursor:pointer}
-
-.proj_area, .proj_description {display:block; float:left; width:100%; margin-bottom:30px}
-
-.tools li {width:30%; clear:both; border:none; background-color:#5CED87; height: 30px; margin-bottom: 3px; line-height: 30px; padding-left: 10px;
-  a {text-decoration:none; color:#000; display: block;}
-}
-
 .tool {width:100%; clear:both; border:none; background-color:#5CED87; height: 30px; margin-bottom: 3px; line-height: 30px; padding-left: 10px;}
 
 .tool div {float:left; display:block; width: 400px; margin-left: 20px}
@@ -28,4 +20,6 @@ li {cursor:pointer}
               -moz-border-radius: 10px;
               border-radius: 10px;
               line-height: 50px;
-              cursor:pointer;}
+              cursor:pointer;
+              margin-top: 10px;
+              }

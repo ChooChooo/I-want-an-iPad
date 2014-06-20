@@ -1,11 +1,18 @@
 .clearfix {clear:both}
 
-#body_container {width:100%; display:block; float:left; margin-bottom: 40px;}
+#body_container {width:100%; display:block; float:left; margin-bottom: 40px; font-family: Verdana, sans-serif; margin-top: 30px;}
 
-#page_content {width:1020px; display:block; margin: 0px auto}
+#page_content {width:1020px; display:block; margin: 0px auto;}
 
 #nav {
         width:1020px; display:block; margin: 0 auto 20px; height:50px;
+      
+      #nav_inner {margin:0px auto; display:block; width: 82%;
+      
+      .selected{
+        color: #000;
+        text-decoration:underline;
+      }
       
       span {
               background-color: #5CB2EF;
@@ -21,8 +28,8 @@
 
               a {line-height:50px; color:white; text-decoration: none; font-size: 20px; display:block;}
       }
-
     }
+  }
 
 #rd {width:1020px; display:block; margin: 0px auto}
 
@@ -40,11 +47,24 @@
               clear: both;
 
               a {color:#000; text-decoration: none; font-size: 20px;; display:block; padding-left:20px; padding-right:20px}
-              input {color:#000; font-size: 20px; background-color: #5CED87; border:none; padding-left:20px; padding-right:20px; margin-top: 11px;}
+              input {color:#000; font-size: 20px; background-color: #5CED87; border:none; padding-left:20px; padding-right:20px; height:50px; cursor: pointer;               -moz-border-radius: 10px;
+              border-radius: 10px;}
       }
       
 label {font-size: 20px;}
 
-.field input {border-color:#5CED87; border-radius:10px; width: 300px; border-width:1px; margin-bottom:10px}
+.field input {border-color:#5CED87; -moz-border-radius: 6px; border-radius:6px; width: 300px; border-width:1px; margin-bottom:10px}
 
-.field textarea {border-color:#5CED87; border-radius:10px; width: 100%; height:200px; border-width:1px}
+.field textarea {border-color:#5CED87; -moz-border-radius: 6px; border-radius:6px; width: 100%; height:200px; border-width:1px}
+
+.result {margin:10px}
+
+.name, .tool_name {color:blue ; font-weight:bold}
+
+.desc, tool_desc {font-size:13px}
+
+.detail_area, .detail_description, .detail_type {display:block; float:left; width:100%; margin-bottom:30px; font-size:13px}
+
+#error_explanation {font-color:red}
+
+select {width: 304px; font-size: 15px;}

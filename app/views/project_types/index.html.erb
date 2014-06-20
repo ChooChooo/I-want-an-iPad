@@ -1,29 +1,16 @@
-<h1>Listing project_types</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @project_types.each do |project_type| %>
-      <tr>
-        <td><%= project_type.name %></td>
-        <td><%= project_type.description %></td>
-        <td><%= link_to 'Show', project_type %></td>
-        <td><%= link_to 'Edit', edit_project_type_path(project_type) %></td>
-        <td><%= link_to 'Destroy', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	    <% @project_types.each do |project_type| %>
+			<div class="result">
+		        <div class="name"><%= link_to project_type.name, project_type %></div>
+		        <div class="desc"><%= project_type.description[0..300] + "..." %></div>
+				<div id="sk_ac">
+			        <div><%= link_to 'Edit', edit_project_type_path(project_type) %></div>
+			        <div><%= link_to 'Destroy', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+			    </div>
+	      	</div>
+	    <% end %>
 
-<br>
-
-<%= link_to 'New Project type', new_project_type_path %>
+<span class="b_span">
+	<%= link_to 'add another project type', new_project_type_path %>
+</span>

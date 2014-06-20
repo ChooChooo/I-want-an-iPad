@@ -1,12 +1,10 @@
-<p id="notice"><%= notice %></p>
+<h3>tool "<%= @tool.name %>"</h3>
 
-<p>
-  <strong><%= @tool.name %></strong>
-</p>
+<!--<div class="proj_area">
+  <strong>Owner:</strong><br/>
+  <%#= @project.owner %>
+</div>-->
 
-<p>
+<div class="detail_description">
   <%= @tool.description %>
-</p>
-
-<%= link_to 'Edit', edit_tool_path(@tool) %> |
-<%= link_to 'Back', tools_path %>
+</div>

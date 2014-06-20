@@ -1,0 +1,15 @@
+
+<% unless @tools.blank? %>
+    <% @tools.each do |tool| %>
+      <div class="tool">
+        <div class="tool_name"><%= tool.name %></div>
+        <% state = "" %>
+        <% unless @project_tools.blank? %>
+			<% if @project_tools.include?(tool.name) %>
+				<% state = "checked" %>
+			<% end %>
+   		<% end %>
+        <div class="tool_check"><input type="checkbox" id="<%=tool.name %>" name="<%=tool.name %>", <%=state %> /></div>
+      </div>
+    <% end %>
+<% end %>
