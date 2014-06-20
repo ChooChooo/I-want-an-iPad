@@ -44,7 +44,14 @@ class ProjectsController < ApplicationController
     #todo: Fix this disgusting hack!
     @project.projects_tools.each { |project_tool| ProjectsTool.delete project_tool }
     project_tools = project_params[:projects_tools_attributes]
-    project_tools.each { |project_tool| actual = ProjectsTool.new(project_tool[1]); actual.project_id = @project.id; actual.save }
+    project_tools.each do |project_tool|
+      unless (project_tool[1][:_destroy] == '1')
+        project_tool[1].delete :_destroy
+        actual = ProjectsTool.new(project_tool[1])
+        actual.project_id = @project.id
+        actual.save
+      end
+    end
   end
 
   def update
@@ -75,10 +82,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      # params[:project][:tools] = selected_tools + "," + new_tools
-
-      # {"0"=>{"id"=>"1"}}
-
-      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id])
+      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id, :_destroy])
     end
 end

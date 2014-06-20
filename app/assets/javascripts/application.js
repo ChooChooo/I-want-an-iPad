@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+function remove_projects_tool(link) {
+    $(link).prev("input[type=hidden]").val(1);
+    $(link).closest(".projects_tools").hide();
+}
