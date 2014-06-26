@@ -13,7 +13,7 @@
     <h2>Related Projects</h2>
     <div class ="related_projects">
       <% @tool.projects.each do |project| %>
-          <div class="result">
+          <div>
             <label class="name"><%= link_to project.name, project_path(project) %></label>
             <div class="desc"><%=project.description[0..200] + "..." %></div>
           </div>

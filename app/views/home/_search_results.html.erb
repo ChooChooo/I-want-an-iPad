@@ -2,7 +2,7 @@
 	<h4>Search Results for <b>"<%=@search_term %>"</b></h4>
 
 	<% @results.each do |result| %>
-		<div class="result">
+		<div>
 			<label class="name"><%= link_to result.name, result %></label>
 			<div class="desc"><%=result.description[0..200] + "..." %></div>
 		</div>

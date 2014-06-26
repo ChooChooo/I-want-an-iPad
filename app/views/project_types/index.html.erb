@@ -1,5 +1,5 @@
 <% @project_types.each do |project_type| %>
-    <div class="result">
+    <div>
         <div class="name"><%= link_to project_type.name, project_type %></div>
         <div class="desc"><%= project_type.description[0..300] + "..." %></div>
         <div id="sk_ac">
