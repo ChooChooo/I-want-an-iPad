@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require bootstrap-sprockets
 
 function remove_projects_tool(link) {
     $(link).prev("input[type=hidden]").val(1);
