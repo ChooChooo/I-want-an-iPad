@@ -1,11 +1,9 @@
 <% @project_types.each do |project_type| %>
-    <div>
-        <div class="name"><%= link_to project_type.name, project_type %></div>
-        <div class="desc"><%= project_type.description[0..300] + "..." %></div>
-        <div id="sk_ac">
-            <div><%= link_to 'Edit', edit_project_type_path(project_type) %></div>
-            <div><%= link_to 'Destroy', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
+    <h2><%= link_to project_type.name, project_type %></h2>
+    <p class="lead"><%= project_type.description[0..300] + '...' %></p>
+    <div id="sk_ac">
+        <div><%= link_to 'Edit', edit_project_type_path(project_type) %></div>
+        <div><%= link_to 'Destroy', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></div>
     </div>
 <% end %>
 

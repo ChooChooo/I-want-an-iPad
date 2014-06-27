@@ -1,13 +1,11 @@
-	    <% @projects.each do |project| %>
-			<div>
-		        <div class="name"><%= link_to project.name, project %></div>
-		        <div class="desc"><%= project.description[0..300] + "..." %></div>
-				<div id="sk_ac">
-			        <div><%= link_to 'Edit', edit_project_path(project) %></div>
-			        <div><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-			    </div>
-	      	</div>
-	    <% end %>
+<% @projects.each do |project| %>
+    <h2><%= link_to project.name, project %></h2>
+    <p class="lead"><%= project.description[0..300] + '...' %></p>
+    <div id="sk_ac">
+        <div><%= link_to 'Edit', edit_project_path(project) %></div>
+        <div><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+<% end %>
 
 <span class="b_span">
 	<%= link_to 'add another project', new_project_path %>

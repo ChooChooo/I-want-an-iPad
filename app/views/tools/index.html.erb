@@ -1,14 +1,11 @@
-
-	    <% @tools.each do |tool| %>
-			<div>
-		        <div class="tool_name"><%= link_to tool.name, tool %></div>
-		        <div class="tool_desc"><%= tool.description[0..300] + "..." %></div>
-				<div id="sk_ac">
-			        <div><%= link_to 'Edit', edit_tool_path(tool) %></div>
-			        <div><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-			    </div>
-	      	</div>
-	    <% end %>
+<% @tools.each do |tool| %>
+    <h2><%= link_to tool.name, tool %></h2>
+    <p class="lead"><%= tool.description[0..300] + '...' %></p>
+    <div id="sk_ac">
+        <div><%= link_to 'Edit', edit_tool_path(tool) %></div>
+        <div><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+<% end %>
 
 <span class="b_span">
 	<%= link_to 'add another tool', new_tool_path %>
