@@ -1,13 +1,12 @@
 <% unless @results.blank? %>
 	<h1>Search Results for "<%=@search_term %>"</h1>
 
-    <span class="search_results">
-        <% @results.each do |result| %>
-            <div class="search_result">
-                <h2><%= link_to result.name, result %></h2>
-                <p><%=result.description[0..200] + '...' %></p>
-            </div>
-        <% end %>
-    </span>
+    <% @results.each do |result| %>
+        <div>
+            <h2><%= link_to result.name, result %></h2>
+            <p><%=result.description[0..200] + '...' %></p>
+        </div>
+    <% end %>
+    
 <% end %>
 

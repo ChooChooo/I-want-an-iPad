@@ -5,3 +5,14 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+#fixed-width {
+  width:100px;
+  float:right;
+}
+#fluid.row-fluid {
+  margin-right:100px;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+}

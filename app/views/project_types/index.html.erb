@@ -1,7 +1,7 @@
 <div class="row">
 
     <% @project_types.each do |project_type| %>
-      <div class="col-xs-4">
+      <div class="col-xs-4" style="height: 350px; overflow: hidden;">
         <h2><%= link_to project_type.name, project_type %></h2>
         <p class="lead"><%= project_type.description[0..300] + '...' %></p>
         <div id="sk_ac">
