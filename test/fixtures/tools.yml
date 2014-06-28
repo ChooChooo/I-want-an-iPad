@@ -3,9 +3,9 @@
 without_projects:
   name: Tool Without Projects
   description: This tool has no projects!
-  #tool_type: one
+  tool_type: one
 
 with_projects:
   name: Tool With Projects
   description: This tool has projects
-  #tool_type: one
+  tool_type: one
