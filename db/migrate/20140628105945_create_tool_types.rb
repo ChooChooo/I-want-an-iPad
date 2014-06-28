@@ -8,5 +8,6 @@ class CreateToolTypes < ActiveRecord::Migration
     end
 
     add_column :tools, :tool_type_id, :integer
+    remove_column :tools, :tool_type
   end
 end

@@ -43,7 +43,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update project" do
+  test 'should update project' do
     patch :update, id: @project,
           project: {
               description: @project.description,

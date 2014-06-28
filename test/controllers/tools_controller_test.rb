@@ -22,6 +22,7 @@ class ToolsControllerTest < ActionController::TestCase
     assert_difference('Tool.count') do
       post :create,
            tool: {
+           tool_type_id: tool_types(:one).id,
            description: @tool.description,
            name: @tool.name }
     end
@@ -39,8 +40,12 @@ class ToolsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update tool" do
-    patch :update, id: @tool, tool: { description: @tool.description, name: @tool.name }
+  test 'should update tool' do
+    patch :update, id: @tool,
+          tool: {
+              description: @tool.description,
+              name: @tool.name  }
+
     assert_redirected_to tool_path(assigns(:tool))
   end
 

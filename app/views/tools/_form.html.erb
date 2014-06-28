@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :tool_type_id %><br>
+    <%= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>

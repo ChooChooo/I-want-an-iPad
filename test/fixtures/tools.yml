@@ -3,7 +3,9 @@
 one:
   name: MyString
   description: MyString
+  #tool_type: one
 
 two:
   name: MyString
   description: MyString
+  #tool_type: one
