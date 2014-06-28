@@ -9,6 +9,8 @@ class ProjectTypesControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:project_types)
+    assert_select 'h2', ProjectType.count
+    assert_select '.lead', ProjectType.count
   end
 
   test "should get new" do
