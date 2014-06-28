@@ -5,10 +5,12 @@ class ProjectsControllerTest < ActionController::TestCase
     @project = projects(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
     assert_not_nil assigns(:projects)
+    assert_select 'h2', Project.count
+    assert_select '.lead', Project.count
   end
 
   test "should get new" do
