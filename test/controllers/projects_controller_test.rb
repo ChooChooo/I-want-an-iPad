@@ -16,7 +16,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create project" do
+  test 'should create project' do
     assert_difference('Project.count') do
       post :create,
            project: {
@@ -24,13 +24,13 @@ class ProjectsControllerTest < ActionController::TestCase
                name: @project.name,
                owner: @project.owner,
                project_type_id: @project.project_type_id,
-               projects_tools_attributes: [0, [{tool_id: tools(:one).id }]]}
+               projects_tools_attributes: [0, [{tool_id: tools(:without_projects).id }]]}
     end
 
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should show project" do
+  test 'should show project' do
     get :show, id: @project
     assert_response :success
     assert_select 'h1', @project.name
@@ -38,7 +38,7 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_select '.detail_description', @project.description
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get :edit, id: @project
     assert_response :success
   end
@@ -49,11 +49,11 @@ class ProjectsControllerTest < ActionController::TestCase
               description: @project.description,
               name: @project.name,
               owner: @project.owner,
-              projects_tools_attributes: [0, [{tool_id: tools(:one).id }]] }
+              projects_tools_attributes: [0, [{tool_id: tools(:without_projects).id }]] }
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should destroy project" do
+  test 'should destroy project' do
     assert_difference('Project.count', -1) do
       delete :destroy, id: @project
     end

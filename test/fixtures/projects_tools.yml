@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project_id: 1
-  tool_id: 1
+  project: one
+  tool: with_projects
 
-two:
-  project_id: 1
-  tool_id: 1

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
+without_projects:
+  name: Tool Without Projects
+  description: This tool has no projects!
   #tool_type: one
 
-two:
-  name: MyString
-  description: MyString
+with_projects:
+  name: Tool With Projects
+  description: This tool has projects
   #tool_type: one
