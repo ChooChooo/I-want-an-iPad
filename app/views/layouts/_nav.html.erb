@@ -25,6 +25,16 @@
         <li><%= link_to 'Tools', tools_path %></li>
         <li><%= link_to 'Projects', projects_path %></li>
         <li><%= link_to 'Project Types', project_types_path %></li>
+        <li><%= link_to 'Tool Types', tool_types_path %></li>
+        <li>
+            <%= form_tag(search_path, :method => :post, :id => 'search-form', class: 'navbar-form navbar-left', role: 'search') do %>
+                <div class="form-group">
+                    <input name="search_params" id="search_term" type="text" autofocus="autofocus" class="form-control" placeholder="Search" />
+                </div>
+                <%= submit_tag 'Go', class:'btn btn-default' %>
+            <% end %>
+        </li>
+
       </ul>
     </div>
   </div>

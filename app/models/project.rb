@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
 
   belongs_to :project_type
+
   has_many :projects_tools, :inverse_of => :project, autosave: true
   has_many :tools, :through => :projects_tools
 

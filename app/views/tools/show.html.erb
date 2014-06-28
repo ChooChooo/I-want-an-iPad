@@ -1,4 +1,4 @@
-<h1><%= @tool.name %></h1>
+<h1><%= @tool.name %> <span class="badge"><%= @tool.tool_type.name %></span></h1>
 
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
@@ -11,14 +11,10 @@
 
 <% unless @tool.projects.empty? %>
     <h2>Related Projects</h2>
-    <div class ="related_projects">
-      <% @tool.projects.each do |project| %>
-          <div>
-            <label class="name"><%= link_to project.name, project_path(project) %></label>
-            <div class="desc"><%=project.description[0..200] + "..." %></div>
-          </div>
-      <% end %>
-    </div>
+    <% @tool.projects.each do |project| %>
+      <h3><%= link_to project.name, project_path(project) %></h3>
+      <p><%=project.description[0..200] + "..." %></p>
+    <% end %>
 <% end %>
 
 <span class="b_span">

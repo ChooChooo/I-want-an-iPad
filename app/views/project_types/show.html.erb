@@ -1,4 +1,4 @@
-<h3><%= @project_type.name.pluralize %></h3>
+<h1><%= @project_type.name.pluralize %></h1>
 
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
@@ -9,17 +9,14 @@
   <%= @project_type.description %>
 </div>
 
-<h2><%= @project_type.name %> Projects</h2>
-<div class="projects">
-  <% unless @project_type.projects.empty? %>
-      <ul class="project_list">
-        <% @project_type.projects.each do |project| %>
-            <li class="project"> <%= link_to project.name, project_path(project) %></li>
-        <% end %>
-      </ul>
-  <% end %>
+<div class="btn btn-default">
+	<%= link_to 'Edit Project Type', edit_project_type_path(@project_type) %>
 </div>
 
-<span class="b_span">
-	<%= link_to 'Edit Project Type', edit_project_type_path(@project_type) %>
-</span>
+<% unless @project_type.projects.empty? %>
+    <h2><%= @project_type.name.pluralize @project_type.projects.count %> Projects</h2>
+    <% @project_type.projects.each do |project_type| %>
+        <h3><%= link_to project_type.name, project_path(project_type) %></h3>
+        <p><%=project_type.description[0..200] + '...' %></p>
+    <% end %>
+<% end %>

@@ -12,4 +12,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def assert_index_format(expected_count)
+    assert_select 'h2', expected_count
+    assert_select '.lead', expected_count
+  end
 end

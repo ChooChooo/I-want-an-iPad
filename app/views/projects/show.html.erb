@@ -1,25 +1,22 @@
-<h1><%= @project.name %></h1>
+<h1><%= @project.name %> <span class="badge"><%= @project.project_type.name %></span></h1>
 
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
   <%#= @project.owner %>
 </div>-->
+<span class="btn btn-default">
+	<%= link_to 'Edit Project', edit_project_path(@project) %>
+</span>
+
 
 <div class="detail_description">
   <%= @project.description %>
 </div>
 
-<h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %></h2>
-<div class="proj_area tools">
-  	<% unless @project.projects_tools.empty? %>
-      <ul class="project_tools">
-          <% @project.projects_tools.each do |project_tool| %>
-            <li class="project_tool"> <%= link_to project_tool.tool.name, tool_path(project_tool.tool) %><br/><%= project_tool.notes %> <br/><br/></li>
-          <% end %>
-      </ul>
-	<% end %>
-</div>
-
-<span class="b_span">
-	<%= link_to 'Edit Project', edit_project_path(@project) %>
-</span>
+<% unless @project.projects_tools.empty? %>
+  <h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %></h2>
+  <% @project.projects_tools.each do |project_tool| %>
+    <h3><%= link_to project_tool.tool.name, tool_path(project_tool.tool) %></h3>
+    <p><%= project_tool.notes %></p>
+  <% end %>
+<% end %>

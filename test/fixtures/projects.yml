@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Perfect Project One
+  name: Project One
   owner: james.tharpe
   description: There is NOTHING wrong with this project whatsoever.
   project_type: one
