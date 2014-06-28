@@ -33,6 +33,7 @@ class ToolsControllerTest < ActionController::TestCase
   test 'should show tool' do
     get :show, id: @tool_without_projects
     assert_response :success
+    assert_select 'h1', "#{@tool_without_projects.name} #{@tool_without_projects.tool_type.name}"
   end
 
   test 'should show one or more related projects' do

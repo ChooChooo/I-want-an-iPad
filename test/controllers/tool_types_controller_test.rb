@@ -29,6 +29,7 @@ class ToolTypesControllerTest < ActionController::TestCase
   test "should show tool_type" do
     get :show, id: @tool_type
     assert_response :success
+    assert_select 'h1', @tool_type.name
   end
 
   test "should get edit" do

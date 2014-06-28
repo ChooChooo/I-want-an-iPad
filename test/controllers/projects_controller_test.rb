@@ -34,7 +34,7 @@ class ProjectsControllerTest < ActionController::TestCase
   test 'should show project' do
     get :show, id: @project
     assert_response :success
-    assert_select 'h1', @project.name + ' ' + @project.project_type.name
+    assert_select 'h1', "#{@project.name} #{@project.project_type.name}"
     assert_select 'h2', "Tools used to build this #{@project.project_type.name}"
     assert_select '.detail_description', @project.description
   end
