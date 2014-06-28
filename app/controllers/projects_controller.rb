@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order :name
   end
 
   def show
@@ -90,7 +90,7 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id, :_destroy])
+      params.require(:project).permit(:name, :owner, :description, :project_type_id, :projects_tools_attributes => [:project_id, :tool_id, :notes, :_destroy])
     end
     
     def new_tools

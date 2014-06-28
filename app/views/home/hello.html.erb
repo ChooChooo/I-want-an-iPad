@@ -1,15 +1,8 @@
-<div id="search">
-	<div id="inner_search">
-		<%= form_tag(search_path, :method => :post, :id => 'search-form') do %>
-	
-			<input name="search_params" id="search_term" type="text" autofocus="autofocus" />
-			
-			<span class="b_span">
-				<%= submit_tag "GO" %>
-	  		</span>
-			
-		<% end %>
-	</div>
-</div>
+<%= form_tag(search_path, :method => :post, :id => 'search-form') do %>
 
-<div id="results"><%= render partial: "home/search_results" %></div>
+    <input name="search_params" id="search_term" type="text" autofocus="autofocus" />
+    <%= submit_tag "GO" %>
+
+<% end %>
+
+<%= render partial: "home/search_results" %>

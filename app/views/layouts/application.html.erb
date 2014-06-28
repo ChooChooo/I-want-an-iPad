@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>X</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerBox - Tools that Build Projects that Build Careers</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-	<body id="body_container" class="clearfix">
-	
-	<div id="nav">
-		<%= render 'layouts/nav' %>
-	</div>
-		
-	<div id="page_content">
-		<%= yield %>
-	</div>
-	
-	<%# if Rails.env.development?%>
-	<% if false %>
-		<div id="rd">
-			<%= render 'layouts/reveal' %>
-		</div>
-	<% end %>
 
-	</body>
+<body id="body_container" class="clearfix">
+
+    <%= render 'layouts/nav' %>
+
+    <div class="container">
+      <div class="career-box">
+        <%= yield %>
+        <!--
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        -->
+      </div>
+    </div>
+
+    <%# if Rails.env.development?%>
+    <% if false %>
+        <div id="rd">
+            <%= render 'layouts/reveal' %>
+        </div>
+    <% end %>
+
+</body>
 </html>

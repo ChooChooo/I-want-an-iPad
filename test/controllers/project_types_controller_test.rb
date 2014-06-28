@@ -32,6 +32,7 @@ class ProjectTypesControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @project_type
     assert_response :success
+    assert_select 'h1', "Editing #{@project_type.name}"
   end
 
   test "should update project_type" do

@@ -9,13 +9,17 @@
   <%= @project.description %>
 </div>
 
-<h2>Tools used to build this <%= @project.project_type.name %></h2>
+<h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %></h2>
 <div class="proj_area tools">
   	<% unless @project.projects_tools.empty? %>
       <ul class="project_tools">
           <% @project.projects_tools.each do |project_tool| %>
-            <li class="project_tool"> <%= link_to project_tool.tool.name, tool_path(project_tool.tool) %></li>
+            <li class="project_tool"> <%= link_to project_tool.tool.name, tool_path(project_tool.tool) %><br/><%= project_tool.notes %> <br/><br/></li>
           <% end %>
       </ul>
 	<% end %>
 </div>
+
+<span class="b_span">
+	<%= link_to 'Edit Project', edit_project_path(@project) %>
+</span>

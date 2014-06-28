@@ -1,4 +1,4 @@
-<h3>project type "<%= @project_type.name %>"</h3>
+<h3><%= @project_type.name.pluralize %></h3>
 
 <!--<div class="proj_area">
   <strong>Owner:</strong><br/>
@@ -8,3 +8,18 @@
 <div class="detail_description">
   <%= @project_type.description %>
 </div>
+
+<h2><%= @project_type.name %> Projects</h2>
+<div class="projects">
+  <% unless @project_type.projects.empty? %>
+      <ul class="project_list">
+        <% @project_type.projects.each do |project| %>
+            <li class="project"> <%= link_to project.name, project_path(project) %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+
+<span class="b_span">
+	<%= link_to 'Edit Project Type', edit_project_type_path(@project_type) %>
+</span>
