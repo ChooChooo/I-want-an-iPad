@@ -27,11 +27,14 @@
         <li><%= link_to 'Project Types', project_types_path %></li>
         <li><%= link_to 'Tool Types', tool_types_path %></li>
         <li>
-            <%= form_tag(search_path, :method => :post, :id => 'search-form') do %>
-                <input name="search_params" id="search_term" type="text" autofocus="autofocus" />
-                <%= submit_tag "GO" %>
+            <%= form_tag(search_path, :method => :post, :id => 'search-form', class: 'navbar-form navbar-left', role: 'search') do %>
+                <div class="form-group">
+                    <input name="search_params" id="search_term" type="text" autofocus="autofocus" class="form-control" placeholder="Search" />
+                </div>
+                <%= submit_tag 'Go', class:'btn btn-default' %>
             <% end %>
         </li>
+
       </ul>
     </div>
   </div>
