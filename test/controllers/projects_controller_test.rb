@@ -9,8 +9,7 @@ class ProjectsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:projects)
-    assert_select 'h2', Project.count
-    assert_select '.lead', Project.count
+    assert_index_format Project.count
   end
 
   test "should get new" do

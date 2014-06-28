@@ -10,6 +10,7 @@ class ToolTypesControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:tool_types)
     assert_select 'h1', 'Types of Tools'
+    assert_index_format ProjectType.count
   end
 
   test "should get new" do

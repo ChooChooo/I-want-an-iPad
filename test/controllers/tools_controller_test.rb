@@ -10,8 +10,7 @@ class ToolsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tools)
-    assert_select 'h2', Tool.count
-    assert_select '.lead', Tool.count
+    assert_index_format Tool.count
   end
 
   test 'should get new' do

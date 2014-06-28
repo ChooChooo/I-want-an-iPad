@@ -1,29 +1,17 @@
 <h1>Types of Tools</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row">
+  <% @tool_types.each do |tool_type| %>
+      <div class="col-xs-4" style="height: 350px; overflow: hidden;">
+        <h2><%= link_to tool_type.name, tool_type %></h2>
+        <p class="lead"><%= tool_type.description[0..300] + '...' %></p>
+        <div id="sk_ac">
+          <div><%= link_to 'Edit', edit_tool_type_path(tool_type) %></div>
+          <div><%= link_to 'Destroy', tool_type, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        </div>
+      </div>
+      <div class="clearfix visible-xs-block"></div>
+  <% end %>
+</div>
 
-  <tbody>
-    <% @tool_types.each do |tool_type| %>
-      <tr>
-        <td><%= tool_type.name %></td>
-        <td><%= tool_type.description %></td>
-        <td><%= link_to 'Show', tool_type %></td>
-        <td><%= link_to 'Edit', edit_tool_type_path(tool_type) %></td>
-        <td><%= link_to 'Destroy', tool_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tool type', new_tool_type_path %>
+<%= link_to 'New Tool Type', new_tool_type_path %>
