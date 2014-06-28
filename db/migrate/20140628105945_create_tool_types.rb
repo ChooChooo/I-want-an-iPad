@@ -6,5 +6,7 @@ class CreateToolTypes < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_column :tools, :tool_type_id, :integer
   end
 end

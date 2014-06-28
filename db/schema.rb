@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140628105945) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tool_type_id"
   end
 
 end
