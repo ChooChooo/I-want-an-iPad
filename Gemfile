@@ -32,20 +32,23 @@ gem 'nav_lynx'
 
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
-  # gem 'binding_of_caller', '~> 0.7.2'
+  gem 'binding_of_caller'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
   # gem 'rack_session_access', '~> 0.1.1'
   # gem 'pry', '~> 0.9.12.6'
   # gem 'pry-debugger', '~> 0.2.2'
 end
 
 group :staging, :production do
-  gem 'pg'
+  #gem 'pg'
   gem 'rails_12factor'
-
+  #gem 'pg_search'
 end
 
+gem 'pg'
+gem 'pg_search'
+  
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

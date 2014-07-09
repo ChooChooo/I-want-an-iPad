@@ -3,8 +3,15 @@
 
     <% @results.each do |result| %>
         <div>
-            <h2><%= link_to result.name, result %></h2>
-            <p><%=result.description[0..200] + '...' %></p>
+        	<% if result.searchable_type.downcase == "projecttype" %>
+				<% result.searchable_type = "project_type" %>
+				<% display_type = "project type" %>
+			<% else %>
+				<% display_type = result.searchable_type.downcase %>
+            <% end %>
+           
+            <h2><%= link_to display_type, result.searchable_type.downcase + 's/' + result.searchable_id.to_s %></h2>
+            <p><%=result.content[0..200] + '...' %></p>
         </div>
     <% end %>
     
