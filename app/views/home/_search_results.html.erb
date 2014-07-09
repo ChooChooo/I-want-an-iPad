@@ -3,7 +3,7 @@
 
     <% @results.each do |result| %>
         <div>
-        	<% if result.searchable_type.downcase == "projecttype" %>
+        	<% if result.searchable_type.downcase.include? "type" %>
 				<% result.searchable_type = "project_type" %>
 				<% display_type = "project type" %>
 			<% else %>
