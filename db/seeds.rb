@@ -8,7 +8,8 @@
 
 james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme'})
 jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme'})
-jarvis = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme'})
+alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme'})
+christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme'})
 
 ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: "todo: add a description"})
 scripting_language = ToolType.create({name: 'Scripting Language', description: "todo: add a description"})
