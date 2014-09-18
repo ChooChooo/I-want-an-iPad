@@ -8,12 +8,11 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
     @project = Project.new
-    10.times { @project.projects_tools.build }
+    @tools = Tool.all.order :name
   end
 
   def edit
@@ -40,18 +39,8 @@ class ProjectsController < ApplicationController
   end
 
   def set_tools
-    #todo: Fix this disgusting hack!
-    @project.projects_tools.each { |project_tool| ProjectsTool.delete project_tool }
-    project_tools = project_params[:projects_tools_attributes]
-    puts project_tools
-    project_tools.each do |project_tool|
-      unless (project_tool[1][:_destroy] == '1')
-        project_tool[1].delete :_destroy
-        actual = ProjectsTool.new(project_tool[1])
-        actual.project_id = @project.id
-        actual.save
-      end
-    end
+    selected_tools
+
   end
 
   def update
@@ -107,13 +96,16 @@ class ProjectsController < ApplicationController
     end
     
     def selected_tools
-      tools = Array.new
+      #tools = Array.new
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
-          tools << k
+          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>k)
+          #tools << project_tool
+          project_tool.save
         end
       end 
-      return tools.join(',')
+      
+      #return tools.join(',')
     end
     
     def save_tool(name, description)
