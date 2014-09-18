@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.projects_tools.build
     @tools = Tool.all.order :name
   end
 
@@ -41,19 +40,8 @@ class ProjectsController < ApplicationController
   end
 
   def set_tools
-    #todo: Fix this disgusting hack!
-    #@project.projects_tools = 
     selected_tools
-    # @project.projects_tools.each { |project_tool| ProjectsTool.delete project_tool }
-    # project_tools = project_params[:projects_tools_attributes]
-    # project_tools.each do |project_tool|
-      # unless (project_tool[1][:_destroy] == '1')
-        # project_tool[1].delete :_destroy
-        # actual = ProjectsTool.new(project_tool[1])
-        # actual.project_id = @project.id
-        # actual.save
-      # end
-    # end
+
   end
 
   def update

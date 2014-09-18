@@ -30,10 +30,12 @@ body {
   margin-bottom: 10px;
   padding-bottom: 15px;
   width: 30%;
-  height: 200px;
   -moz-box-shadow:    3px 3px 5px 5px grey;
   -webkit-box-shadow: 3px 3px 5px 5px grey;
   box-shadow:         3px 3px 5px 5px grey;
+}
+.btn-info {
+  margin-top: 5px;
 }
 .page-heading {
   display: inline-block;

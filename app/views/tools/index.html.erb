@@ -1,16 +1,23 @@
 
-<h1 class="page-heading">Projects</h1>
+<h1 class="page-heading">Tools</h1>
 <%= link_to 'Add Tool', new_tool_path, class: 'btn btn-primary btn-lg' %>
 
-<div class="row">
-    <% @tools.each do |tool| %>
-      <div class="col-xs-4" style="height: 350px; overflow: hidden;">
-        <h2><%= link_to tool.name, tool %></h2>
-        <p class="lead"><%= tool.description[0..300] + '...' %></p>
-        <div id="sk_ac">
-            <div><%= link_to 'Edit', edit_tool_path(tool) %></div>
-            <div><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<% (0..@tools.length/3).each do |row_count| %>
+  <div class="row">
+    <% col_count = 0 %>
+    <% while col_count < 3 %>
+      <% tool = @tools.all[(row_count * 3) + col_count] %>
+      <% if tool.present? %>
+        <div class="col-xs-4 card">
+          <h2><%= link_to tool.name, tool %></h2>
+          <p><%= tool.description[0..100] + '...' %></p>
         </div>
-      </div><div class="clearfix visible-sm"></div>
+      <% else %>
+        <% break %>
+      <% end %>
+      <div class="clearfix visible-xs-block"></div>
+      <% col_count += 1 %>
     <% end %>
-</div>
+  </div>
+<% end %>
+
