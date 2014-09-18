@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'nav_lynx'
 
+
+gem 'protected_attributes'
+
 gem 'devise'
 
 group :development, :test do

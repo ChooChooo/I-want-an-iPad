@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag params[:controller] %>
+
 
 <h1 class="page-heading">Tools</h1>
 <%= link_to 'Add Tool', new_tool_path, class: 'btn btn-primary btn-lg' %>
@@ -8,9 +10,14 @@
     <% while col_count < 3 %>
       <% tool = @tools.all[(row_count * 3) + col_count] %>
       <% if tool.present? %>
-        <div class="col-xs-4 card">
-          <h2><%= link_to tool.name, tool %></h2>
-          <p><%= tool.description[0..100] + '...' %></p>
+        <div class="col-sm-6 col-md-4">
+          <div class="card">
+            <h2><%= link_to tool.name, tool %></h2>
+            <p><%= tool.description[0..100] + '...' %></p>
+            <% tool.projects[0..8].each do |tool| %>
+              <button class="btn btn-info"><%= tool.name %></button>
+            <% end %>
+          </div>
         </div>
       <% else %>
         <% break %>
