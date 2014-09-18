@@ -45,7 +45,7 @@ project_type_packagemanager = ProjectType.create({name: 'Package Manager', descr
 project_type_employmentwebsite = ProjectType.create({name: 'Employment Website', description: 'An employment website is a web site that deals specifically with employment or careers. Many employment websites are designed to allow employers to post job requirements for a position to be filled and are commonly known as job boards. Other employment sites offer employer reviews, career and job-search advice, and describe different job descriptions or employers. Through a job website a prospective employee can locate and fill out a job application or submit resumes over the Internet for the advertised position. (Source: wikipedia)' })
 project_type_restapi = ProjectType.create({name: 'Rest API', description: 'Representational state transfer (REST) is a way to create, read, update or delete information on a server using simple HTTP calls. It is an alternative to more complex mechanisms like SOAP, CORBA and RPC. A REST call is simply an HTTP request to the server.' })
 
-project_careerbox = Project.create({name: "CareerBox", description: "For anyone proud enough to share their tool selections for the projects they've built or for anyone looking to learn what tools to use to start a new project.", project_type: project_type_webapplication})
+project_careerbox = Project.create({name: 'Kit', description: 'For SiteTech members that love to share with and learn from others, Kit is a Portfolio Builder that lets you share and learn about the projects and tools used to craft the applications this company is built on.', project_type: project_type_webapplication})
 ProjectsTool.create({project: project_careerbox, tool: linux})
 ProjectsTool.create({project: project_careerbox, tool: ruby, notes: "Everybody is doing it."})
 ProjectsTool.create({project: project_careerbox, tool: ruby_on_rails, notes: "More shiney objects than Sinatra."})
@@ -82,5 +82,3 @@ ProjectsTool.create({project: project_reddit, tool: python})
 ProjectsTool.create({project: project_reddit, tool: amazon_web_services})
 ProjectsTool.create({project: project_reddit, tool: jquery})
 ProjectsTool.create({project: project_reddit, tool: postgresql})
-=begin
-=end
