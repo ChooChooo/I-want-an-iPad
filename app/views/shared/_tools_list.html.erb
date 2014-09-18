@@ -4,9 +4,11 @@
       <div class="tool">
         <div class="tool_name"><%= tool.name %></div>
         <% state = "" %>
-        <% unless @project_tools.blank? %>
-			<% if @project_tools.include?(tool.name) %>
-				<% state = "checked" %>
+        <% unless @existing_tools.blank? %>
+        	<% @tools.each do |t| %>
+				<% if @existing_tools.include? tool.id %>
+					<% state = "checked" %>
+				<% end %>
 			<% end %>
    		<% end %>
         <div class="tool_check"><input type="checkbox" "<%=tool.name %>", id="<%=tool.id %>" name="<%=tool.id %>", <%=state %> /></div>
