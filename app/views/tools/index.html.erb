@@ -1,3 +1,7 @@
+
+<h1 class="page-heading">Projects</h1>
+<%= link_to 'Add Tool', new_tool_path, class: 'btn btn-primary btn-lg' %>
+
 <div class="row">
     <% @tools.each do |tool| %>
       <div class="col-xs-4" style="height: 350px; overflow: hidden;">
@@ -10,7 +14,3 @@
       </div><div class="clearfix visible-sm"></div>
     <% end %>
 </div>
-
-<span class="b_span">
-	<%= link_to 'add another tool', new_tool_path %>
-</span>
