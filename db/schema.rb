@@ -11,30 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709173652) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "pg_search_documents", force: true do |t|
-    t.text     "content"
-    t.integer  "searchable_id"
-    t.string   "searchable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140628105945) do
 
   create_table "project_types", force: true do |t|
-    t.text     "name"
-    t.text     "description"
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
-    t.text     "name"
-    t.text     "owner"
-    t.text     "description"
+    t.string   "name"
+    t.string   "owner"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_type_id"
@@ -47,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140709173652) do
     t.datetime "updated_at"
     t.integer  "projects_id"
     t.integer  "tools_id"
-    t.text     "notes"
+    t.string   "notes"
   end
 
   create_table "tool_types", force: true do |t|
@@ -58,8 +47,8 @@ ActiveRecord::Schema.define(version: 20140709173652) do
   end
 
   create_table "tools", force: true do |t|
-    t.text     "name"
-    t.text     "description"
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tool_type_id"
