@@ -12,17 +12,20 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.projects_tools.build
     @tools = Tool.all.order :name
   end
 
   def edit
+    @existing_tools = Array.new
+    @project.projects_tools.each do |t|
+      @existing_tools << t.id
+    end
+    @tools = Tool.all.order :name
   end
 
   def create
     @project = Project.new(project_params)
-
-    # @project.projects_tools.each { |t|  puts "PT Inspect: " + t.inspect }
-    # @project.projects_tools = ProjectsTool.new(project_params[:projects_tools_attributes][0])
 
     respond_to do |format|
       if @project.save
@@ -96,16 +99,12 @@ class ProjectsController < ApplicationController
     end
     
     def selected_tools
-      #tools = Array.new
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
           project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>k)
-          #tools << project_tool
           project_tool.save
         end
       end 
-      
-      #return tools.join(',')
     end
     
     def save_tool(name, description)
