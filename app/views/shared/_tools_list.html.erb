@@ -5,10 +5,8 @@
         <div class="tool_name"><%= tool.name %></div>
         <% state = "" %>
         <% unless @existing_tools.blank? %>
-        	<% @tools.each do |t| %>
-				<% if @existing_tools.include? tool.id %>
-					<% state = "checked" %>
-				<% end %>
+			<% if @existing_tools.include? tool.id %>
+				<% state = "checked" %>
 			<% end %>
    		<% end %>
         <div class="tool_check"><input type="checkbox" "<%=tool.name %>", id="<%=tool.id %>" name="<%=tool.id %>", <%=state %> /></div>
