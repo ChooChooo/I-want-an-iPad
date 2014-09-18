@@ -1,4 +1,5 @@
 class Tool < ActiveRecord::Base
+  include PgSearch
 
   belongs_to :tool_type
 
@@ -6,5 +7,7 @@ class Tool < ActiveRecord::Base
   has_many :projects, :through => :projects_tools, autosave: true
 
   validates :name, :description, presence: true
+  
+  multisearchable :against => [:name, :description]
 
 end

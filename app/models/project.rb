@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include PgSearch
 
   belongs_to :project_type
 
@@ -12,4 +13,6 @@ class Project < ActiveRecord::Base
             :project_type_id,
             #:owner,
             :description, presence: true
+            
+  multisearchable :against => [:name, :description, :project_type_id]
 end
