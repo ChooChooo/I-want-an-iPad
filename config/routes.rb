@@ -1,5 +1,6 @@
 X::Application.routes.draw do
   
+  devise_for :users
   resources :tool_types
 
   resources :project_types
