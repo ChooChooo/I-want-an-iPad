@@ -1,6 +1,6 @@
 X::Application.routes.draw do
-  
-  devise_for :users
+
+  devise_for :users, :controllers => {:users => "registrations"}
   resources :tool_types
 
   resources :project_types
@@ -9,6 +9,7 @@ X::Application.routes.draw do
   
   match 'home' => 'home#hello', :via => :get, :as => :home
   match 'search' => 'home#hello', :via => [:get, :post], :as => :search
+  match 'sign_in' => 'users#new', :via => :get, :as => :sign_in
 
   resources :tools
   match 'tool/:name' => 'tools#tool_view', :via => :get, :as => :tool_detail
