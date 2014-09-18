@@ -2,8 +2,13 @@
 <h1 class="page-heading">Projects</h1>
 <%= link_to 'Add Project', new_project_path, class: 'btn btn-primary btn-lg' %>
 
+<% (0..@projects.length/3).each do |row_count| %>
 <div class="row">
-  <% @projects.each do |project| %>
+  <% col_count = 0 %>
+  <% while col_count < 3 %>
+    <% project = @projects.all[(row_count * 3) + col_count] %>
+    <% puts "#{row_count * (col_count * 3)}\n" %>
+    <% if project.present? %>
       <div class="col-xs-4 card">
         <h2><%= link_to project.name, project %></h2>
         <p class="lead"><%= project.description[0..100] + '...' %></p>
@@ -11,7 +16,12 @@
           <button class="btn btn-info"><%= tool.name %></button>
         <% end %>
       </div>
-      <div class="clearfix visible-xs-block"></div>
+    <% else %>
+      <% break %>
+    <% end %>
+    <div class="clearfix visible-xs-block"></div>
+    <% col_count += 1 %>
   <% end %>
 </div>
+<% end %>
 
