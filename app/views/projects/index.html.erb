@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag params[:controller] %>
+
 
 <h1 class="page-heading">Projects</h1>
 <%= link_to 'Add Project', new_project_path, class: 'btn btn-primary btn-lg' %>
@@ -8,17 +10,18 @@
   <% while col_count < 3 %>
     <% project = @projects.all[(row_count * 3) + col_count] %>
     <% if project.present? %>
-      <div class="col-xs-4 card">
-        <h2><%= link_to project.name, project %></h2>
-        <p><%= project.description[0..100] + '...' %></p>
-        <% project.tools[0..8].each do |tool| %>
-          <button class="btn btn-info"><%= tool.name %></button>
-        <% end %>
+      <div class="col-sm-6 col-md-4">
+        <div class="card">
+          <h2><%= link_to project.name, project %></h2>
+          <p><%= project.description[0..100] + '...' %></p>
+          <% project.tools[0..8].each do |tool| %>
+            <button class="btn btn-info"><%= tool.name %></button>
+          <% end %>
+        </div>
       </div>
     <% else %>
       <% break %>
     <% end %>
-    <div class="clearfix visible-xs-block"></div>
     <% col_count += 1 %>
   <% end %>
 </div>

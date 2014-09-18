@@ -26,20 +26,19 @@ body {
 
 .card {
   background-color: white;
-  margin-right: 30px;
   margin-bottom: 10px;
-  padding-bottom: 15px;
-  width: 30%;
+  padding: 15px;
   -moz-box-shadow:    3px 3px 5px 5px grey;
   -webkit-box-shadow: 3px 3px 5px 5px grey;
   box-shadow:         3px 3px 5px 5px grey;
+  height: 225px;
+}
+.card h2 {
+  margin-top: 0px;
 }
 .btn-info {
   margin-top: 5px;
 }
-.page-heading {
-  display: inline-block;
-  margin-right: 73%;
-}
+
 .right { float: right; }
 .nav-right-margin { margin-right: 20px; }
