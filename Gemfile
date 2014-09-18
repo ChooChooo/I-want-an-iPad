@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'nav_lynx'
 
+gem 'devise'
+
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller'
