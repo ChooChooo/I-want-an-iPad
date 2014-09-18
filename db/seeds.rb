@@ -18,6 +18,7 @@ document_no_sql_database = ToolType.create({name: 'Document (NoSQL) Database', d
 configuration_manager = ToolType.create({name: 'Configuration Manager', description: "todo: add a description"})
 image_editor = ToolType.create({name: 'Image and Photo Editor', description: "todo: add a description"})
 project_management_app = ToolType.create({name: 'Project Management Application', description: "todo: add a description"})
+code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes code'})
 
 rubymine = Tool.create({name: 'RubyMine', description: "A commercial IDE for Ruby and Ruby on Rails built on JetBrains' IntelliJ IDEA platform. RubyMine provides intelligent code completion for Ruby and Ruby on Rails code, on-the-fly code analysis and refactoring support for both plain Ruby projects and web applications built with Ruby on Rails.", tool_type: ide})
 php = Tool.create({name: 'PHP', description: 'PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.[4] Originally created by Rasmus Lerdorf in 1994,[5] the reference implementation of PHP is now produced by The PHP Group.[6] While PHP originally stood for Personal Home Page,[5] it now stands for PHP: Hypertext Preprocessor, a recursive backronym.', tool_type: scripting_language})
@@ -37,6 +38,7 @@ mongodb = Tool.create({name: 'MongoDB', description: "MongoDB (from 'humongous')
 chef = Tool.create({name: 'Chef', description: "Chef (software) is used to streamline the task of configuring & maintaining a company's servers, and can integrate with cloud-based platforms such as Rackspace and Amazon Elastic Compute Cloud to automatically provision and configure new machines.", tool_type: configuration_manager})
 photoshop = Tool.create({name: 'Photoshop', description: "Adobe Photoshop is a graphics editing program developed and published by Adobe Systems.", tool_type: image_editor})
 mingle = Tool.create({name: 'Mingle', description: "Mingle[15] is software to facilitate agile project management and collaboration. Released in May 2007, Mingle was the first commercial application to be created using JRuby.[16] Mingle was released as a SAAS offering in 2013. Twist[17] is software to facilitate test automation and functional testing with simple authoring. Snap CI[18] was released in Beta in 2013. Snap allows you to automate the build and deployment of your Rails application to Heroku.", tool_type: project_management_app})
+fxcop = Tool.create({name: 'FXCop', description: 'Analyzes .NET code for common anti-patterns.', tool_type: code_analyzer})
 
 project_type_wiki = ProjectType.create({name: 'Wiki', description: 'A website anyone can edit.' })
 project_type_webapplication = ProjectType.create({name: 'Web Application', description: 'A web application or web app is any application software that runs in a web browser or is created in a browser-supported programming language (such as the combination of JavaScript, HTML and CSS) and relies on a common web browser to render the application. (Source: wikipedia)' })
@@ -44,15 +46,19 @@ project_type_socialbookmarking = ProjectType.create({name: 'Social Bookmarking W
 project_type_packagemanager = ProjectType.create({name: 'Package Manager', description: "A package management system, also called package manager, is a collection of software tools to automate the process of installing, upgrading, configuring, and removing software packages for a computer's operating system in a consistent manner. It typically maintains a database of software dependencies and version information to prevent software mismatches and missing prerequisites." })
 project_type_employmentwebsite = ProjectType.create({name: 'Employment Website', description: 'An employment website is a web site that deals specifically with employment or careers. Many employment websites are designed to allow employers to post job requirements for a position to be filled and are commonly known as job boards. Other employment sites offer employer reviews, career and job-search advice, and describe different job descriptions or employers. Through a job website a prospective employee can locate and fill out a job application or submit resumes over the Internet for the advertised position. (Source: wikipedia)' })
 project_type_restapi = ProjectType.create({name: 'Rest API', description: 'Representational state transfer (REST) is a way to create, read, update or delete information on a server using simple HTTP calls. It is an alternative to more complex mechanisms like SOAP, CORBA and RPC. A REST call is simply an HTTP request to the server.' })
+project_type_scaling = ProjectType.create({name: 'Scaling', description: 'Get through growing pains and learn to scale!' })
 
-project_careerbox = Project.create({name: 'Kit', description: 'For SiteTech members that love to share with and learn from others, Kit is a Portfolio Builder that lets you share and learn about the projects and tools used to craft the applications this company is built on.', project_type: project_type_webapplication})
+project_careerbox = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication})
 ProjectsTool.create({project: project_careerbox, tool: linux})
 ProjectsTool.create({project: project_careerbox, tool: ruby, notes: "Everybody is doing it."})
 ProjectsTool.create({project: project_careerbox, tool: ruby_on_rails, notes: "More shiney objects than Sinatra."})
 ProjectsTool.create({project: project_careerbox, tool: rubymine, notes: "The right balance of command-line and point-and-click."})
 ProjectsTool.create({project: project_careerbox, tool: sqlite, notes: "Built-in to Rails, and makes development a snap."})
 ProjectsTool.create({project: project_careerbox, tool: jquery})
-ProjectsTool.create({project: project_careerbox, tool: heroku, notes: "Alex said it's good."})
+ProjectsTool.create({project: project_careerbox, tool: heroku, notes: 'Alex said it''s good.'})
+
+project_mappingstability = Project.create({name: 'Mapping Stability 2014', description: 'Wade through a decade of technical debt to find and eliminate memory leaks, performance bottle necks, and other horrors.', project_type: project_type_scaling})
+ProjectsTool.create({project: project_mappingstability, tool: fxcop})
 
 project_careerbuildergems = Project.create({name: "CareerbuilderGems", description: "With the push to move to the cloud for CareerbuilderOne, shared resources have never been more vital. With such a large number of teams operating and developing in Ruby, having a way to keep Ruby code reusable throughout the organization is imperative. Using Amazon Web Services and Opscode Chef, we expand on what has been developed on the Consumer Development team to allow teams to publish and share their Ruby gems across the organization and enable other teams to make use of their technologies to continue innovating and building more robust solutions.", project_type: project_type_packagemanager})
 ProjectsTool.create({project: project_careerbuildergems, tool: chef})
