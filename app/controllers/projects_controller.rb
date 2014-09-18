@@ -13,15 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
-    @project.projects_tools.build
+    10.times { @project.projects_tools.build }
   end
 
   def edit
