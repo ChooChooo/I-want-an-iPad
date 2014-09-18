@@ -1,6 +1,8 @@
 body {
   padding-top: 50px;
+  background-color: lightgrey;
 }
+
 .career-box {
   padding: 40px 15px;
   text-align: center;
@@ -16,3 +18,22 @@ body {
   -moz-box-sizing:border-box;
   box-sizing:border-box;
 }
+
+.row {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: white;
+  margin-right: 30px;
+  width: 30%;
+  -moz-box-shadow:    3px 3px 5px 5px grey;
+  -webkit-box-shadow: 3px 3px 5px 5px grey;
+  box-shadow:         3px 3px 5px 5px grey;
+}
+.page-heading {
+  display: inline-block;
+  margin-right: 73%;
+}
+.right { float: right; }
+.nav-right-margin { margin-right: 20px; }

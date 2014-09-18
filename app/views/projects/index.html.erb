@@ -1,6 +1,10 @@
+
+<h1 class="page-heading">Projects</h1>
+<%= link_to 'Add Project', new_project_path, class: 'btn btn-primary btn-lg' %>
+
 <div class="row">
   <% @projects.each do |project| %>
-      <div class="col-xs-4" style="height: 350px; overflow: hidden;">
+      <div class="col-xs-4 card">
         <h2><%= link_to project.name, project %></h2>
         <p class="lead"><%= project.description[0..300] + '...' %></p>
         <div id="sk_ac">
@@ -12,6 +16,3 @@
   <% end %>
 </div>
 
-<span class="b_span">
-	<%= link_to 'add another project', new_project_path %>
-</span>
