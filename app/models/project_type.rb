@@ -4,5 +4,6 @@ class ProjectType < ActiveRecord::Base
   has_many :projects
   validates :name, :description, presence: true
   
-  multisearchable :against => [:name, :description]
+  #multisearchable :against => [:name, :description]
+  multisearchable :against => [:description]
 end

@@ -6,5 +6,5 @@ class ProjectsTool < ActiveRecord::Base
 
   validates :project_id, :tool_id, presence: true
   
-  multisearchable :against => [:project_id, :tool_id]
+  #multisearchable :against => [:project_id, :tool_id]
 end
