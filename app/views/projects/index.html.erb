@@ -6,11 +6,10 @@
   <% @projects.each do |project| %>
       <div class="col-xs-4 card">
         <h2><%= link_to project.name, project %></h2>
-        <p class="lead"><%= project.description[0..300] + '...' %></p>
-        <div id="sk_ac">
-            <div><%= link_to 'Edit', edit_project_path(project) %></div>
-            <div><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
+        <p class="lead"><%= project.description[0..100] + '...' %></p>
+        <% project.tools.each do |tool| %>
+          <button class="btn btn-info"><%= tool.name %></button>
+        <% end %>
       </div>
       <div class="clearfix visible-xs-block"></div>
   <% end %>
