@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 
   def set_tools
     selected_tools
-    new_tools
+    #new_tools
   end
 
   def update
@@ -112,8 +112,7 @@ class ProjectsController < ApplicationController
     def selected_tools
       params.each do |k,v|
         if v.is_a?(String) and v == "on"
-          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>k)
-          project_tool.save
+          ProjectsTool.find_or_create_by(project_id: @project.id, tool_id: k)
         end
       end 
     end
