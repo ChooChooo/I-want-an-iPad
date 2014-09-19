@@ -106,7 +106,6 @@ ProjectsTool.create({project: project_wiktionary, tool: mysql})
 
 project_reddit = Project.create({name: "Reddit", description: "Reddit is an entertainment, social networking service and news website where registered community members can submit content, such as text posts or direct links. Only registered users can then vote submissions 'up' or 'down' to organize the posts and determine their position on the site's pages. Content entries are organized by areas of interest called subreddits.", project_type: project_type_socialbookmarking})
 ProjectsTool.create({project: project_reddit, tool: python})
-ProjectsTool.create({project: project_reddit, tool: amazon_web_services})
 ProjectsTool.create({project: project_reddit, tool: jquery})
 ProjectsTool.create({project: project_reddit, tool: postgresql})
 
