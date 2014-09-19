@@ -25,7 +25,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(:name => params[:project][:name],
+        :owner => params[:project][:owner],
+        :description => params[:project][:description],
+        #:owner => "user id",
+        :project_type_id => params[:project][:project_type_id])
 
     respond_to do |format|
       if @project.save
@@ -48,7 +52,12 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @project.update(project_params)
+      if @project.update(:name => params[:project][:name],
+        :owner => params[:project][:owner],
+        :description => params[:project][:description],
+        #:owner => "user id",
+        :project_type_id => params[:project][:project_type_id])
+        
         set_tools
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
@@ -70,16 +79,6 @@ class ProjectsController < ApplicationController
   private
     def set_project
       @project = Project.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(
-          :name,
-          :owner,
-          :description,
-          :project_type_id,
-          :projects_tools_attributes => [:project_id, :tool_id, :notes, :_destroy])
     end
     
     def new_tools
