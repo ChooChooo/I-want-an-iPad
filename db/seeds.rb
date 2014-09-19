@@ -26,9 +26,6 @@ code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes c
 puts "Created #{ToolType.count} tool types."
 
 james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme', username: 'James.Tharpe'})
-
-puts "User attributes: #{james.attributes}"
-
 jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme', username: 'jarvis.hambrick' })
 alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme', username: 'alex.hristov@careerbuilder.com'})
 christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme', username: 'christina.chatham@careerbuilder.com'})
@@ -68,8 +65,11 @@ project_type_packagemanager = ProjectType.create({name: 'Package Manager', descr
 project_type_employmentwebsite = ProjectType.create({name: 'Employment Website', description: 'An employment website is a web site that deals specifically with employment or careers. Many employment websites are designed to allow employers to post job requirements for a position to be filled and are commonly known as job boards. Other employment sites offer employer reviews, career and job-search advice, and describe different job descriptions or employers. Through a job website a prospective employee can locate and fill out a job application or submit resumes over the Internet for the advertised position. (Source: wikipedia)' })
 project_type_restapi = ProjectType.create({name: 'Rest API', description: 'Representational state transfer (REST) is a way to create, read, update or delete information on a server using simple HTTP calls. It is an alternative to more complex mechanisms like SOAP, CORBA and RPC. A REST call is simply an HTTP request to the server.' })
 project_type_scaling = ProjectType.create({name: 'Scaling', description: 'Get through growing pains and learn to scale!' })
+project_type_googledocsaddon = ProjectType.create({name: 'Google Docs Add On', description: 'Extend the functionality of Google Docs. Google''s office productivity suite.' })
 
 puts "Created #{ProjectType.count} project types."
+
+project_resumerefinery = Project.create({name: 'Resume Refinery Google Docs Add On', description: 'This iteration of Resume Refinery is a Google Drive Add-On to assist job seekers in perfecting their resume. As they write/edit their resume in Google Drive, using Resume Refinery they can send their resume through CB''s various classification services to see how we classify their resume. We also show the top 5 job recommendations. This idea could be extended to a standalone web app so that it''s not tied to Google Drive.', project_type: project_type_googledocsaddon, owner: 'Chelsea.Youmans' })
 
 project_folio = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_folio, tool: linux})
