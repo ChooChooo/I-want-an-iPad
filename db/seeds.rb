@@ -6,14 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme'})
-jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme'})
-alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme'})
-christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme'})
+ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: 'todo: add a description'})
 
-puts "Created #{User.count} users."
+puts "Tool attributes: #{ide.attributes}"
 
-ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: "todo: add a description"})
 scripting_language = ToolType.create({name: 'Scripting Language', description: "todo: add a description"})
 programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
 mvc_framework = ToolType.create({name: 'Model View Controller (MVC) Framework', description: "todo: add a description"})
@@ -28,6 +24,16 @@ project_management_app = ToolType.create({name: 'Project Management Application'
 code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes code'})
 
 puts "Created #{ToolType.count} tool types."
+
+james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme'})
+
+puts "User attributes: #{james.attributes}"
+
+jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme'})
+alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme'})
+christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme'})
+
+puts "Created #{User.count} users."
 
 rubymine = Tool.create({name: 'RubyMine', description: "A commercial IDE for Ruby and Ruby on Rails built on JetBrains' IntelliJ IDEA platform. RubyMine provides intelligent code completion for Ruby and Ruby on Rails code, on-the-fly code analysis and refactoring support for both plain Ruby projects and web applications built with Ruby on Rails.", tool_type: ide})
 php = Tool.create({name: 'PHP', description: 'PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.[4] Originally created by Rasmus Lerdorf in 1994,[5] the reference implementation of PHP is now produced by The PHP Group.[6] While PHP originally stood for Personal Home Page,[5] it now stands for PHP: Hypertext Preprocessor, a recursive backronym.', tool_type: scripting_language})

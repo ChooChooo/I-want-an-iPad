@@ -22,7 +22,8 @@ class ToolsController < ApplicationController
   end
 
   def create
-    @tool = Tool.new(tool_params)
+    @tool = Tool.new(:name => params[:tool][:name], :description => params[:tool][:description], :tool_type_id => params[:tool][:tool_type_id])
+
     respond_to do |format|
       if @tool.save
         format.html { redirect_to @tool, notice: 'Tool has been created.' }
@@ -60,9 +61,9 @@ class ToolsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def tool_params
-      params.require(:tool).permit(:name, :description, :tool_type_id)
-    end
+    # def tool_params
+      # params.require(:tool).permit(:name, :description, :tool_type_id)
+    # end
 
   def get_related_projects(tool)
     @results = Project.where("description like ?", "%#{tool}%").map {|project|
