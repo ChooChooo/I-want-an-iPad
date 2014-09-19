@@ -1,12 +1,13 @@
 <div class="projects_tools">
-  <%# @tool = Tool.new %>
   <div class="field">
     <%= label :name, :name %><br>
     <%= text_field :name, :class => "form-control" %>
   </div>
   <div class="field">
+
     <%= label :tool_type_id, :tool_type %><br>
     <%= select_tag "tool type", options_from_collection_for_select(ToolType.all, "id", "name") %>
+
   </div>
   <div class="field">
     <%= label :description, :description%><br>

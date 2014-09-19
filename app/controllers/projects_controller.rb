@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.projects_tools.build
     @tools = Tool.all.order :name
+    @tool_types = ToolType.all.order :name
   end
 
   def edit
@@ -22,6 +23,7 @@ class ProjectsController < ApplicationController
       @existing_tools << t.tool_id
     end
     @tools = Tool.all.order :name
+    @tool_types = ToolType.all.order :name
   end
 
   def create
@@ -30,6 +32,7 @@ class ProjectsController < ApplicationController
         :description => params[:project][:description],
         #:owner => "user id",
         :project_type_id => params[:project][:project_type_id])
+    @tool_types = ToolType.all.order :name
 
     respond_to do |format|
       if @project.save
@@ -52,12 +55,7 @@ class ProjectsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @project.update(:name => params[:project][:name],
-        :owner => params[:project][:owner],
-        :description => params[:project][:description],
-        #:owner => "user id",
-        :project_type_id => params[:project][:project_type_id])
-        
+      if @project.update(project_params)
         set_tools
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { head :no_content }
@@ -80,10 +78,22 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find(params[:id])
     end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def project_params
+      params.require(:project).permit(
+          :name,
+          :owner,
+          :description,
+          :project_type_id,
+          :projects_tools_attributes => [:project_id, :tool_id, :notes, :_destroy])
+    end
     
     def new_tools
       #@tools = Array.new
-      
+      puts "??????????????????????"
+      puts params
+      puts "??????????????????????"
       params.each do |k,v|
         if k.is_a?(String) and k.include?("tool_name_")
           unless v.empty?

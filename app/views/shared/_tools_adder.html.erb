@@ -2,14 +2,14 @@
 <script>
 $(document).ready(function(){
   var num = 0;
-  $("#add").click(function(){
+  $("#add-button").click(function(){
   	num = num + 1;
     $("#tool_additions").append($("<%= escape_javascript(render('shared/projects_tools_fields', :f => f)) %>"));
   });
 });
 </script>
 
-<div id="tool_adder">
+<div id="tool_adder" class="adder">
 	<div id="tool_additions"></div>
-	<div id="add" >add a new tool to this project</div>
+	<div id="add-button" class="btn btn-default">Add New Tool</div>
 </div>
