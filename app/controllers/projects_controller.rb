@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
     @project.projects_tools.build
     @tools = Tool.all.order :name
+    @tool_types = ToolType.all.order :name
   end
 
   def edit
@@ -22,10 +23,12 @@ class ProjectsController < ApplicationController
       @existing_tools << t.tool_id
     end
     @tools = Tool.all.order :name
+    @tool_types = ToolType.all.order :name
   end
 
   def create
     @project = Project.new(project_params)
+    @tool_types = ToolType.all.order :name
 
     respond_to do |format|
       if @project.save

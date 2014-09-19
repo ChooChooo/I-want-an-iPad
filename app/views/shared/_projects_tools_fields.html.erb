@@ -5,8 +5,8 @@
     <%= f.text_field :name, :class => "form-control" %>
   </div>
   <div class="field">
-    <%#= f.label :tool_type_id %><br>
-    <%#= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true, :class => "form-control" %>
+    <%= f.label :tool_type_id %><br>
+    <%= f.select "name", @tool_types.all.collect {|t| [ t.name, t.id ] }, {}, {class: "form-control"} %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
