@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :tool_type_id %><br>
-    <%= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true %>
+    <%= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true, :class => "form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
