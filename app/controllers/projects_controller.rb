@@ -27,7 +27,11 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(:name => params[:project][:name],
+        :owner => params[:project][:owner],
+        :description => params[:project][:description],
+        #:owner => "user id",
+        :project_type_id => params[:project][:project_type_id])
     @tool_types = ToolType.all.order :name
 
     respond_to do |format|
