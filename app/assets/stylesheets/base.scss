@@ -38,9 +38,12 @@ body {
 .btn-info {
   margin-top: 5px;
 }
-.navbar {
+.navbar, label, .checkbox label {
   font-size: 16px;
 }
 .navbar-brand {
   font-size: 24px;
+}
+.field {
+  margin-top: 20px;
 }
