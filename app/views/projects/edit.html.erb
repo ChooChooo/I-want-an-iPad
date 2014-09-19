@@ -1,6 +1,11 @@
-<h1>Editing project</h1>
+<%= stylesheet_link_tag "edit_project" %>
+
+<h1 class="page-heading">Editing Project</h1>
+<div class="edit-links">
+  <%= link_to 'Back', projects_path, {class: "btn btn-default"} %>
+  <%= link_to 'Go To Project', @project, {class: "btn btn-primary"} %>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @project %> |
-<%= link_to 'Back', projects_path %>
+
