@@ -32,11 +32,8 @@
   
   <div id="project_tools">
     Tools:
-    <%#= f.fields_for :projects_tools do |builder| %>
 		<div id="tools_list"><%= render 'shared/tools_list' %></div>
-		<div id="new_tool"><%#= render partial: "shared/tools_adder", :f => builder %></div>
-    <%# end %>
-
+		<div id="new_tool"><%= render 'shared/tools_adder', :f => f %></div>
   </div>
   	
   <div class="b_span">
