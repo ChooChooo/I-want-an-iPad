@@ -4,7 +4,7 @@ $(document).ready(function(){
   var num = 0;
   $("#add").click(function(){
   	num = num + 1;
-    $("#tool_additions").append("<div>" + <%= render 'shared/projects_tools_fields', :f => f %> + "</div>");
+    $("#tool_additions").append($("<%= escape_javascript(render('shared/projects_tools_fields', :f => f)) %>"));
   });
 });
 </script>
