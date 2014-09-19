@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
 
   def set_tools
     selected_tools
-    #new_tools
+    new_tools
   end
 
   def update
