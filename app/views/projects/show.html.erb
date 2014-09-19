@@ -1,6 +1,8 @@
-<h1><%= @project.name %> <span class="badge"><%= @project.project_type.name %></span></h1>
-<%= @project.owner %>
 
+<div class="detail_description">
+  <h1><%= @project.name %> <span class="badge"><%= @project.project_type.name %></span></h1>
+  <h4>Project Owner:  <span><%= @project.owner %></span></h4>
+</div>
 <span class="btn btn-default">
 	<%= link_to 'Edit Project', edit_project_path(@project) %>
 </span>
