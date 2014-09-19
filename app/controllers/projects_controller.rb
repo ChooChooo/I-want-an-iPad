@@ -28,9 +28,8 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(:name => params[:project][:name],
-        :owner => params[:project][:owner],
+        :owner => current_user[:username],
         :description => params[:project][:description],
-        #:owner => "user id",
         :project_type_id => params[:project][:project_type_id])
     @tool_types = ToolType.all.order :name
 
@@ -50,7 +49,7 @@ class ProjectsController < ApplicationController
 
   def set_tools
     selected_tools
-    #new_tools
+    new_tools
   end
 
   def update
