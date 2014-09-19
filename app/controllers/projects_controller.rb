@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def edit
     @existing_tools = Array.new
     @project.projects_tools.each do |t|
-      @existing_tools << t.id
+      @existing_tools << t.tool_id
     end
     @tools = Tool.all.order :name
   end

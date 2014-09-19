@@ -31,10 +31,12 @@ body {
   -moz-box-shadow:    3px 3px 5px 5px grey;
   -webkit-box-shadow: 3px 3px 5px 5px grey;
   box-shadow:         3px 3px 5px 5px grey;
-  height: 225px;
 }
 .card-content h2 {
   margin-top: 0px;
+}
+.card-height {
+  height: 225px;
 }
 .btn-info {
   margin-top: 5px;

@@ -11,7 +11,7 @@
     <% project = @projects.all[(row_count * 3) + col_count] %>
     <% if project.present? %>
       <div class="col-sm-6 col-md-4">
-        <div class="card-content">
+        <div class="card-content card-height">
           <h2><%= link_to project.name, project %></h2>
           <p><%= project.description[0..100] + '...' %></p>
           <% project.tools[0..8].each do |tool| %>

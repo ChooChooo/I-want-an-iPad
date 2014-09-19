@@ -1,6 +1,5 @@
 <%= stylesheet_link_tag params[:controller] %>
 
-
 <h1 class="page-heading">Tools</h1>
 <%= link_to 'Add Tool', new_tool_path, class: 'btn btn-primary btn-lg' %>
 
@@ -11,17 +10,24 @@
       <% tool = @tools.all[(row_count * 3) + col_count] %>
       <% if tool.present? %>
         <div class="col-sm-6 col-md-4">
-          <div class="card">
-            <div class="face back">
-              <div class="card-content">
-                <h2><%= link_to tool.name, tool %></h2>
-                <p><%= tool.description[0..100] + '...' %></p>
-                <% tool.projects[0..8].each do |tool| %>
-                  <button class="btn btn-info"><%= tool.name %></button>
-                <% end %>
+          <div class="card-height flip">
+            <div class="card">
+              <div class="face front">
+                <div class="card-content card-height">
+                  <h2><%= link_to tool.name, tool %></h2>
+                </div>
+              </div>
+              <div class="face back">
+                <div class="card-content card-height">
+                  <h2><%= link_to tool.name, tool %></h2>
+                  <p><%= tool.description[0..100] + '...' %></p>
+                  <% tool.projects[0..8].each do |tool| %>
+                    <button class="btn btn-info"><%= tool.name %></button>
+                  <% end %>
+                </div>
               </div>
             </div>
-           </div>
+          </div>
         </div>
       <% else %>
         <% break %>
@@ -31,4 +37,12 @@
     <% end %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  /* card flip */
+  $(".flip").hover(function(){
+    $(this).find(".card").toggleClass("flipped");
+    return false;
+  });
+</script>
 

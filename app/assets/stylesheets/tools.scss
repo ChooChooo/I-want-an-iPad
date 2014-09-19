@@ -8,10 +8,7 @@
   -ms-perspective: 800;
   -moz-perspective: 800;
   -o-perspective: 800;
-  width: 400px;
-  height: 200px;
   position: relative;
-  margin: 50px auto;
 }
 .flip .card.flipped {
   transform:rotatey(-180deg);
@@ -39,10 +36,6 @@
   height: 100%;
   position: absolute;
   z-index: 2;
-  font-family: Georgia;
-  font-size: 3em;
-  text-align: center;
-  line-height: 200px;
   backface-visibility: hidden;  /* W3C */
   -webkit-backface-visibility: hidden; /* Safari & Chrome */
   -moz-backface-visibility: hidden; /* Firefox */
@@ -53,14 +46,9 @@
 .flip .card .front {
   position: absolute;
   z-index: 1;
-  background: black;
-  color: white;
   cursor: pointer;
 }
 .flip .card .back {
-  background: blue;
-  background: white;
-  color: black;
   cursor: pointer;
 
   transform:rotatey(-180deg);
