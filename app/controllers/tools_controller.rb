@@ -22,11 +22,8 @@ class ToolsController < ApplicationController
   end
 
   def create
-    puts "????????????????"
-    puts params[:tool][:tool_type_id]
     @tool = Tool.new(:name => params[:tool][:name], :description => params[:tool][:description], :tool_type_id => params[:tool][:tool_type_id])
-    puts @tool.to_yaml
-    puts "????????????????"
+
     respond_to do |format|
       if @tool.save
         format.html { redirect_to @tool, notice: 'Tool has been created.' }
