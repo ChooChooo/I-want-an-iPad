@@ -1,7 +1,16 @@
 <div class="projects_tools">
-
-<%= f.label :name %>
-<%= f.text_area :description %>
-<%= f.hidden_field :_destroy %>
+  <%# @tool = Tool.new %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%#= f.label :tool_type_id %><br>
+    <%#= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true, :class => "form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, :class => "form-control", :rows => "10" %>
+  </div>
 <%= link_to_function 'remove', 'remove_projects_tool(this)' %>
 </div>
