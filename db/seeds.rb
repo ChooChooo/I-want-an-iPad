@@ -11,6 +11,8 @@ jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'cha
 alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme'})
 christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme'})
 
+puts "Created #{User.count} users."
+
 ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: "todo: add a description"})
 scripting_language = ToolType.create({name: 'Scripting Language', description: "todo: add a description"})
 programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
@@ -24,6 +26,8 @@ configuration_manager = ToolType.create({name: 'Configuration Manager', descript
 image_editor = ToolType.create({name: 'Image and Photo Editor', description: "todo: add a description"})
 project_management_app = ToolType.create({name: 'Project Management Application', description: "todo: add a description"})
 code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes code'})
+
+puts "Created #{ToolType.count} tool types."
 
 rubymine = Tool.create({name: 'RubyMine', description: "A commercial IDE for Ruby and Ruby on Rails built on JetBrains' IntelliJ IDEA platform. RubyMine provides intelligent code completion for Ruby and Ruby on Rails code, on-the-fly code analysis and refactoring support for both plain Ruby projects and web applications built with Ruby on Rails.", tool_type: ide})
 php = Tool.create({name: 'PHP', description: 'PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.[4] Originally created by Rasmus Lerdorf in 1994,[5] the reference implementation of PHP is now produced by The PHP Group.[6] While PHP originally stood for Personal Home Page,[5] it now stands for PHP: Hypertext Preprocessor, a recursive backronym.', tool_type: scripting_language})
@@ -48,6 +52,8 @@ photoshop = Tool.create({name: 'Photoshop', description: "Adobe Photoshop is a g
 mingle = Tool.create({name: 'Mingle', description: "Mingle[15] is software to facilitate agile project management and collaboration. Released in May 2007, Mingle was the first commercial application to be created using JRuby.[16] Mingle was released as a SAAS offering in 2013. Twist[17] is software to facilitate test automation and functional testing with simple authoring. Snap CI[18] was released in Beta in 2013. Snap allows you to automate the build and deployment of your Rails application to Heroku.", tool_type: project_management_app})
 fxcop = Tool.create({name: 'FXCop', description: 'Analyzes .NET code for common anti-patterns.', tool_type: code_analyzer})
 
+puts "Created #{Tool.count} tools."
+
 project_type_wiki = ProjectType.create({name: 'Wiki', description: 'A website anyone can edit.' })
 project_type_webapplication = ProjectType.create({name: 'Web Application', description: 'A web application or web app is any application software that runs in a web browser or is created in a browser-supported programming language (such as the combination of JavaScript, HTML and CSS) and relies on a common web browser to render the application. (Source: wikipedia)' })
 project_type_mobileapplication = ProjectType.create({name: 'Mobile Application', description: 'A mobile application or web app is any application software that runs on a mobile phone.' })
@@ -56,6 +62,8 @@ project_type_packagemanager = ProjectType.create({name: 'Package Manager', descr
 project_type_employmentwebsite = ProjectType.create({name: 'Employment Website', description: 'An employment website is a web site that deals specifically with employment or careers. Many employment websites are designed to allow employers to post job requirements for a position to be filled and are commonly known as job boards. Other employment sites offer employer reviews, career and job-search advice, and describe different job descriptions or employers. Through a job website a prospective employee can locate and fill out a job application or submit resumes over the Internet for the advertised position. (Source: wikipedia)' })
 project_type_restapi = ProjectType.create({name: 'Rest API', description: 'Representational state transfer (REST) is a way to create, read, update or delete information on a server using simple HTTP calls. It is an alternative to more complex mechanisms like SOAP, CORBA and RPC. A REST call is simply an HTTP request to the server.' })
 project_type_scaling = ProjectType.create({name: 'Scaling', description: 'Get through growing pains and learn to scale!' })
+
+puts "Created #{ProjectType.count} project types."
 
 project_folio = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication})
 ProjectsTool.create({project: project_folio, tool: linux})
@@ -95,3 +103,5 @@ ProjectsTool.create({project: project_reddit, tool: python})
 ProjectsTool.create({project: project_reddit, tool: amazon_web_services})
 ProjectsTool.create({project: project_reddit, tool: jquery})
 ProjectsTool.create({project: project_reddit, tool: postgresql})
+
+puts "Created #{Project.count} projects."
