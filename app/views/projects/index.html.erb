@@ -19,7 +19,7 @@
             <h2><%= link_to project.name, project %></h2>
             <p><%= project.description[0..100] + '...' %></p>
             <% project.tools[0..8].each do |tool| %>
-              <button class="btn btn-info"><%= tool.name %></button>
+              <%= link_to tool.name, tool, class: "btn btn-info", "role" => "button" %>
             <% end %>
           </div>
         </div>

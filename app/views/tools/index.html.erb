@@ -17,15 +17,15 @@
               <div class="card">
                 <div class="face front">
                   <div class="card-content card-height">
-                    <h2><%= link_to tool.name, tool %></h2>
+                    <h2><%= tool.name %></h2>
                   </div>
                 </div>
                 <div class="face back">
                   <div class="card-content card-height">
                     <h2><%= link_to tool.name, tool %></h2>
                     <p><%= tool.description[0..100] + '...' %></p>
-                    <% tool.projects[0..8].each do |tool| %>
-                      <button class="btn btn-info"><%= tool.name %></button>
+                    <% tool.projects[0..8].each do |project| %>
+                      <%= link_to project.name, project, class: "btn btn-info", "role"=>"button" %>
                     <% end %>
                   </div>
                 </div>
