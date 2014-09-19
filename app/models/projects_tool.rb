@@ -3,7 +3,7 @@ class ProjectsTool < ActiveRecord::Base
   belongs_to :tool, inverse_of: :projects_tools
   belongs_to :project, :inverse_of => :projects_tools
 
-  attr_accessible :project_id, :tool_id
+  attr_accessible :project_id, :tool_id, :project, :tool, :notes
   
   validates :project_id, :tool_id, presence: true
 end
