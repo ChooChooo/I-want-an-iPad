@@ -1,16 +1,16 @@
 <div class="projects_tools">
   <%# @tool = Tool.new %>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :class => "form-control" %>
+    <%= label :name, :name %><br>
+    <%= text_field :name, :class => "form-control" %>
   </div>
   <div class="field">
-    <%#= f.label :tool_type_id %><br>
-    <%#= f.collection_select :tool_type_id, ToolType.all, :id, :name, prompt: true, :class => "form-control" %>
+    <%= label :tool_type_id, :tool_type %><br>
+    <%= select_tag "tool type", options_from_collection_for_select(ToolType.all, "id", "name") %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, :class => "form-control", :rows => "10" %>
+    <%= label :description, :description%><br>
+    <%= text_area :description, :class => "form-control", :rows => "10" %>
   </div>
 <%= link_to_function 'remove', 'remove_projects_tool(this)' %>
 </div>
