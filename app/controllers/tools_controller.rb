@@ -37,7 +37,7 @@ class ToolsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @tool.update(tool_params)
+      if @tool.update(:name => params[:tool][:name], :description => params[:tool][:description], :tool_type_id => params[:tool][:tool_type_id])
         format.html { redirect_to @tool, notice: 'Tool has been  updated.' }
         format.json { head :no_content }
       else
@@ -56,14 +56,9 @@ class ToolsController < ApplicationController
   end
 
   private
-    def set_tool
-      @tool = Tool.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    # def tool_params
-      # params.require(:tool).permit(:name, :description, :tool_type_id)
-    # end
+  def set_tool
+    @tool = Tool.find(params[:id])
+  end
 
   def get_related_projects(tool)
     @results = Project.where("description like ?", "%#{tool}%").map {|project|
