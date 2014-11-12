@@ -1,19 +1,27 @@
-<% unless @results.blank? %>
-	<h1>Search Results for "<%=@search_term %>"</h1>
+<h1>Search Results for "<%=@search_term %>"</h1>
 
-    <% @results.each do |result| %>
-        <div>
-        	<% if result.searchable_type.downcase.include? "type" %>
-				<% result.searchable_type = "project_type" %>
-				<% display_type = "project type" %>
-			<% else %>
-				<% display_type = result.searchable_type.downcase %>
-            <% end %>
-           
-            <h2><%= link_to display_type, result.searchable_type.downcase + 's/' + result.searchable_id.to_s %></h2>
-            <p><%=result.content[0..200] + '...' %></p>
-        </div>
-    <% end %>
+<% unless @results_projects.blank? %>
+	<div class="result_type">
+		<h2>Projects</h2>
+	    <% @results_projects.each do |p_result, p_name| %>
+	        <div>      
+	            <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
+	            <p><%=p_result.content[0..200] + '...' %></p>
+	        </div>
+	    <% end %>
+    </div>
+<% end %>
+
+<% unless @results_projects.blank? %>
+    <div class="result_type">
+    	<h2>Tools</h2>
+	    <% @results_tools.each do |t_result, t_name| %>
+	        <div>           
+	            <h3><%= link_to t_name.name, t_result.searchable_type.downcase + 's/' + t_result.searchable_id.to_s %></h3>
+	            <p><%=t_result.content[0..200] + '...' %></p>
+	        </div>
+	    <% end %>
+    </div>
     
 <% end %>
 
