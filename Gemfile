@@ -32,6 +32,8 @@ gem 'protected_attributes'
 
 gem 'devise'
 
+gem "octokit", "~> 3.0"
+
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller'
