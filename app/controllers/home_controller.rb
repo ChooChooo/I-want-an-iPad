@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   
   def hello
     client = Octokit::Client.new \
-      :client_id     => "<your 20 char id>",
-      :client_secret => "<your 40 char secret>"
+      :client_id     => "696d5200fd62d6d03d14",
+      :client_secret => "09142a11d387ec87d024d902cbbb0b0785374040"
   
     @user = client.user
     
