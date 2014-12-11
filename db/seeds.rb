@@ -13,13 +13,15 @@ User.delete_all
 Tool.delete_all
 ProjectType.delete_all
 
-ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: 'todo: add a description'})
-scripting_language = ToolType.create({name: 'Scripting Language', description: 'todo: add a description'})
-programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
+ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: 'An integrated development environment (IDE) or interactive development environment is a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of a source code editor, build automation tools and a debugger.'})
+puts "ide done"
+scripting_language = ToolType.create({name: 'Scripting Language', description: 'A scripting language or script language is a programming language that supports scripts, programs written for a special run-time environment that can interpret (rather than compile) and automate the execution of tasks that could alternatively be executed one-by-one by a human operator.'})
+programming_language = ToolType.create({name: 'Programming Language', description: 'A programming language is a formal constructed language designed to communicate instructions to a machine, particularly a computer. Programming languages can be used to create programs to control the behavior of a machine or to express algorithms.'})
 mvc_framework = ToolType.create({name: 'Model View Controller (MVC) Framework', description: "todo: add a description"})
 javascript_library = ToolType.create({name: 'JavaScript Library', description: "todo: add a description"})
-paas_provider = ToolType.create({name: 'Platform as a Service (PaaS) Provider', description: "todo: add a description"})
-operating_system = ToolType.create({name: 'Operating System (OS)', description: "todo: add a description"})
+paas_provider = ToolType.create({name: 'Platform as a Service (PaaS) Provider', description: 'Platform as a service (PaaS) is a category of cloud computing services that provides a computing platform and a solution stack as a service. Along with software as a service (SaaS) and infrastructure as a service (IaaS), it is a service model of cloud computing. In this model, the consumer creates an application or service using tools and/or libraries from the provider. The consumer also controls software deployment and configuration settings. The provider provides the networks, servers, storage, and other services that are required to host the consumer''s application.'})
+operating_system = ToolType.create({name: 'Operating System (OS)', description: 'An operating system (OS) is software that manages computer hardware and software resources and provides common services for computer programs. The operating system is an essential component of the system software in a computer system. Application programs usually require an operating system to function.'})
+puts "OS done"
 relational_database = ToolType.create({name: 'Relational Database', description: "todo: add a description"})
 document_no_sql_database = ToolType.create({name: 'Document (NoSQL) Database', description: "todo: add a description"})
 configuration_manager = ToolType.create({name: 'Configuration Manager', description: "todo: add a description"})
