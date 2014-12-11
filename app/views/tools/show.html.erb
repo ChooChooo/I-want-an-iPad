@@ -5,6 +5,10 @@
   <%#= @project.owner %>
 </div>-->
 
+<span class="btn btn-default">
+	<%= link_to 'Edit Tool', edit_tool_path(@tool) %>
+</span>
+
 <div class="detail_description">
   <%= @tool.description %>
 </div>
@@ -13,7 +17,3 @@
     <h2>Projects Built with <%= @tool.name %></h2>
     <%= render partial: 'shared/project_list', :projects => @projects %>
 <% end %>
-
-<span class="b_span">
-	<%= link_to 'Edit Tool', edit_tool_path(@tool) %>
-</span>
