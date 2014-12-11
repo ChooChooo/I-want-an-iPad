@@ -1,19 +1,16 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag 'tools' %>
 
-<h1><%= @tool_type.name %></h1>
+<h1><%= @tool_type.name.pluralize %></h1>
 
-<p>
-  <strong>Description:</strong>
+<div class="detail_description">
   <%= @tool_type.description %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_tool_type_path(@tool_type) %> |
-<%= link_to 'Back', tool_types_path %>
+<div class="btn btn-default">
+  <%= link_to 'Edit Tool Type', edit_project_type_path(@tool_type) %>
+</div>
 
 <% unless @tool_type.tools.empty? %>
-    <h2><%= @tool_type.name.pluralize @tool_type.tools.count%></h2>
-    <% @tool_type.tools.each do |project| %>
-        <h3><%= link_to project.name, project_path(project) %></h3>
-        <p><%=project.description[0..200] + "..." %></p>
-    <% end %>
+    <h2><%= @tool_type.name.pluralize @tool_type.tools.count %> Tools</h2>
+    <%= render 'shared/tools_list', :tools => @tools %>
 <% end %>
