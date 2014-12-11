@@ -15,4 +15,5 @@ X::Application.routes.draw do
   match 'tool/:name' => 'tools#tool_view', :via => :get, :as => :tool_detail
   
   resources :projects
+  match 'github' => 'projects#github', :via => :get, :as => :github
 end

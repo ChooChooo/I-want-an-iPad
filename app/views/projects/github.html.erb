@@ -1,0 +1,17 @@
+<%= form_for(@project, html:{class:"well"}) do |f| %>
+  <div class="form-group">
+	<b>Github Project</b>
+	<br/>
+	username:
+  	<input name="gh_user" id="user" type="text" autofocus="autofocus" class="form-control" />
+  	repo:
+  	<input name="gh_repo" id="repo" type="text" class="form-control" />
+  </div>
+  <%= f.submit class: "btn btn-primary btn-lg form-submit", "role" => "button" %>
+
+
+	<br/>
+	<%=@output%>
+	
+	
+<% end %>

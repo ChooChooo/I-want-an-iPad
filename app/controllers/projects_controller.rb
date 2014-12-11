@@ -5,27 +5,29 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all.order :name
-    
-     #(:client_id     => "6969eaab25c99d040903",
-                                 #:client_secret => "69868a6661379b0f1802d99f78ee95e7953c6116")
-                                 
-                                 #Heroku (:client_id     => "696d5200fd62d6d03d14",
-                                 #:client_secret => "09142a11d387ec87d024d902cbbb0b0785374040")
-
-    readme = HTTParty.get "https://api.github.com/repos/ChooChooo/I-want-an-iPad/readme?client_id=6969eaab25c99d040903&client_secret=69868a6661379b0f1802d99f78ee95e7953c6116"
-    decoded_readme = Base64.decode64(readme.parsed_response["content"])
-    @output = decoded_readme.gsub("== README", "")
   end
 
   def show
 
   end
 
-  def new
+  def new   
     @project = Project.new
     @project.projects_tools.build
     @tools = Tool.all.order :name
     @tool_types = ToolType.all.order :name
+  end
+  
+  def github
+    @project = Project.new
+    
+    client_id = ENV['GITHUB_CLIENT_ID']
+    client_secret = ENV['GITHUB_CLIENT_SECRET']
+    
+    readme = HTTParty.get "https://api.github.com/repos/ChooChooo/I-want-an-iPad/readme?client_id=#{client_id}&client_secret=#{client_secret}"
+    decoded_readme = Base64.decode64(readme.parsed_response["content"])
+    @output = decoded_readme.gsub("== README", "")
+    
   end
 
   def edit
