@@ -6,8 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-
+Project.delete_all
+ProjectsTool.delete_all
 ToolType.delete_all
+User.delete_all
+Tool.delete_all
+ProjectType.delete_all
+
 ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: 'todo: add a description'})
 scripting_language = ToolType.create({name: 'Scripting Language', description: 'todo: add a description'})
 programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
@@ -21,18 +26,19 @@ configuration_manager = ToolType.create({name: 'Configuration Manager', descript
 image_editor = ToolType.create({name: 'Image and Photo Editor', description: "todo: add a description"})
 project_management_app = ToolType.create({name: 'Project Management Application', description: "todo: add a description"})
 code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes code'})
+reverse_proxy = ToolType.create({name: 'Reverse Proxy', description: 'A type of proxy server that retrieves resources on behalf of a client from one or more servers. These resources are then returned to the client as though they originated from the server itself (or servers themselves).'})
 
 puts "Created #{ToolType.count} tool types."
 
-User.delete_all
 james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme', username: 'James.Tharpe'})
 jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme', username: 'jarvis.hambrick' })
 alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme', username: 'alex.hristov@careerbuilder.com'})
 christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme', username: 'christina.chatham@careerbuilder.com'})
+ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: 'changeme', username: 'ben.tidwell@careerbuilder.com'})
+jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: 'changeme', username: 'jeff.yeary@careerbuilder.com'})
 
 puts "Created #{User.count} users."
 
-Tool.delete_all
 rubymine = Tool.create({name: 'RubyMine', description: "A commercial IDE for Ruby and Ruby on Rails built on JetBrains' IntelliJ IDEA platform. RubyMine provides intelligent code completion for Ruby and Ruby on Rails code, on-the-fly code analysis and refactoring support for both plain Ruby projects and web applications built with Ruby on Rails.", tool_type: ide})
 php = Tool.create({name: 'PHP', description: 'PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.[4] Originally created by Rasmus Lerdorf in 1994,[5] the reference implementation of PHP is now produced by The PHP Group.[6] While PHP originally stood for Personal Home Page,[5] it now stands for PHP: Hypertext Preprocessor, a recursive backronym.', tool_type: scripting_language})
 ruby = Tool.create({name: 'Ruby', description: 'Ruby is a dynamic, reflective, object-oriented, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. According to its authors, Ruby was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp.[10] It supports multiple programming paradigms, including functional, object-oriented, and imperative. It also has a dynamic type system and automatic memory management.', tool_type: scripting_language})
@@ -56,10 +62,10 @@ photoshop = Tool.create({name: 'Photoshop', description: "Adobe Photoshop is a g
 mingle = Tool.create({name: 'Mingle', description: "Mingle[15] is software to facilitate agile project management and collaboration. Released in May 2007, Mingle was the first commercial application to be created using JRuby.[16] Mingle was released as a SAAS offering in 2013. Twist[17] is software to facilitate test automation and functional testing with simple authoring. Snap CI[18] was released in Beta in 2013. Snap allows you to automate the build and deployment of your Rails application to Heroku.", tool_type: project_management_app})
 fxcop = Tool.create({name: 'FXCop', description: 'Analyzes .NET code for common anti-patterns.', tool_type: code_analyzer})
 code_climate = Tool.create({name: 'Code Climate', description: 'Analyzes Ruby, JavaScript, and PHP code for common anti-patterns.', tool_type: code_analyzer})
+cloud_flair = Tool.create({name: 'Cloudflair', description: 'A content delivery network and distributed domain name server, sitting between the visitor and the CloudFlare user''s hosting provider, thus acting as a reverse proxy for websites.', tool_type: reverse_proxy})
 
 puts "Created #{Tool.count} tools."
 
-ProjectType.delete_all
 project_type_wiki = ProjectType.create({name: 'Wiki', description: 'A website anyone can edit.' })
 project_type_webapplication = ProjectType.create({name: 'Web Application', description: 'A web application or web app is any application software that runs in a web browser or is created in a browser-supported programming language (such as the combination of JavaScript, HTML and CSS) and relies on a common web browser to render the application. (Source: wikipedia)' })
 project_type_mobileapplication = ProjectType.create({name: 'Mobile Application', description: 'A mobile application or web app is any application software that runs on a mobile phone.' })
@@ -79,7 +85,6 @@ project_resumerefinery = Project.create({name: 'Resume Refinery Google Docs Add 
 project_talentnetworkjobcart = Project.create({name: 'TalentNetwork Job Cart', description: 'Allows job seekers to track jobs they''re interested in applyng to, then apply in bulk upon "check out".', project_type: project_type_shoppingcart, owner: 'Anna.Steadham' })
 # TODO: Add tools to project_talentnetworkjobcart
 
-ProjectsTool.delete_all
 project_folio = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_folio, tool: linux})
 ProjectsTool.create({project: project_folio, tool: ruby, notes: "Everybody is doing it."})
@@ -88,6 +93,15 @@ ProjectsTool.create({project: project_folio, tool: rubymine, notes: "The right b
 ProjectsTool.create({project: project_folio, tool: sqlite, notes: "Built-in to Rails, and makes development a snap."})
 ProjectsTool.create({project: project_folio, tool: jquery})
 ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it''s good.'})
+
+project_grrp = Project.create({name: 'Global Ruby on Rails Platform (GRRP)', description: 'Consumer''s super-platform for spinning up websites', project_type: project_type_webapplication, owner: 'Jeff.Yeary' })
+ProjectsTool.create({project: project_grrp, tool: ruby})
+ProjectsTool.create({project: project_grrp, tool: rubymine})
+ProjectsTool.create({project: project_grrp, tool: ruby_on_rails})
+ProjectsTool.create({project: project_grrp, tool: code_climate})
+ProjectsTool.create({project: project_grrp, tool: amazon_web_services})
+ProjectsTool.create({project: project_grrp, tool: cloud_flair})
+
 
 project_mappingstability = Project.create({name: 'Mapping Stability 2014', description: 'Wade through a decade of technical debt to find and eliminate memory leaks, performance bottle necks, and other horrors.', project_type: project_type_scaling, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_mappingstability, tool: fxcop})
