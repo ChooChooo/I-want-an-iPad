@@ -1,27 +1,40 @@
 <h1>Search Results for "<%=@search_term %>"</h1>
 
-<% unless @results_projects.blank? %>
-	<div class="result_type">
-		<h2>Projects</h2>
-	    <% @results_projects.each do |p_result, p_name| %>
-	        <div>      
-	            <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
-	            <p><%=p_result.content[0..200] + '...' %></p>
-	        </div>
-	    <% end %>
-    </div>
-<% end %>
 
-<% unless @results_projects.blank? %>
+  <% unless @results_projects.blank? %>
     <div class="result_type">
-    	<h2>Tools</h2>
-	    <% @results_tools.each do |t_result, t_name| %>
-	        <div>           
-	            <h3><%= link_to t_name.name, t_result.searchable_type.downcase + 's/' + t_result.searchable_id.to_s %></h3>
-	            <p><%=t_result.content[0..200] + '...' %></p>
-	        </div>
-	    <% end %>
-    </div>
-    
-<% end %>
+      <div class="panel panel-primary">
+        <h2 class="panel-heading">Projects</h2>
+      <div class="panel-body">
+        <% @results_projects.each do |p_result, p_name| %>
+            <div>
+                <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
+                <p><%=p_result.content[0..200] + '...' %></p>
+            </div>
+        <% end %>
+      </div>
+      </div>
 
+    </div>
+  <% end %>
+
+  <% unless @results_tools.blank? %>
+      <div class="result_type">
+        <div class="panel panel-primary">
+          <h2 class="panel-heading">Tools</h2>
+        <div class="panel-body">
+          <% @results_tools.each do |t_result, t_name| %>
+              <div>
+                  <h3><%= link_to t_name.name, t_result.searchable_type.downcase + 's/' + t_result.searchable_id.to_s %></h3>
+                  <p><%=t_result.content[0..200] + '...' %></p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+        </div>
+  <% end %>
+
+<script type="text/javascript">
+    var h = window.innerHeight - 100;
+    $(".panel-body").css("height", h+"px");
+</script>
