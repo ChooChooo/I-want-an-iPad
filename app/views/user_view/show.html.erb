@@ -1,3 +1,7 @@
 <%= @user.email %>
 
 <%= render partial: 'projects/project_list' %>
+
+<% @tools.each do |tool| %>
+    <%= tool.name %>
+<% end %>
