@@ -28,4 +28,6 @@ X::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ENV['GITHUB_CLIENT_ID'] = '6969eaab25c99d040903'
+  ENV['GITHUB_CLIENT_SECRET'] = '69868a6661379b0f1802d99f78ee95e7953c6116'
 end

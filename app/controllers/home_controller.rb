@@ -3,8 +3,8 @@ require 'octokit'
 class HomeController < ApplicationController
   
   def hello
-    client = Octokit::Client.new(:client_id     => "6969eaab25c99d040903",
-                                 :client_secret => "69868a6661379b0f1802d99f78ee95e7953c6116")
+    client = Octokit::Client.new(:client_id     => ENV['GITHUB_CLIENT_ID'],
+                                 :client_secret => ENV['GITHUB_CLIENT_SECRET'])
                                  
                                  #(:client_id     => "6969eaab25c99d040903",
                                  #:client_secret => "69868a6661379b0f1802d99f78ee95e7953c6116")

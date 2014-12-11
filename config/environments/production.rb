@@ -77,4 +77,6 @@ X::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  ENV['GITHUB_CLIENT_ID'] = '696d5200fd62d6d03d14'
+  ENV['GITHUB_CLIENT_SECRET'] = '09142a11d387ec87d024d902cbbb0b0785374040'
 end
