@@ -6,7 +6,7 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @related_projects = get_related_projects(@tool.name)
+    @projects = @tool.projects
   end
   
   def tool_view

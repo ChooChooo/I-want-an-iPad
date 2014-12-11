@@ -1,0 +1,19 @@
+
+<% unless @tools.blank? %>
+    <% @tools.each do |tool| %>
+      <div class="tool">
+        <% state = "" %>
+        <% unless @existing_tools.blank? %>
+			<% if @existing_tools.include? tool.id %>
+				<% state = 'checked' %>
+			<% end %>
+   		<% end %>
+        <div class="checkbox">
+        	<label class="checkbox-inline">
+        		<input type="checkbox" id="<%=tool.id %>" name="<%=tool.id %>" <%= state %> />
+        		<%=tool.name %>
+        	</label>
+        </div>
+      </div>
+    <% end %>
+<% end %>
