@@ -32,7 +32,7 @@ gem 'protected_attributes'
 
 gem 'devise'
 
-gem "octokit", "~> 3.0"
+gem "httparty"
 
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
