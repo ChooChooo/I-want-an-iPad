@@ -24,9 +24,11 @@
                   <div class="card-content card-height">
                     <h2><%= link_to tool.name, tool %></h2>
                     <p><%= tool.description[0..100] + '...' %></p>
-                    <% tool.projects[0..8].each do |project| %>
-                      <%= link_to project.name, project, class: "btn btn-info", "role"=>"button" %>
-                    <% end %>
+                    <div class="small-scroll">
+                      <% tool.projects[0..8].each do |project| %>
+                        <%= link_to project.name, project, class: "btn btn-info", "role"=>"button" %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
