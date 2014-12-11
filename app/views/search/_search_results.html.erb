@@ -1,6 +1,5 @@
 <h1>Search Results for "<%=@search_term %>"</h1>
 
-
 <% unless @results.blank? %>
     <% @results.each do |result_type, result_group| %>
         <div class="result_type">
@@ -14,5 +13,3 @@
         </div>
     <% end %>
 <% end %>
-
-
