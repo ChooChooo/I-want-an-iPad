@@ -1,27 +1,18 @@
 <h1>Search Results for "<%=@search_term %>"</h1>
 
-<% unless @results_projects.blank? %>
-	<div class="result_type">
-		<h2>Projects</h2>
-	    <% @results_projects.each do |p_result, p_name| %>
-	        <div>      
-	            <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
-	            <p><%=p_result.content[0..200] + '...' %></p>
-	        </div>
-	    <% end %>
-    </div>
+
+<% unless @results.blank? %>
+    <% @results.each do |result_type, result_group| %>
+        <div class="result_type">
+            <h2><%= result_type.underscore.humanize.split.map(&:capitalize).join(' ') %>s</h2>
+            <% result_group.each do |p_result, p_name| %>
+                <div>
+                    <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
+                    <p><%=p_result.content[0..200] + '...' %></p>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
 <% end %>
 
-<% unless @results_projects.blank? %>
-    <div class="result_type">
-    	<h2>Tools</h2>
-	    <% @results_tools.each do |t_result, t_name| %>
-	        <div>           
-	            <h3><%= link_to t_name.name, t_result.searchable_type.downcase + 's/' + t_result.searchable_id.to_s %></h3>
-	            <p><%=t_result.content[0..200] + '...' %></p>
-	        </div>
-	    <% end %>
-    </div>
-    
-<% end %>
 
