@@ -10,7 +10,7 @@ ide = ToolType.create({name: 'Integrated Development Environment (IDE)', descrip
 
 puts "Tool attributes: #{ide.attributes}"
 
-scripting_language = ToolType.create({name: 'Scripting Language', description: "todo: add a description"})
+scripting_language = ToolType.create({name: 'Scripting Language', description: 'todo: add a description'})
 programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
 mvc_framework = ToolType.create({name: 'Model View Controller (MVC) Framework', description: "todo: add a description"})
 javascript_library = ToolType.create({name: 'JavaScript Library', description: "todo: add a description"})
@@ -88,7 +88,7 @@ ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it'
 project_mappingstability = Project.create({name: 'Mapping Stability 2014', description: 'Wade through a decade of technical debt to find and eliminate memory leaks, performance bottle necks, and other horrors.', project_type: project_type_scaling, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_mappingstability, tool: fxcop})
 
-project_careerbuildergems = Project.create({name: 'CareerbuilderGems', description: "With the push to move to the cloud for CareerbuilderOne, shared resources have never been more vital. With such a large number of teams operating and developing in Ruby, having a way to keep Ruby code reusable throughout the organization is imperative. Using Amazon Web Services and Opscode Chef, we expand on what has been developed on the Consumer Development team to allow teams to publish and share their Ruby gems across the organization and enable other teams to make use of their technologies to continue innovating and building more robust solutions.", project_type: project_type_packagemanager, owner: 'James.Tharpe' })
+project_careerbuildergems = Project.create({name: 'CareerBuilderGems', description: 'With the push to move to the cloud for CareerbuilderOne, shared resources have never been more vital. With such a large number of teams operating and developing in Ruby, having a way to keep Ruby code reusable throughout the organization is imperative. Using Amazon Web Services and Opscode Chef, we expand on what has been developed on the Consumer Development team to allow teams to publish and share their Ruby gems across the organization and enable other teams to make use of their technologies to continue innovating and building more robust solutions.', project_type: project_type_packagemanager, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_careerbuildergems, tool: chef})
 ProjectsTool.create({project: project_careerbuildergems, tool: ruby})
 ProjectsTool.create({project: project_careerbuildergems, tool: amazon_web_services})
@@ -99,17 +99,17 @@ ProjectsTool.create({project: project_talentwallet, tool: ionic})
 ProjectsTool.create({project: project_talentwallet, tool: angular_js})
 ProjectsTool.create({project: project_talentwallet, tool: firebase, notes: 'Test'})
 
-project_wikipedia = Project.create({name: "Wikipedia", description: "Wikipedia is a collaboratively edited, multilingual, free-access, free content Internet encyclopedia that is supported and hosted by the non-profit Wikimedia Foundation. Volunteers worldwide collaboratively write Wikipedia's 30 million articles in 287 languages, including over 4.5 million in the English Wikipedia. Anyone who can access the site can edit almost any of its articles, which on the Internet comprise[4] the largest and most popular general reference work.[5][6][7][8][9] In February 2014, The New York Times reported that Wikipedia is ranked fifth globally among all websites stating, With 18 billion page views and nearly 500 million unique visitors a month..., Wikipedia trails just Yahoo, Facebook, Microsoft and Google, the largest with 1.2 billion unique visitors.", project_type: project_type_wiki, owner: 'James.Tharpe' })
+project_wikipedia = Project.create({name: 'Wikipedia', description: "Wikipedia is a collaboratively edited, multilingual, free-access, free content Internet encyclopedia that is supported and hosted by the non-profit Wikimedia Foundation. Volunteers worldwide collaboratively write Wikipedia's 30 million articles in 287 languages, including over 4.5 million in the English Wikipedia. Anyone who can access the site can edit almost any of its articles, which on the Internet comprise[4] the largest and most popular general reference work.[5][6][7][8][9] In February 2014, The New York Times reported that Wikipedia is ranked fifth globally among all websites stating, With 18 billion page views and nearly 500 million unique visitors a month..., Wikipedia trails just Yahoo, Facebook, Microsoft and Google, the largest with 1.2 billion unique visitors.", project_type: project_type_wiki, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_wikipedia, tool: php})
 ProjectsTool.create({project: project_wikipedia, tool: linux})
 ProjectsTool.create({project: project_wikipedia, tool: mysql})
 
-project_wiktionary = Project.create({name: "Wiktionary", description: "Wiktionary (a blend of the words wiki and dictionary) is a multilingual, web-based project to create a free content dictionary of all words in all languages. It is available in 158 languages and in Simple English. Like its sister project Wikipedia, Wiktionary is run by the Wikimedia Foundation, and is written collaboratively by volunteers, dubbed 'Wiktionarians'. Its wiki software, MediaWiki, allows almost anyone with access to the website to create and edit entries.", project_type: project_type_wiki, owner: 'James.Tharpe' })
+project_wiktionary = Project.create({name: 'Wiktionary', description: "Wiktionary (a blend of the words wiki and dictionary) is a multilingual, web-based project to create a free content dictionary of all words in all languages. It is available in 158 languages and in Simple English. Like its sister project Wikipedia, Wiktionary is run by the Wikimedia Foundation, and is written collaboratively by volunteers, dubbed 'Wiktionarians'. Its wiki software, MediaWiki, allows almost anyone with access to the website to create and edit entries.", project_type: project_type_wiki, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_wiktionary, tool: php})
 ProjectsTool.create({project: project_wiktionary, tool: linux})
 ProjectsTool.create({project: project_wiktionary, tool: mysql})
 
-project_reddit = Project.create({name: "Reddit", description: "Reddit is an entertainment, social networking service and news website where registered community members can submit content, such as text posts or direct links. Only registered users can then vote submissions 'up' or 'down' to organize the posts and determine their position on the site's pages. Content entries are organized by areas of interest called subreddits.", project_type: project_type_socialbookmarking, owner: 'James.Tharpe' })
+project_reddit = Project.create({name: 'Reddit', description: "Reddit is an entertainment, social networking service and news website where registered community members can submit content, such as text posts or direct links. Only registered users can then vote submissions 'up' or 'down' to organize the posts and determine their position on the site's pages. Content entries are organized by areas of interest called subreddits.", project_type: project_type_socialbookmarking, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_reddit, tool: python})
 ProjectsTool.create({project: project_reddit, tool: jquery})
 ProjectsTool.create({project: project_reddit, tool: postgresql})

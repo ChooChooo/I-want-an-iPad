@@ -10,22 +10,28 @@
 <% else %>
   <% (0..@projects.length/3).each do |row_count| %>
   <div class="row">
+
     <% col_count = 0 %>
     <% while col_count < 3 %>
       <% project = @projects.all[(row_count * 3) + col_count] %>
       <% if project.present? %>
+
         <div class="col-sm-6 col-md-4">
           <div class="card-content card-height">
             <h2><%= link_to project.name, project %></h2>
             <p><%= project.description[0..100] + '...' %></p>
-            <% project.tools[0..8].each do |tool| %>
-              <%= link_to tool.name, tool, class: "btn btn-info", "role" => "button" %>
-            <% end %>
+            <div class="small-scroll">
+              <% project.tools[0..8].each do |tool| %>
+                <%= link_to tool.name, tool, class: "btn btn-info", "role" => "button" %>
+              <% end %>
+            </div>
           </div>
         </div>
+
       <% else %>
         <% break %>
       <% end %>
+
       <% col_count += 1 %>
     <% end %>
   </div>
