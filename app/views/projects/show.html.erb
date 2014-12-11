@@ -2,7 +2,10 @@
 
 <div class="detail_description">
   <h1><%= @project.name %> <span class="badge"><%= @project.project_type.name %></span></h1>
-  <h4>Project Owner: <span><%= @project.owner %></span></h4>
+  <h4>Project Participants: <span>
+    <% @project.users.each do |user| %> <br/>
+        <%= user.username %>
+    <% end %>
 </div>
 <span class="btn btn-default">
 	<%= link_to 'Edit Project', edit_project_path(@project) %>

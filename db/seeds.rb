@@ -88,6 +88,10 @@ project_talentnetworkjobcart = Project.create({name: 'TalentNetwork Job Cart', d
 # TODO: Add tools to project_talentnetworkjobcart
 
 project_folio = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication, owner: 'James.Tharpe' })
+UsersProject.create({project: project_folio, user: james})
+UsersProject.create({project: project_folio, user: ben})
+UsersProject.create({project: project_folio, user: alex})
+UsersProject.create({project: project_folio, user: christina})
 ProjectsTool.create({project: project_folio, tool: linux})
 ProjectsTool.create({project: project_folio, tool: ruby, notes: "Everybody is doing it."})
 ProjectsTool.create({project: project_folio, tool: ruby_on_rails, notes: "More shiney objects than Sinatra."})
