@@ -32,12 +32,12 @@ reverse_proxy = ToolType.create({name: 'Reverse Proxy', description: 'A type of 
 
 puts "Created #{ToolType.count} tool types."
 
-james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme', username: 'James.Tharpe'})
-jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme', username: 'jarvis.hambrick' })
-alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme', username: 'alex.hristov@careerbuilder.com'})
-christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme', username: 'christina.chatham@careerbuilder.com'})
-ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: 'changeme', username: 'ben.tidwell@careerbuilder.com'})
-jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: 'changeme', username: 'jeff.yeary@careerbuilder.com'})
+james = User.create({email: 'james.tharpe@careerbuilder.com', password: '11111111', username: 'James'})
+jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: '11111111', username: 'Jarvis' })
+alex = User.create({email: 'alex.hristov@careerbuilder.com', password: '11111111', username: 'Alex'})
+christina = User.create({email: 'christina.chatham@careerbuilder.com', password: '11111111', username: 'Christina'})
+ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: '11111111', username: 'Ben'})
+jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: '11111111', username: 'Jeff'})
 
 puts "Created #{User.count} users."
 

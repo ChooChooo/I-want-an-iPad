@@ -10,8 +10,8 @@
   </h1>
   <h4>Project Participants:</h4>
   <span>
-      <% @project.users.each do |user| %> <br/>
-          <%= user.username %>
+      <% @project.users.each do |user| %>
+          <%= user.username %>,
       <% end %>
   </span>
 
