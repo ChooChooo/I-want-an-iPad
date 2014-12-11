@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-
+    @tools = @project.tools
   end
 
   def new   
