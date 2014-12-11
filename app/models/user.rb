@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PgSearch
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,9 +8,10 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
 
   has_many :projects
-  has_many :projects_tools
 
   attr_accessor :login
+
+  multisearchable :against => [:username, :email]
 
   def login=(login)
     @login = login
