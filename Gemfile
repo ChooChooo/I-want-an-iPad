@@ -32,15 +32,15 @@ gem 'protected_attributes'
 
 gem 'devise'
 
-gem "octokit", "~> 3.0"
+gem "httparty"
 
 group :development, :test do
   gem 'better_errors', '~> 1.1.0'
   gem 'binding_of_caller'
   gem 'simplecov', '~> 0.7.1'
   gem 'rack_session_access', '~> 0.1.1'
-  gem 'pry', '~> 0.9.12.6'
-  gem 'pry-debugger', '~> 0.2.2'
+  # gem 'pry', '~> 0.9.12.6'
+  # gem 'pry-debugger', '~> 0.2.2'
 end
 
 group :staging, :production do
