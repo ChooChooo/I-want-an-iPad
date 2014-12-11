@@ -10,11 +10,8 @@
 </div>
 
 <% unless @tool.projects.empty? %>
-    <h2>Related Projects</h2>
-    <% @tool.projects.each do |project| %>
-      <h3><%= link_to project.name, project_path(project) %></h3>
-      <p><%=project.description[0..200] + "..." %></p>
-    <% end %>
+    <h2>Projects Built with <%= @tool.name %></h2>
+    <%= render partial: 'shared/project_list', :projects => @projects %>
 <% end %>
 
 <span class="b_span">
