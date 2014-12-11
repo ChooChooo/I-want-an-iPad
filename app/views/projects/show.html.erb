@@ -1,12 +1,20 @@
-<%= stylesheet_link_tag 'tools' %>
 <%= stylesheet_link_tag 'show_project' %>
+<%= stylesheet_link_tag 'tools' %>
+
+
 <div class="page-heading-inline">
   <h1><%= @project.name %>
     <span class="badge">
       <%= link_to @project.project_type.name, project_type_path(@project.project_type) %>
     </span>
   </h1>
-  <h4>Project Owner: <span><%= @project.owner %></span></h4>
+  <h4>Project Participants:</h4>
+  <span>
+      <% @project.users.each do |user| %>
+          <%= user.username %>,
+      <% end %>
+  </span>
+
 </div>
 
 <%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit" %>
