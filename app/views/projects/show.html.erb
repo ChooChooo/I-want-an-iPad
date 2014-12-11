@@ -1,18 +1,21 @@
 <%= stylesheet_link_tag 'tools' %>
-
-<div class="detail_description">
-  <h1><%= @project.name %> <span class="badge"><%= @project.project_type.name %></span></h1>
+<%= stylesheet_link_tag 'show_project' %>
+<div class="page-heading-inline">
+  <h1><%= @project.name %>
+    <span class="badge">
+      <%= link_to @project.project_type.name, project_type_path(@project.project_type) %>
+    </span>
+  </h1>
   <h4>Project Owner: <span><%= @project.owner %></span></h4>
 </div>
-<span class="btn btn-default">
-	<%= link_to 'Edit Project', edit_project_path(@project) %>
-</span>
+
+<%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit" %>
 
 <div class="detail_description">
   <%= @project.description %>
 </div>
 
 <% unless @project.projects_tools.empty? %>
-  <h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %> Project</h2>
+  <h2 class="page-header">Tools</h2>
   <%= render 'shared/tools_list' %>
 <% end %>

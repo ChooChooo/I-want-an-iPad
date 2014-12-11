@@ -17,7 +17,7 @@
                         </div>
                         <div class="face back">
                           <div class="card-content card-height">
-                            <h2><%= link_to tool.name, tool %></h2>
+                            <h2 class="fill"><%= link_to tool.name.truncate(22), tool %></h2>
                             <p><%= tool.description[0..100] + '...' %></p>
                             <div class="small-scroll">
                               <% tool.projects[0..8].each do |project| %>
