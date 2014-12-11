@@ -1,13 +1,18 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+  $("#tool_additions").hide();
   $("#add-button").click(function(){
-    $("#tool_additions").append($("<%= escape_javascript(render('shared/projects_tools_fields', :f => f)) %>"));
+    $("#tool_additions").slideDown();
+    $("#add-button").hide();
   });
 });
 </script>
 
 <div id="tool_adder" class="adder">
-	<div id="tool_additions"></div>
+	<div id="tool_additions">
+    <h3>New Tool</h3>
+    <%= render partial: 'shared/projects_tools_fields', locals: {f: f} %>
+  </div>
 	<div id="add-button" class="btn btn-default">Add New Tool</div>
 </div>

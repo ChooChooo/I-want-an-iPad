@@ -6,10 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Project.delete_all
+ProjectsTool.delete_all
+ToolType.delete_all
+User.delete_all
+Tool.delete_all
+ProjectType.delete_all
+
 ide = ToolType.create({name: 'Integrated Development Environment (IDE)', description: 'todo: add a description'})
-
-puts "Tool attributes: #{ide.attributes}"
-
 scripting_language = ToolType.create({name: 'Scripting Language', description: 'todo: add a description'})
 programming_language = ToolType.create({name: 'Programming Language', description: "todo: add a description"})
 mvc_framework = ToolType.create({name: 'Model View Controller (MVC) Framework', description: "todo: add a description"})
@@ -22,6 +26,7 @@ configuration_manager = ToolType.create({name: 'Configuration Manager', descript
 image_editor = ToolType.create({name: 'Image and Photo Editor', description: "todo: add a description"})
 project_management_app = ToolType.create({name: 'Project Management Application', description: "todo: add a description"})
 code_analyzer = ToolType.create({name: 'Code Analyzer', description: 'Analyzes code'})
+reverse_proxy = ToolType.create({name: 'Reverse Proxy', description: 'A type of proxy server that retrieves resources on behalf of a client from one or more servers. These resources are then returned to the client as though they originated from the server itself (or servers themselves).'})
 
 puts "Created #{ToolType.count} tool types."
 
@@ -29,6 +34,8 @@ james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changem
 jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme', username: 'jarvis.hambrick' })
 alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme', username: 'alex.hristov@careerbuilder.com'})
 christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme', username: 'christina.chatham@careerbuilder.com'})
+ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: 'changeme', username: 'ben.tidwell@careerbuilder.com'})
+jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: 'changeme', username: 'jeff.yeary@careerbuilder.com'})
 
 puts "Created #{User.count} users."
 
@@ -54,6 +61,8 @@ chef = Tool.create({name: 'Chef', description: "Chef (software) is used to strea
 photoshop = Tool.create({name: 'Photoshop', description: "Adobe Photoshop is a graphics editing program developed and published by Adobe Systems.", tool_type: image_editor})
 mingle = Tool.create({name: 'Mingle', description: "Mingle[15] is software to facilitate agile project management and collaboration. Released in May 2007, Mingle was the first commercial application to be created using JRuby.[16] Mingle was released as a SAAS offering in 2013. Twist[17] is software to facilitate test automation and functional testing with simple authoring. Snap CI[18] was released in Beta in 2013. Snap allows you to automate the build and deployment of your Rails application to Heroku.", tool_type: project_management_app})
 fxcop = Tool.create({name: 'FXCop', description: 'Analyzes .NET code for common anti-patterns.', tool_type: code_analyzer})
+code_climate = Tool.create({name: 'Code Climate', description: 'Analyzes Ruby, JavaScript, and PHP code for common anti-patterns.', tool_type: code_analyzer})
+cloud_flair = Tool.create({name: 'Cloudflair', description: 'A content delivery network and distributed domain name server, sitting between the visitor and the CloudFlare user''s hosting provider, thus acting as a reverse proxy for websites.', tool_type: reverse_proxy})
 
 puts "Created #{Tool.count} tools."
 
@@ -84,6 +93,15 @@ ProjectsTool.create({project: project_folio, tool: rubymine, notes: "The right b
 ProjectsTool.create({project: project_folio, tool: sqlite, notes: "Built-in to Rails, and makes development a snap."})
 ProjectsTool.create({project: project_folio, tool: jquery})
 ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it''s good.'})
+
+project_grrp = Project.create({name: 'Global Ruby on Rails Platform (GRRP)', description: 'Consumer''s super-platform for spinning up websites', project_type: project_type_webapplication, owner: 'Jeff.Yeary' })
+ProjectsTool.create({project: project_grrp, tool: ruby})
+ProjectsTool.create({project: project_grrp, tool: rubymine})
+ProjectsTool.create({project: project_grrp, tool: ruby_on_rails})
+ProjectsTool.create({project: project_grrp, tool: code_climate})
+ProjectsTool.create({project: project_grrp, tool: amazon_web_services})
+ProjectsTool.create({project: project_grrp, tool: cloud_flair})
+
 
 project_mappingstability = Project.create({name: 'Mapping Stability 2014', description: 'Wade through a decade of technical debt to find and eliminate memory leaks, performance bottle necks, and other horrors.', project_type: project_type_scaling, owner: 'James.Tharpe' })
 ProjectsTool.create({project: project_mappingstability, tool: fxcop})

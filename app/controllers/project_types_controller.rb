@@ -10,6 +10,7 @@ class ProjectTypesController < ApplicationController
   # GET /project_types/1
   # GET /project_types/1.json
   def show
+    @projects = @project_type.projects
   end
 
   # GET /project_types/new

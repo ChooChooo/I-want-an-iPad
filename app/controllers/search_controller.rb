@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   def search
     unless params['search_params'].blank?
       @search_term = params['search_params']
-      results = PgSearch.multisearch(@search_term)
+      results = PgSearch.multisearch(@search_term).where( :searchable_type => [ Project.name, Tool.name])
 
       @results = Hash.new
 

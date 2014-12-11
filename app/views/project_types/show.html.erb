@@ -1,10 +1,5 @@
 <h1><%= @project_type.name.pluralize %></h1>
 
-<!--<div class="proj_area">
-  <strong>Owner:</strong><br/>
-  <%#= @project.owner %>
-</div>-->
-
 <div class="detail_description">
   <%= @project_type.description %>
 </div>
@@ -15,8 +10,5 @@
 
 <% unless @project_type.projects.empty? %>
     <h2><%= @project_type.name.pluralize @project_type.projects.count %> Projects</h2>
-    <% @project_type.projects.each do |project_type| %>
-        <h3><%= link_to project_type.name, project_path(project_type) %></h3>
-        <p><%=project_type.description[0..200] + '...' %></p>
-    <% end %>
+    <%= render 'shared/project_list', :projects => @projects %>
 <% end %>
