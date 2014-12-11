@@ -13,6 +13,6 @@
 </div>
 
 <% unless @project.projects_tools.empty? %>
-  <h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %></h2>
+  <h2>Tools used to build this <%= link_to @project.project_type.name, project_type_path(@project.project_type) %> Project</h2>
   <%= render 'shared/tools_list' %>
 <% end %>
