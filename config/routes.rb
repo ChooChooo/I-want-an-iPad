@@ -8,7 +8,7 @@ X::Application.routes.draw do
   root :to => 'home#hello'
   
   match 'home' => 'home#hello', :via => :get, :as => :home
-  match 'search' => 'home#hello', :via => [:get, :post], :as => :search
+  match 'search' => 'search#search', :via => [:get, :post], :as => :search
   match 'sign_in' => 'users#new', :via => :get, :as => :sign_in
 
   resources :tools
