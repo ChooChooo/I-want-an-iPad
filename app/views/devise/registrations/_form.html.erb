@@ -1,0 +1,13 @@
+<%= devise_error_messages! %>
+
+<div class="field"><%= f.label :email, "Email:" %><br />
+  <%= f.email_field :email, autofocus: true, class: "form-control" %></div>
+
+<div class="field"><%= f.label :username, "Username:" %><br />
+  <%= f.text_field :username, class: "form-control" %></div>
+
+<div class="field"><%= f.label :password, "Password:" %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+  <%= f.password_field :password, autocomplete: "off", class:"form-control" %></div>
+
+<div class="field"><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %></div>
