@@ -24,18 +24,28 @@ class ProjectsController < ApplicationController
   
   def gh_create
     unless params["gh_user"].blank? || params["gh_repo"].blank?
-      @project_name = params["gh_repo"]
+      @gem_project = Project.new
+      @gem_project.name = params["gh_repo"]
+      @gem_project.owner = current_user[:username]
+      @gem_project.project_type_id = 2
       
       client_id = ENV['GITHUB_CLIENT_ID']
       client_secret = ENV['GITHUB_CLIENT_SECRET']
       
       readme = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
       decoded_readme = Base64.decode64(readme.parsed_response["content"])
-      @project_description = decoded_readme.gsub("== README", "")
+      @gem_project.description = decoded_readme.gsub("== README", "")
       
       gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
-      @decoded_gemfile = Base64.decode64(gemfile.parsed_response["content"])
+      gemfile = Base64.decode64(gemfile.parsed_response["content"])
+      gem_array = gemfile.scan(/gem\s\'.*?\',/i)
+      @gems = Array.new
+      gem_array.each do |gem|
+        gem = /\'.*?\'/.match(gem)
+        @gems << gem.to_s.gsub("'",'')
+      end
       
+      create
     end
   end
 
@@ -49,10 +59,15 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(:name => params[:project][:name],
-        :owner => current_user[:username],
-        :description => params[:project][:description],
-        :project_type_id => params[:project][:project_type_id])
+    unless @gem_project.nil?
+      @project = @gem_project
+    else
+      @project = Project.new(:name => params[:project][:name],
+          :owner => current_user[:username],
+          :description => params[:project][:description],
+          :project_type_id => params[:project][:project_type_id])
+    end
+    
     @tool_types = ToolType.all.order :name
 
     respond_to do |format|
