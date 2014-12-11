@@ -23,21 +23,21 @@ class ProjectsController < ApplicationController
   end
   
   def gh_create
-    unless params["gh_user"].blank? || params["gh_repo"].blank?
+    unless params['gh_user'].blank? || params['gh_repo'].blank?
       @gem_project = Project.new
       @gem_project.name = params["gh_repo"]
       @gem_project.owner = current_user[:username]
-      @gem_project.project_type_id = 2
+      @gem_project.project_type = ProjectType.where(:name => 'Web Application').first
       
       client_id = ENV['GITHUB_CLIENT_ID']
       client_secret = ENV['GITHUB_CLIENT_SECRET']
       
-      readme = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
-      decoded_readme = Base64.decode64(readme.parsed_response["content"])
-      @gem_project.description = decoded_readme.gsub("== README", "")
+      readme = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
+      decoded_readme = Base64.decode64(readme.parsed_response['content'])
+      @gem_project.description = decoded_readme.gsub('== README', '')
       
-      gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
-      gemfile = Base64.decode64(gemfile.parsed_response["content"])
+      gemfile = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
+      gemfile = Base64.decode64(gemfile.parsed_response['content'])
       gem_array = gemfile.scan(/gem\s\'.*?\',/i)
       @gems = Array.new
       gem_array.each do |gem|
