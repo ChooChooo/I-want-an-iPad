@@ -45,6 +45,10 @@ class ProjectsController < ApplicationController
         @gems << gem.to_s.gsub("'",'')
       end
       
+      puts "???????????????????????"
+      puts @gems
+      puts "???????????????????????"
+      
       create
     end
   end
@@ -140,10 +144,9 @@ class ProjectsController < ApplicationController
         end
       else
         @gems.each do |g|
-          unless save_gh_tool(g).nil?
-            project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-            project_tool.save
-          end
+          save_gh_tool(g)
+          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
+          project_tool.save
         end
       end
     end
