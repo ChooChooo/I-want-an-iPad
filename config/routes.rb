@@ -16,4 +16,5 @@ X::Application.routes.draw do
   
   resources :projects
   match 'github' => 'projects#github', :via => :get, :as => :github
+  match 'gh_create' => 'projects#gh_create', :via => :post, :as => :gh_create
 end
