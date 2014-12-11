@@ -111,23 +111,15 @@ class ProjectsController < ApplicationController
     end
     
     def new_tools
-      #@tools = Array.new
-      puts "??????????????????????"
-      puts params
-      puts "??????????????????????"
-      params.each do |k,v|
-        if k.is_a?(String) and k.include?("tool_name_")
-          unless v.empty?
-            desc_key = "tool_description_" + /\d/.match(k).to_s
-            unless save_tool(v, params[desc_key]).nil?
-              
-              project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>k)
-              project_tool.save
-            end
-          end
-        end
-      end 
-      #return @tools.join(',')
+      begin
+        params[:project][:tool].require(:name, :description)
+      rescue ArgumentError
+        return
+      end
+      unless save_tool(params[:project][:tool]).nil?
+        project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
+        project_tool.save
+      end
     end
     
     def selected_tools
@@ -138,13 +130,10 @@ class ProjectsController < ApplicationController
       end 
     end
     
-    def save_tool(name, description)
-      @tool = Tool.find_by name: name
+    def save_tool(tool_params)
+      @tool = Tool.find_by name: tool_params[:name]
       if @tool.nil?
-        new_tools_hash = {"name"=>name, "description"=>description}
-  
-        @tool = Tool.new(new_tools_hash)
-        @tool.save
+        @tool = Tool.create(tool_params)
       end
     end
 end
