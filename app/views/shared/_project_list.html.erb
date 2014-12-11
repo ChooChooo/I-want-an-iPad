@@ -2,11 +2,10 @@
 
 <% if @projects.blank? || @projects.length <= 0 %>
     <h1>:-(</h1>
-
+    Projects: <%= @projects %>
 <% else %>
     <% (0..@projects.length/3).each do |row_count| %>
         <div class="row">
-
           <% col_count = 0 %>
           <% while col_count < 3 %>
               <% project = @projects.all[(row_count * 3) + col_count] %>
