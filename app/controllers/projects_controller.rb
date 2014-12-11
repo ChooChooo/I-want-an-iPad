@@ -19,15 +19,24 @@ class ProjectsController < ApplicationController
   end
   
   def github
-    @project = Project.new
     
-    client_id = ENV['GITHUB_CLIENT_ID']
-    client_secret = ENV['GITHUB_CLIENT_SECRET']
-    
-    readme = HTTParty.get "https://api.github.com/repos/ChooChooo/I-want-an-iPad/readme?client_id=#{client_id}&client_secret=#{client_secret}"
-    decoded_readme = Base64.decode64(readme.parsed_response["content"])
-    @output = decoded_readme.gsub("== README", "")
-    
+  end
+  
+  def gh_create
+    unless params["gh_user"].blank? || params["gh_repo"].blank?
+      @project_name = params["gh_repo"]
+      
+      client_id = ENV['GITHUB_CLIENT_ID']
+      client_secret = ENV['GITHUB_CLIENT_SECRET']
+      
+      readme = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
+      decoded_readme = Base64.decode64(readme.parsed_response["content"])
+      @project_description = decoded_readme.gsub("== README", "")
+      
+      gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
+      @decoded_gemfile = Base64.decode64(gemfile.parsed_response["content"])
+      
+    end
   end
 
   def edit

@@ -3,16 +3,16 @@ class SearchController < ApplicationController
   def search
     unless params['search_params'].blank?
       @search_term = params['search_params']
-      results = PgSearch.multisearch(@search_term)
+      results = PgSearch.multisearch(@search_term).where( :searchable_type => [ Project.name, Tool.name])
 
-      @results_tools = Hash.new
-      @results_projects = Hash.new
+      @results = Hash.new
 
       results.each do |result|
-        if result.searchable_type == 'Tool'
-          @results_tools[result] = Tool.find(result.searchable_id, :select => :name)
-        elsif result.searchable_type == 'Project'
-          @results_projects[result] = Project.find(result.searchable_id, :select => :name)
+        klass = Object.const_get(result.searchable_type)
+
+        if klass.present?
+          result_group = @results[result.searchable_type] || @results[result.searchable_type] = Hash.new
+          result_group[result] = klass.find(result.searchable_id, :select => :name)
         end
       end
     end

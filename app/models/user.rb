@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
 
+  has_many :projects
+  has_many :projects_tools
+
   attr_accessor :login
 
   def login=(login)
@@ -16,7 +19,6 @@ class User < ActiveRecord::Base
     @login || self.username || self.email
   end
 
-
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -25,7 +27,5 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
-
-
 
 end

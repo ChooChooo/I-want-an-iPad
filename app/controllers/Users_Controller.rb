@@ -1,4 +1,5 @@
 class UsersController < Devise::RegistrationsController
+
   def new
     render 'Users/registrations/new'
   end
