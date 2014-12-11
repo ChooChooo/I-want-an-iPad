@@ -127,13 +127,24 @@ class ProjectsController < ApplicationController
     
     def new_tools
       begin
-        params[:project][:tool].require(:name, :description)
+        if @gem_project.nil?
+          params[:project][:tool].require(:name, :description)
+        end
       rescue ArgumentError
         return
       end
-      unless save_tool(params[:project][:tool]).nil?
-        project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-        project_tool.save
+      if @gem_project.nil?
+        unless save_tool(params[:project][:tool]).nil?
+          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
+          project_tool.save
+        end
+      else
+        @gems.each do |g|
+          unless save_gh_tool(g).nil?
+            project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
+            project_tool.save
+          end
+        end
       end
     end
     
@@ -149,6 +160,13 @@ class ProjectsController < ApplicationController
       @tool = Tool.find_by name: tool_params[:name]
       if @tool.nil?
         @tool = Tool.create(tool_params)
+      end
+    end
+    
+    def save_gh_tool(gem)
+      @tool = Tool.find_by name: gem
+      if @tool.nil?
+        @tool = Tool.create(:name => gem, :description => 'x', :tool_type_id => 1)
       end
     end
 end

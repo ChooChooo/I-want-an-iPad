@@ -7,7 +7,7 @@
             <h2 class="panel-heading"><%= result_type.underscore.humanize.split.map(&:capitalize).join(' ') %>s</h2>
             <div class="panel-body">
               <% result_group.each do |p_result, p_name| %>
-                  <div>
+                  <div class="result">
                       <h3><%= link_to p_name.name, p_result.searchable_type.downcase + 's/' + p_result.searchable_id.to_s %></h3>
                       <p><%=p_result.content[0..200] + '...' %></p>
                   </div>
@@ -17,8 +17,3 @@
         </div>
     <% end %>
 <% end %>
-
-<script type="text/javascript">
-  var h = window.innerHeight - 100;
-  $(".panel-body").css("height", h+"px");
-</script>

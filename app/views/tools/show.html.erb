@@ -1,19 +1,25 @@
-<h1><%= @tool.name %> <span class="badge"><%= link_to @tool.tool_type.name, tool_type_path(@tool.tool_type) %></span></h1>
+<%= stylesheet_link_tag 'show_project' %>
 
-<!--<div class="proj_area">
-  <strong>Owner:</strong><br/>
-  <%#= @project.owner %>
-</div>-->
+<div class="page-heading-inline" style="margin-right: 29%">
+  <h1><%= @tool.name %>
+    <span class="badge">
+      <%= link_to @tool.tool_type.name, tool_type_path(@tool.tool_type) %>
+    </span>
+  </h1>
+</div>
 
-<span class="btn btn-default">
-	<%= link_to 'Edit Tool', edit_tool_path(@tool) %>
-</span>
+<%= link_to 'Edit Tool', edit_tool_path(@tool), role: "button", class:"btn btn-primary edit" %>
 
 <div class="detail_description">
   <%= @tool.description %>
 </div>
 
 <% unless @tool.projects.empty? %>
-    <h2>Projects Built with <%= @tool.name %></h2>
-    <%= render partial: 'shared/project_list', :projects => @projects %>
+  <h2 class="page-header">Projects</h2>
+  <%= render partial: 'shared/project_list', :projects => @projects %>
 <% end %>
+
+
+
+
+
