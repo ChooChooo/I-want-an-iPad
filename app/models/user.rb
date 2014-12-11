@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
 
+  has_many :projects
+  has_many :projects_tools
+
   attr_accessor :login
 
   def login=(login)
