@@ -32,6 +32,7 @@ reverse_proxy = ToolType.create({name: 'Reverse Proxy', description: 'A type of 
 orm = ToolType.create({name: 'Object Relational Mapper (ORM)', description: 'A programming technique for converting data between incompatible type systems in object-oriented programming languages. This creates, in effect, a "virtual object database" that can be used from within the programming language.'})
 cache = ToolType.create({name: 'Cache', description: 'a component that transparently stores data so that future requests for that data can be served faster. The data that is stored within a cache might be values that have been computed earlier or duplicates of original values that are stored elsewhere. If requested data is contained in the cache (cache hit), this request can be served by simply reading the cache, which is comparatively faster. Otherwise (cache miss), the data has to be recomputed or fetched from its original storage location, which is comparatively slower. Hence, the greater the number of requests that can be served from the cache, the faster the overall system performance becomes.'})
 encryption = ToolType.create({name: 'Encryption', description: 'The process of encoding messages or information in such a way that only authorized parties can read it. Encryption does not of itself prevent interception, but denies the message content to the interceptor..'})
+cms = ToolType.create({name: 'Content Management System (CMS)', description: 'An application that allows publishing, editing and modifying content, organizing, deleting as well as maintenance from a central interface. Such systems of content management provide procedures to manage workflow in a collaborative environment.'})
 
 puts "Created #{ToolType.count} tool types."
 
@@ -44,6 +45,8 @@ jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: '11111111',
 tyler = User.create({email: 'tyler.kling@careerbuilder.com', password: '11111111', username: 'Tyler'})
 justin = User.create({email: 'justin.roberts@careerbuilder.com', password: '11111111', username: 'Justin'})
 david = User.create({email: 'david.posey@careerbuilder.com', password: '11111111', username: 'David'})
+corrine = User.create({email: 'corrine.olson@careerbuilder.com', password: '11111111', username: 'Corrine'})
+andy = User.create({email: 'andy.mullen@careerbuilder.com', password: '11111111', username: 'Andy'})
 
 puts "Created #{User.count} users."
 
@@ -84,7 +87,10 @@ entity_framework = Tool.create({name: 'Entity Framework (EF)', description: 'Ent
 arel = Tool.create({name: 'Arel', ugly_name: 'arel', description: 'Arel is intended to be a framework framework; that is, you can build your own ORM with it, focusing on innovative object and collection modeling as opposed to database compatibility and query generation.', tool_type: orm})
 rack_cache = Tool.create({name: 'Rack::Cache', ugly_name: 'rack-cache', description: 'Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.', tool_type: cache})
 turbolinks = Tool.create({name: 'Turbolinks', ugly_name: 'turbolinks', description: 'Turbolinks makes following links in your web application faster (use with Rails Asset Pipeline).', tool_type: cache})
-bcrypt =  Tool.create({name: 'Bcrypt', ugly_name: 'bcrypt', description: 'A Ruby binding for the OpenBSD bcrypt() password hashing algorithm, allowing you to easily store a secure hash of your users'' passwords.', tool_type: encryption})
+bcrypt = Tool.create({name: 'Bcrypt', ugly_name: 'bcrypt', description: 'A Ruby binding for the OpenBSD bcrypt() password hashing algorithm, allowing you to easily store a secure hash of your users'' passwords.', tool_type: encryption})
+comfy = Tool.create({name: 'Comfortable Mexican Sofa', ugly_name: 'comfortable-mexican-sofa', description: 'A powerful Rails 4 CMS Engine.', tool_type: cms})
+pencil_blue = Tool.create({name: 'PencilBlue', description: 'Full stack online publishing and CMS for Node.js.', tool_type: cms})
+cortex_tool = Tool.create({name: 'Cortex', ugly_name: 'cortex', description: 'A headless CMS.', tool_type: cms})
 
 puts "Created #{Tool.count} tools."
 
@@ -121,7 +127,26 @@ ProjectsTool.create({project: project_folio, tool: jquery})
 ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it''s good.'})
 ProjectsTool.create({project: project_folio, tool: coffee_script})
 
-project_grrp = Project.create({name: 'Global Ruby on Rails Platform (GRRP)', description: 'Consumer''s super-platform for spinning up websites', project_type: project_type_webapplication, owner: 'Jeff.Yeary' })
+project_tec = Project.create({name: 'Talent Engagement Cloud (TEC)', description: 'The horizontally scalable Career Site Platform for TalentNetwork.', project_type: project_type_webapplication, owner: 'James' })
+UsersProject.create({project: project_tec, user: james})
+UsersProject.create({project: project_tec, user: ben})
+UsersProject.create({project: project_tec, user: corrine})
+UsersProject.create({project: project_tec, user: andy})
+UsersProject.create({project: project_tec, user: christina})
+ProjectsTool.create({project: project_tec, tool: jquery})
+ProjectsTool.create({project: project_tec, tool: angular_js})
+ProjectsTool.create({project: project_tec, tool: comfy})
+ProjectsTool.create({project: project_tec, tool: pencil_blue})
+ProjectsTool.create({project: project_tec, tool: amazon_web_services})
+
+
+project_cortex = Project.create({name: 'Cortex', description: 'A headless Content Management System for content distribution at CareerBuilder.', project_type: project_type_webapplication, owner: 'Alex' })
+UsersProject.create({project: project_cortex, user: james})
+UsersProject.create({project: project_cortex, user: ben})
+ProjectsTool.create({project: project_cortex, tool: jquery})
+ProjectsTool.create({project: project_cortex, tool: angular_js})
+
+project_grrp = Project.create({name: 'Global Ruby on Rails Platform (GRRP)', description: 'Consumer''s super-platform for spinning up websites', project_type: project_type_webapplication, owner: 'Jeff' })
 UsersProject.create({project: project_grrp, user: jeff})
 UsersProject.create({project: project_grrp, user: tyler})
 UsersProject.create({project: project_grrp, user: justin})
