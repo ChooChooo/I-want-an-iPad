@@ -1,6 +1,10 @@
 <%= stylesheet_link_tag 'tools' %>
-<%= @user.email %>
+<% if @gravatar_src.present? %>
+    <img style="float:right" src="<%= @gravatar_src%>"/>
+<% end %>
+<h2 class="page-header"><%= "#{@user.username}'s Projects"%></h2>
 
 <%= render partial: 'shared/project_list' %>
 
+<h2 class="page-header"><%= "#{@user.username}'s Tools"%></h2>
 <%= render partial: 'shared/tools_list' %>
