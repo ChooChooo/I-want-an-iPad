@@ -50,6 +50,8 @@ class ProjectsController < ApplicationController
       end
       
       create
+    else
+      redirect_to github_path
     end
   end
 
