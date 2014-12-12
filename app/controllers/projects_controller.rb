@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
     unless params['gh_user'].blank? || params['gh_repo'].blank?
       @gem_project = Project.new
       @gem_project.name = params["gh_repo"]
-      @gem_project.owner = current_user[:username]
+      @gem_project.owner = params['gh_user']
       @gem_project.project_type = ProjectType.where(:name => 'Web Application').first
       
       client_id = ENV['GITHUB_CLIENT_ID']
