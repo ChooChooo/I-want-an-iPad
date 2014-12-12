@@ -40,9 +40,8 @@ class ProjectsController < ApplicationController
       gemfile = Base64.decode64(gemfile.parsed_response["content"])
       gemfile = gemfile.to_s.gsub('"',"'")
       gemfile = gemfile.to_s.gsub("\n",' ')
-      gem_array = gemfile.scan(/gem \'.*?\',/i)
-
-            #gem_array.to_i
+      gemfile = gemfile.to_s.gsub(",",' ')
+      gem_array = gemfile.scan(/gem \'.*?\'/)
 
       @gems = Array.new
       gem_array.each do |gem|
