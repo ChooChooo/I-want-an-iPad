@@ -72,7 +72,8 @@ cloud_flair = Tool.create({name: 'Cloudflair', description: 'A content delivery 
 rspec = Tool.create({name: 'RSpec', description: 'RSpec is testing tool for the Ruby programming language. Born under the banner of Behaviour-Driven Development, it is designed to make Test-Driven Development a productive and enjoyable experience.', tool_type: reverse_proxy})
 guard_spec = Tool.create({name: 'Guard Spec', ugly_name: 'guard-rspec', description: 'Automatically runs your RSpec tests.', tool_type: reverse_proxy})
 active_record = Tool.create({name: 'Active Record', ugly_name: 'activerecord', description: 'Active Record is the M in MVC - the model - which is the layer of the system responsible for representing business data and logic. Active Record facilitates the creation and use of business objects whose data requires persistent storage to a database. It is an implementation of the Active Record pattern which itself is a description of an Object Relational Mapping system.', tool_type: orm})
-postgres_jruby_adapter = Tool.create({name: 'Postgres JRuby Adapter', ugly_name: 'activerecord-jdbcpostgresql-adapter', description: 'Postgres JDBC adapter for JRuby on Rails..', tool_type: orm})
+postgres_jruby_adapter = Tool.create({name: 'Postgres JRuby Adapter', ugly_name: 'activerecord-jdbcpostgresql-adapter', description: 'Postgres JDBC adapter for JRuby on Rails.', tool_type: orm})
+entity_framework = Tool.create({name: 'Entity Framework (EF)', description: 'Entity Framework (EF) is an object-relational mapper that enables .NET developers to work with relational data using domain-specific objects. It eliminates the need for most of the data-access code that developers usually need to write.', tool_type: orm})
 
 puts "Created #{Tool.count} tools."
 
