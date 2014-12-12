@@ -10,7 +10,9 @@
   </h1>
 
 <% if @project.external %>
+
 	<h4>Project Owner: <u><%= link_to @project.owner, "https://github.com/#{@project.owner}", :target => "_blank" %></u></h4>
+    <h4><%= link_to "view on GitHub", "https://github.com/#{@project.owner}/#{@project.name}" %></h4>
 <% else %>
   <h4>Project Participants: <%= @project.users.map { |user| user.username }.join ', ' %></h4>
 <% end %>
