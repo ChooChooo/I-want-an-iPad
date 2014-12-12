@@ -15,7 +15,7 @@
 <%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit" %>
 
 <div class="detail_description">
-  <%= @project.description %>
+  <%= raw(markdown @project.description) %>
 </div>
 
 <% unless @project.projects_tools.empty? %>

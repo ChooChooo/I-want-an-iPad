@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
       
       readme = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
       decoded_readme = Base64.decode64(readme.parsed_response['content'])
-      @gem_project.description = decoded_readme.gsub('== README', '')
+      @gem_project.description =  decoded_readme
       
       gemfile = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
       gemfile = Base64.decode64(gemfile.parsed_response['content'])
