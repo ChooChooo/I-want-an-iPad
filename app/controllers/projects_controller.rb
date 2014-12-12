@@ -63,14 +63,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    unless @gem_project.nil?
-      @project = @gem_project
-    else
-      @project = Project.new(:name => params[:project][:name],
+    @project = @gem_project || Project.new(:name => params[:project][:name],
           :owner => current_user[:username],
           :description => params[:project][:description],
           :project_type_id => params[:project][:project_type_id])
-    end
     
     @tool_types = ToolType.all.order :name
 

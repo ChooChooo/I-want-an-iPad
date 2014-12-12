@@ -10,6 +10,7 @@ Project.delete_all
 ProjectsTool.delete_all
 ToolType.delete_all
 User.delete_all
+UsersProject.delete_all
 Tool.delete_all
 ProjectType.delete_all
 
