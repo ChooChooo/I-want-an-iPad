@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
 
-  has_many :projects
+  has_many :users_projects, :inverse_of => :user, autosave: true
+  has_many :projects, :through => :users_projects
 
   attr_accessor :login
 

@@ -10,6 +10,7 @@ Project.delete_all
 ProjectsTool.delete_all
 ToolType.delete_all
 User.delete_all
+UsersProject.delete_all
 Tool.delete_all
 ProjectType.delete_all
 
@@ -32,12 +33,12 @@ reverse_proxy = ToolType.create({name: 'Reverse Proxy', description: 'A type of 
 
 puts "Created #{ToolType.count} tool types."
 
-james = User.create({email: 'james.tharpe@careerbuilder.com', password: 'changeme', username: 'James.Tharpe'})
-jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: 'changeme', username: 'jarvis.hambrick' })
-alex = User.create({email: 'alex.hristov@careerbuilder.com', password: 'changeme', username: 'alex.hristov@careerbuilder.com'})
-christina = User.create({email: 'christina.chatham@careerbuilder.com', password: 'changeme', username: 'christina.chatham@careerbuilder.com'})
-ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: 'changeme', username: 'ben.tidwell@careerbuilder.com'})
-jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: 'changeme', username: 'jeff.yeary@careerbuilder.com'})
+james = User.create({email: 'james.tharpe@careerbuilder.com', password: '11111111', username: 'James'})
+jarvis = User.create({email: 'jarvis.hambrick@careerbuilder.com', password: '11111111', username: 'Jarvis' })
+alex = User.create({email: 'alex.hristov@careerbuilder.com', password: '11111111', username: 'Alex'})
+christina = User.create({email: 'christina.chatham@careerbuilder.com', password: '11111111', username: 'Christina'})
+ben = User.create({email: 'ben.tidwell@careerbuilder.com', password: '11111111', username: 'Ben'})
+jeff = User.create({email: 'jeff.yeary@careerbuilder.com', password: '11111111', username: 'Jeff'})
 
 puts "Created #{User.count} users."
 
@@ -55,7 +56,7 @@ amazon_web_services = Tool.create({name: 'Amazon Web Services (AWS)', descriptio
 heroku = Tool.create({name: 'Heroku', description: "Heroku is a cloud platform as a service (PaaS) supporting several programming languages. Heroku was acquired by Salesforce.com in 2010.[1] Heroku, one of the first cloud platforms, has been in development since June 2007, when it supported only the Ruby programming language, but has since added support for Java, Node.js, Scala, Clojure, Python and PHP and (undocumented) Perl. The base operating system is Debian or, in the newest stack, the Debian-based Ubuntu.", tool_type: paas_provider})
 linux = Tool.create({name: 'Linux', description: 'Linux is a Unix-like and mostly POSIX-compliant[10] computer operating system assembled under the model of free and open source software development and distribution. The defining component of Linux is the Linux kernel,[11] an operating system kernel first released on 5 October 1991 by Linus Torvalds.[12][13] The Free Software Foundation uses the name GNU/Linux, which has led to some controversy.', tool_type: operating_system})
 sqlite = Tool.create({name: 'SQLite', description: 'SQLite is a relational database management system contained in a C programming library. In contrast to other database management systems, SQLite is not a separate process that is accessed from the client application, but an integral part of it.', tool_type: relational_database})
-postgresql = Tool.create({name: 'PostgreSQL', description: 'PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.', tool_type: relational_database})
+postgresql = Tool.create({name: 'PostgreSQL', description: 'PostgreSQL, often simply "Postgres", is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards-compliance. As a database server, its primary function is to store data, securely and supporting best practices, and retrieve it later, as requested by other software applications, be it those on the same computer or those running on another computer across a network (including the Internet). It can handle workloads ranging from small single-machine applications to large Internet-facing applications with many concurrent users. Recent versions also provide replication of the database itself for security and scalability.', tool_type: relational_database, ugly_name: 'pg'})
 mysql = Tool.create({name: 'MySQL', description: "MySQL is (as of March 2014) the world's second most widely used[9][10] open-source relational database management system (RDBMS).[11] It is named after co-founder Michael Widenius's daughter, My.[12] The SQL phrase stands for Structured Query Language.", tool_type: relational_database})
 mongodb = Tool.create({name: 'MongoDB', description: "MongoDB (from 'humongous') is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas (MongoDB calls the format BSON), making the integration of data in certain types of applications easier and faster. Released under a combination of the GNU Affero General Public License and the Apache License, MongoDB is free and open-source software.", tool_type: document_no_sql_database})
 firebase = Tool.create({name: 'Firebase', description: 'A multi-platform NoSQL database for storing and syncing data in real time.', tool_type: document_no_sql_database})
@@ -88,6 +89,10 @@ project_talentnetworkjobcart = Project.create({name: 'TalentNetwork Job Cart', d
 # TODO: Add tools to project_talentnetworkjobcart
 
 project_folio = Project.create({name: 'Folio', description: 'For SiteTech members that love to share with and learn from others. Build your portfolio to showcase your accomplishments, browse other''s projects to see how they were built. Find the tools and people you need to craft your next project!', project_type: project_type_webapplication, owner: 'James.Tharpe' })
+UsersProject.create({project: project_folio, user: james})
+UsersProject.create({project: project_folio, user: ben})
+UsersProject.create({project: project_folio, user: alex})
+UsersProject.create({project: project_folio, user: christina})
 ProjectsTool.create({project: project_folio, tool: linux})
 ProjectsTool.create({project: project_folio, tool: ruby, notes: "Everybody is doing it."})
 ProjectsTool.create({project: project_folio, tool: ruby_on_rails, notes: "More shiney objects than Sinatra."})

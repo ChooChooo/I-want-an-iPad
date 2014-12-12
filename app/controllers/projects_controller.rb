@@ -23,18 +23,18 @@ class ProjectsController < ApplicationController
   end
   
   def gh_create
-    unless params["gh_user"].blank? || params["gh_repo"].blank?
+    unless params['gh_user'].blank? || params['gh_repo'].blank?
       @gem_project = Project.new
       @gem_project.name = params["gh_repo"]
       @gem_project.owner = current_user[:username]
-      @gem_project.project_type_id = 2
+      @gem_project.project_type = ProjectType.where(:name => 'Web Application').first
       
       client_id = ENV['GITHUB_CLIENT_ID']
       client_secret = ENV['GITHUB_CLIENT_SECRET']
       
-      readme = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
-      decoded_readme = Base64.decode64(readme.parsed_response["content"])
-      @gem_project.description = decoded_readme.gsub("== README", "")
+      readme = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
+      decoded_readme = Base64.decode64(readme.parsed_response['content'])
+      @gem_project.description =  decoded_readme
       
       gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
       gemfile = Base64.decode64(gemfile.parsed_response["content"])
@@ -43,6 +43,7 @@ class ProjectsController < ApplicationController
       gem_array = gemfile.scan(/gem \'.*?\',/i)
 
             #gem_array.to_i
+
       @gems = Array.new
       gem_array.each do |gem|
         gem = /\'.*?\'/.match(gem)
@@ -63,19 +64,17 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    unless @gem_project.nil?
-      @project = @gem_project
-    else
-      @project = Project.new(:name => params[:project][:name],
+    @project = @gem_project || Project.new(:name => params[:project][:name],
           :owner => current_user[:username],
           :description => params[:project][:description],
           :project_type_id => params[:project][:project_type_id])
-    end
     
     @tool_types = ToolType.all.order :name
 
     respond_to do |format|
       if @project.save
+
+        UsersProject.new(:user => current_user, :project => @project).save
 
         set_tools
 
@@ -160,14 +159,14 @@ class ProjectsController < ApplicationController
     end
     
     def save_tool(tool_params)
-      @tool = Tool.find_by name: tool_params[:name]
+      @tool = Tool.find_by(name: tool_params[:name]) || Tool.find_by(ugly_name: tool_params[:name])
       if @tool.nil?
         @tool = Tool.create(tool_params)
       end
     end
     
     def save_gh_tool(gem)
-      @tool = Tool.find_by name: gem
+      @tool = Tool.find_by(name: gem) || Tool.find_by(ugly_name: gem)
       if @tool.nil?
         @tool = Tool.create(:name => gem, :description => 'Ruby gem', :tool_type_id => 1)
       end
