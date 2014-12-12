@@ -36,18 +36,18 @@ class ProjectsController < ApplicationController
       decoded_readme = Base64.decode64(readme.parsed_response['content'])
       @gem_project.description =  decoded_readme
       
-      gemfile = HTTParty.get "https://api.github.com/repos/#{params['gh_user']}/#{params['gh_repo']}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
-      gemfile = Base64.decode64(gemfile.parsed_response['content'])
-      gem_array = gemfile.scan(/gem\s\'.*?\',/i)
+      gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
+      gemfile = Base64.decode64(gemfile.parsed_response["content"])
+      gemfile = gemfile.to_s.gsub('"',"'")
+      gemfile = gemfile.to_s.gsub("\n",' ')
+      gemfile = gemfile.to_s.gsub(",",' ')
+      gem_array = gemfile.scan(/gem \'.*?\'/)
+
       @gems = Array.new
       gem_array.each do |gem|
         gem = /\'.*?\'/.match(gem)
         @gems << gem.to_s.gsub("'",'')
       end
-      
-      puts "???????????????????????"
-      puts @gems
-      puts "???????????????????????"
       
       create
     end
@@ -137,14 +137,12 @@ class ProjectsController < ApplicationController
       end
       if @gem_project.nil?
         unless save_tool(params[:project][:tool]).nil?
-          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-          project_tool.save
+          project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
         end
       else
         @gems.each do |g|
           save_gh_tool(g)
-          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-          project_tool.save
+          project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
         end
       end
     end
@@ -158,16 +156,16 @@ class ProjectsController < ApplicationController
     end
     
     def save_tool(tool_params)
-      @tool = Tool.find_by name: tool_params[:name]
+      @tool = Tool.find_by(name: tool_params[:name]) || Tool.find_by(ugly_name: tool_params[:name])
       if @tool.nil?
         @tool = Tool.create(tool_params)
       end
     end
     
     def save_gh_tool(gem)
-      @tool = Tool.find_by name: gem
+      @tool = Tool.find_by(name: gem) || Tool.find_by(ugly_name: gem)
       if @tool.nil?
-        @tool = Tool.create(:name => gem, :description => '', :tool_type_id => 1)
+        @tool = Tool.create(:name => gem, :description => 'Ruby gem', :tool_type_id => 1)
       end
     end
 end
