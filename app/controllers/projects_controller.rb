@@ -73,6 +73,8 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
 
+        UsersProject.new(:user => current_user, :project => @project).save
+
         set_tools
 
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
