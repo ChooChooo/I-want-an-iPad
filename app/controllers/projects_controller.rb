@@ -21,38 +21,70 @@ class ProjectsController < ApplicationController
   def github
     
   end
-  
-  def gh_create
-    unless params['gh_user_repo'].blank?
-      gh = params['gh_user_repo'].split('/')
-      @gem_project = Project.new
-      @gem_project.name = gh[1]
-      @gem_project.owner = gh[0]
-      @gem_project.external = true
-      @gem_project.project_type = ProjectType.where(:name => 'Web Application').first
-      
-      client_id = ENV['GITHUB_CLIENT_ID']
-      client_secret = ENV['GITHUB_CLIENT_SECRET']
-      
-      readme = HTTParty.get "https://api.github.com/repos/#{gh[0]}/#{gh[1]}/readme?client_id=#{client_id}&client_secret=#{client_secret}"
-      decoded_readme = Base64.decode64(readme.parsed_response['content'])
-      @gem_project.description =  decoded_readme
-      
-      gemfile = HTTParty.get "https://api.github.com/repos/#{gh[0]}/#{gh[1]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
-      unless gemfile.parsed_response["content"].nil?
-        gemfile = Base64.decode64(gemfile.parsed_response["content"])
-        gemfile = gemfile.to_s.gsub('"',"'")
-        gemfile = gemfile.to_s.gsub("\n",' ')
-        gemfile = gemfile.to_s.gsub(",",' ')
-        gem_array = gemfile.scan(/gem \'.*?\'/)
-  
-        @gems = Array.new
+
+  class GitHubProjectImporter
+    attr_accessor :repo_owner, :repo_name
+
+    def initialize(repo_path)
+      args = repo_path.split('/')
+      @repo_owner = args[0]
+      @repo_name = args[1]
+    end
+
+    def read_me
+      HTTParty.get "https://api.github.com/repos/#{repo_path}/readme?client_id=#{@client_id}&client_secret=#{@client_secret}"
+    end
+
+    def read_me_decoded
+      Base64.decode64(read_me.parsed_response['content'])
+    end
+
+    def gem_file
+      HTTParty.get "https://api.github.com/repos/#{repo_path}/contents/Gemfile?client_id=#{@client_id}&client_secret=#{@client_secret}"
+    end
+
+    def gem_file_decoded
+      Base64.decode64(gem_file.parsed_response["content"]).to_s.gsub('"',"'").to_s.gsub("\n",' ').to_s.gsub(",",' ')
+    end
+
+    def project
+      result = Project.new
+      result.name = repo_name
+      result.owner = repo_owner
+      result.external = true
+      result.project_type = ProjectType.where(:name => 'Web Application').first
+      result.description = read_me_decoded
+      result
+    end
+
+    def gems
+      unless gem_file.parsed_response['content'].nil?
+        gem_array = gem_file_decoded.scan(/gem \'.*?\'/)
+        result = Array.new
         gem_array.each do |gem|
           gem = /\'.*?\'/.match(gem)
-          @gems << gem.to_s.gsub("'",'')
+          result << gem.to_s.gsub("'",'')
         end
+        result
+      else
+        nil
       end
-      
+    end
+
+    private
+      @client_id = ENV['GITHUB_CLIENT_ID']
+      @client_secret = ENV['GITHUB_CLIENT_SECRET']
+
+      def repo_path
+        "#{repo_owner}/#{repo_name}"
+      end
+  end
+
+  def gh_create
+    unless params['gh_user_repo'].blank?
+      importer = GitHubProjectImporter.new(params['gh_user_repo'])
+      @gem_project =  importer.project
+      @gems = importer.gems
       create
     else
       redirect_to github_path

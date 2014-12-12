@@ -1,5 +1,5 @@
 require 'httparty'
-require "base64"
+require 'base64'
 
 class HomeController < ApplicationController
 
