@@ -9,7 +9,11 @@
     </span>
   </h1>
 
-  <h4>Project Participants: <%= @project.users.map { |user| user.username }.join ', ' %>.</h4>
+<% if @project.external %>
+	<h4>Project Owner: <u><%= link_to @project.owner, "https://github.com/#{@project.owner}", :target => "_blank" %></u></h4>
+<% else %>
+  <h4>Project Participants: <%= @project.users.map { |user| user.username }.join ', ' %></h4>
+<% end %>
 </div>
 
 <div class="col-xs-2"><%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit", style:"float:right" %></div>
