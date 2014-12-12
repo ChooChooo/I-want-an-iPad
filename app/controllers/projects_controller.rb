@@ -137,14 +137,12 @@ class ProjectsController < ApplicationController
       end
       if @gem_project.nil?
         unless save_tool(params[:project][:tool]).nil?
-          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-          project_tool.save
+          project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
         end
       else
         @gems.each do |g|
           save_gh_tool(g)
-          project_tool = ProjectsTool.new(:project_id=>@project.id ,:tool_id=>@tool.id)
-          project_tool.save
+          project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
         end
       end
     end
