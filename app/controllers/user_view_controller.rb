@@ -20,8 +20,6 @@ class UserViewController < ApplicationController
   end
 
   def set_tools_from_projects
-    if @projects.present?
-      @tools = @projects.first.tools
-    end
+    @tools = Tool.where :id => @projects.collect { |pj| pj.tools.pluck(:id) }
   end
 end

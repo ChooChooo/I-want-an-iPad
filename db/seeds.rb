@@ -71,6 +71,7 @@ ruby_on_rails = Tool.create({name: 'Ruby on Rails', ugly_name: 'rails', descript
 cordova = Tool.create({name: 'Apache Cordova', description: 'Apache Cordova is a platform for building native mobile applications using HTML, CSS and JavaScript.', tool_type: mvc_framework})
 ionic = Tool.create({name: 'Ionic', description: 'A framework built on Apache Cordova that includes UI widgets based on HTML, JavaScript, and CSS that look like native OSX and Android components.', tool_type: mvc_framework})
 jquery = Tool.create({name: 'jQuery', ugly_name: 'jquery-rails', description: 'jQuery is a cross-platform JavaScript library designed to simplify the client-side scripting of HTML.[2] It was released in January 2006 at BarCamp NYC by John Resig. It is currently developed by a team of developers led by Dave Methvin. Used by over 80% of the 10,000 most visited websites,[3] jQuery is the most popular JavaScript library in use today.', tool_type: javascript_library})
+bootstrap = Tool.create({name: 'Bootstrap', ugly_name: 'bootstrap', description: 'Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.', tool_type: javascript_library})
 coffee_script = Tool.create({name: 'CoffeeScript', ugly_name: 'coffee-rails', description: 'CoffeeScript is a little language that compiles into JavaScript. Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart. CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way.', tool_type: javascript_library})
 angular_js = Tool.create({name: 'AngularJS', description: 'AngularJS is an open-source web application framework, maintained by Google and community, that assists with creating single-page applications, one-page web applications that only require HTML, CSS, and JavaScript on the client side.', tool_type: javascript_library})
 uglifier = Tool.create({name: 'UglifyJS', ugly_name: 'uglifier', description: 'A JavaScript minifier.', tool_type: javascript_library})
@@ -222,6 +223,13 @@ project_careerbuildergems = Project.create({name: 'CareerBuilderGems', descripti
 ProjectsTool.create({project: project_careerbuildergems, tool: chef})
 ProjectsTool.create({project: project_careerbuildergems, tool: ruby})
 ProjectsTool.create({project: project_careerbuildergems, tool: amazon_web_services})
+
+project_lunchparty = Project.create({name: 'Lunchparty', description: 'Lunchparty is an app to pair you with other users with similar taste in food. Just enter your hipchat user id (@user) and top food preferences, and you''ll be entered into a pool of potential lunch friends.', project_type: project_type_packagemanager, owner: 'Chris' })
+UsersProject.create({project: project_lunchparty, user: chris})
+ProjectsTool.create({project: project_lunchparty, tool: ruby_on_rails})
+ProjectsTool.create({project: project_lunchparty, tool: ruby})
+ProjectsTool.create({project: project_lunchparty, tool: heroku})
+ProjectsTool.create({project: project_lunchparty, tool: bootstrap})
 
 project_talentwallet = Project.create({name: 'Talent Wallet', description: 'A mobile app designed to capture resume data at career fairs.', project_type: project_type_mobileapplication, owner: 'James.Tharpe' })
 UsersProject.create({project: project_talentwallet, user: eric})
