@@ -14,9 +14,8 @@
 	<h4>Project Owner: <u><%= link_to @project.owner, "https://github.com/#{@project.owner}", :target => "_blank" %></u></h4>
     <h4><%= link_to "view on GitHub", "https://github.com/#{@project.owner}/#{@project.name}", :target => "_blank" %></h4>
 <% else %>
-    <h4>Project Participants: <% @project.users.each do |user| %>
-        <%= link_to(user.username, "/user/#{user.id}") %>
-    <% end %>
+    <h4>Project Participants:
+      <%= @project.users.map{ |user| link_to user.username, "/user/#{user.id}"}.join(', ').html_safe %>
     </h4>
 <% end %>
 </div>
