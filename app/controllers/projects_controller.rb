@@ -167,7 +167,7 @@ class ProjectsController < ApplicationController
     def save_gh_tool(gem)
       @tool = Tool.find_by name: gem
       if @tool.nil?
-        @tool = Tool.create(:name => gem, :description => 'x', :tool_type_id => 1)
+        @tool = Tool.create(:name => gem, :description => '', :tool_type_id => 1)
       end
     end
 end

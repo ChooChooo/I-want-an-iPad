@@ -2,7 +2,7 @@
 <%= stylesheet_link_tag 'tools' %>
 
 
-<div class="page-heading-inline">
+<div class="col-xs-10 page-heading-inline">
   <h1><%= @project.name %>
     <span class="badge">
       <%= link_to @project.project_type.name, project_type_path(@project.project_type) %>
@@ -12,13 +12,15 @@
   <h4>Project Participants: <%= @project.users.map { |user| user.username }.join ', ' %>.</h4>
 </div>
 
-<%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit" %>
+<div class="col-xs-2"><%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit", style:"float:right" %></div>
 
-<div class="detail_description">
-  <%= raw(markdown @project.description) %>
+<div class="col-xs-12 detail_description well">
+  <%= raw(markdown @project.description.truncate(1000)) %>
 </div>
 
 <% unless @project.projects_tools.empty? %>
+  <div class="col-xs-12">
   <h2 class="page-header">Tools</h2>
   <%= render 'shared/tools_list' %>
+  </div>
 <% end %>
