@@ -7,5 +7,5 @@ class ProjectType < ActiveRecord::Base
   validates :name, :description, presence: true
   
   #multisearchable :against => [:name, :description]
-  multisearchable :against => [:description]
+  multisearchable :against => [:description, :name]
 end

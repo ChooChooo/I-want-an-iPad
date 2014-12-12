@@ -10,5 +10,5 @@ class Tool < ActiveRecord::Base
   validates :name, :description, :tool_type_id, presence: true
   
   #multisearchable :against => [:name, :description]
-  multisearchable :against => [:description]
+  multisearchable :against => [:description, :name]
 end
