@@ -10,18 +10,13 @@ class UserViewController < ApplicationController
 
   def set_user_and_projects
     @user = User.find(params[:id])
-    @projects = Project.where(owner: @user.username)
+    @projects = @user.projects
     set_tools_from_projects
   end
 
   def set_tools_from_projects
-    @tools = []
-    @projects.each do |project|
-      project.tools.each do |tool|
-        @tools.push tool
-      end
+    if @projects.present?
+      @tools = @projects.first.tools
     end
-    @tools = @tools.uniq
   end
-
 end
