@@ -9,7 +9,10 @@
     </span>
   </h1>
 
-  <h4>Project Participants: <%= @project.users.map { |user| user.username }.join ', ' %>.</h4>
+  <h4>Project Participants: <% @project.users.each do |user| %>
+        <%= link_to(user.username, "/user/#{user.id}") %>
+    <% end %>
+  </h4>
 </div>
 
 <%= link_to 'Edit Project', edit_project_path(@project), role: "button", class: "btn btn-primary edit" %>
