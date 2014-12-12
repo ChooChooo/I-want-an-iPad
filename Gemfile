@@ -50,13 +50,8 @@ group :staging, :production do
   gem 'rails_12factor'
 end
 
-group :production do
-  gem 'rails_12factor', '0.0.2'
-end
 gem 'pg'
 gem 'pg_search'
-
-
   
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
