@@ -158,16 +158,16 @@ class ProjectsController < ApplicationController
     end
     
     def save_tool(tool_params)
-      @tool = Tool.find_by name: tool_params[:name]
+      @tool = Tool.find_by(name: tool_params[:name]) || Tool.find_by(ugly_name: tool_params[:name])
       if @tool.nil?
         @tool = Tool.create(tool_params)
       end
     end
     
     def save_gh_tool(gem)
-      @tool = Tool.find_by name: gem
+      @tool = Tool.find_by(name: gem) || Tool.find_by(ugly_name: gem)
       if @tool.nil?
-        @tool = Tool.create(:name => gem, :description => 'x', :tool_type_id => 1)
+        @tool = Tool.create(:name => gem, :description => '// TODO: Write a description for ' + gem, :tool_type_id => 1)
       end
     end
 end
