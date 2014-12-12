@@ -38,16 +38,16 @@ class ProjectsController < ApplicationController
       
       gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
       gemfile = Base64.decode64(gemfile.parsed_response["content"])
-      gem_array = gemfile.scan(/gem\s\'.*?\',/i)
+      gemfile = gemfile.to_s.gsub('"',"'")
+      gemfile = gemfile.to_s.gsub("\n",' ')
+      gem_array = gemfile.scan(/gem \'.*?\',/i)
+
+            #gem_array.to_i
       @gems = Array.new
       gem_array.each do |gem|
         gem = /\'.*?\'/.match(gem)
         @gems << gem.to_s.gsub("'",'')
       end
-      
-      puts "???????????????????????"
-      puts @gems
-      puts "???????????????????????"
       
       create
     end
@@ -169,7 +169,7 @@ class ProjectsController < ApplicationController
     def save_gh_tool(gem)
       @tool = Tool.find_by name: gem
       if @tool.nil?
-        @tool = Tool.create(:name => gem, :description => 'x', :tool_type_id => 1)
+        @tool = Tool.create(:name => gem, :description => 'Ruby gem', :tool_type_id => 1)
       end
     end
 end
