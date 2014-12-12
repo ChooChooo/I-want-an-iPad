@@ -91,6 +91,7 @@ chef_rspec = Tool.create({name: 'ChefSpec', ugly_name:'chefspec', description: '
 better_errors = Tool.create({name: 'Better Errors', ugly_name:'better_errors', description: 'Better error page for Rack apps.', tool_type: test_framework})
 test_kitchen = Tool.create({name: 'Test Kitchen', ugly_name:'test-kitchen', description: 'Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.', tool_type: test_framework})
 kitchen_vagrant = Tool.create({name: 'Kitchen::Vagrant', ugly_name:'kitchen-vagrant', description: 'A Test Kitchen Driver for Vagrant. This driver works by generating a single Vagrantfile for each instance in a sandboxed directory. Since the Vagrantfile is written out on disk, Vagrant needs absolutely no knowledge of Test Kitchen. So no Vagrant plugins are required.', tool_type: test_framework})
+kitchen_ec2 = Tool.create({name: 'Kitchen::Ec2', ugly_name:'kitchen-ec2', description: 'A Test Kitchen Driver for Amazon EC2.', tool_type: test_framework})
 sdoc = Tool.create({name: 'SDoc', ugly_name: 'sdoc', description: 'RDoc generator to build searchable HTML documentation for Ruby code.', tool_type: documentation})
 awesome_print = Tool.create({name: 'Awesome Print', ugly_name: 'awesome_print', description: 'Pretty print your Ruby objects with style -- in full color and with proper indentation.', tool_type: documentation})
 guard_spec = Tool.create({name: 'Guard Spec', ugly_name: 'guard-rspec', description: 'Automatically runs your RSpec tests.', tool_type: test_framework})
