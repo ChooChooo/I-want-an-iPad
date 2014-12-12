@@ -37,16 +37,18 @@ class ProjectsController < ApplicationController
       @gem_project.description =  decoded_readme
       
       gemfile = HTTParty.get "https://api.github.com/repos/#{params["gh_user"]}/#{params["gh_repo"]}/contents/Gemfile?client_id=#{client_id}&client_secret=#{client_secret}"
-      gemfile = Base64.decode64(gemfile.parsed_response["content"])
-      gemfile = gemfile.to_s.gsub('"',"'")
-      gemfile = gemfile.to_s.gsub("\n",' ')
-      gemfile = gemfile.to_s.gsub(",",' ')
-      gem_array = gemfile.scan(/gem \'.*?\'/)
-
-      @gems = Array.new
-      gem_array.each do |gem|
-        gem = /\'.*?\'/.match(gem)
-        @gems << gem.to_s.gsub("'",'')
+      unless gemfile.parsed_response["content"].nil?
+        gemfile = Base64.decode64(gemfile.parsed_response["content"])
+        gemfile = gemfile.to_s.gsub('"',"'")
+        gemfile = gemfile.to_s.gsub("\n",' ')
+        gemfile = gemfile.to_s.gsub(",",' ')
+        gem_array = gemfile.scan(/gem \'.*?\'/)
+  
+        @gems = Array.new
+        gem_array.each do |gem|
+          gem = /\'.*?\'/.match(gem)
+          @gems << gem.to_s.gsub("'",'')
+        end
       end
       
       create
@@ -141,7 +143,7 @@ class ProjectsController < ApplicationController
         unless save_tool(params[:project][:tool]).nil?
           project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
         end
-      else
+      elsif !@gems.nil?
         @gems.each do |g|
           save_gh_tool(g)
           project_tool = ProjectsTool.find_or_create_by(:project_id=>@project.id ,:tool_id=>@tool.id)
