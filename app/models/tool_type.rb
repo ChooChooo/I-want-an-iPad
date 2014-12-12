@@ -7,5 +7,4 @@ class ToolType < ActiveRecord::Base
   has_many :tools
   
   multisearchable :against => [:name, :description]
-  #multisearchable :against => [:description]
 end

@@ -18,5 +18,5 @@ class Project < ActiveRecord::Base
             #:owner,
             :description, presence: true
             
-  multisearchable :against => [:description]
+  multisearchable :against => [:description, :name]
 end

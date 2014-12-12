@@ -33,6 +33,8 @@ orm = ToolType.create({name: 'Object Relational Mapper (ORM)', description: 'A p
 cache = ToolType.create({name: 'Cache', description: 'a component that transparently stores data so that future requests for that data can be served faster. The data that is stored within a cache might be values that have been computed earlier or duplicates of original values that are stored elsewhere. If requested data is contained in the cache (cache hit), this request can be served by simply reading the cache, which is comparatively faster. Otherwise (cache miss), the data has to be recomputed or fetched from its original storage location, which is comparatively slower. Hence, the greater the number of requests that can be served from the cache, the faster the overall system performance becomes.'})
 encryption = ToolType.create({name: 'Encryption', description: 'The process of encoding messages or information in such a way that only authorized parties can read it. Encryption does not of itself prevent interception, but denies the message content to the interceptor..'})
 cms = ToolType.create({name: 'Content Management System (CMS)', description: 'An application that allows publishing, editing and modifying content, organizing, deleting as well as maintenance from a central interface. Such systems of content management provide procedures to manage workflow in a collaborative environment.'})
+documentation = ToolType.create({name: 'Documentation', description: 'A set of documents provided on paper, or online, or on digital or analog media, such as audio tape or CDs. Example are user guides, white papers, on-line help, quick-reference guides. It is becoming less common to see paper (hard-copy) documentation. Documentation is distributed via websites, software products, and other on-line applications.'})
+parser = ToolType.create({name: 'Parser', description: 'A software component that takes input data (frequently text) and builds a data structure – often some kind of parse tree, abstract syntax tree or other hierarchical structure – giving a structural representation of the input, checking for correct syntax in the process.'})
 
 puts "Created #{ToolType.count} tool types."
 
@@ -79,6 +81,7 @@ code_climate = Tool.create({name: 'Code Climate', description: 'Analyzes Ruby, J
 coveralls = Tool.create({name: 'Coveralls', ugly_name: 'coveralls', description: 'Coveralls is a web service to help you track your code coverage over time, and ensure that all your new code is fully covered. The Coveralls service is language-agnostic and CI-agnostic, but we haven''t yet built easy solutions for all the possibilities as far as repo hosting. Creating an account is fast and easy.', tool_type: code_analyzer})
 cloud_flair = Tool.create({name: 'Cloudflair', description: 'A content delivery network and distributed domain name server, sitting between the visitor and the CloudFlare user''s hosting provider, thus acting as a reverse proxy for websites.', tool_type: reverse_proxy})
 rspec = Tool.create({name: 'RSpec', description: 'RSpec is testing tool for the Ruby programming language. Born under the banner of Behaviour-Driven Development, it is designed to make Test-Driven Development a productive and enjoyable experience.', tool_type: test_framework})
+sdoc = Tool.create({name: 'SDoc', ugly_name: 'sdoc', description: 'RDoc generator to build searchable HTML documentation for Ruby code.', tool_type: documentation})
 guard_spec = Tool.create({name: 'Guard Spec', ugly_name: 'guard-rspec', description: 'Automatically runs your RSpec tests.', tool_type: test_framework})
 mocha = Tool.create({name: 'Mocha', ugly_name: 'mocha', description: 'Mocha is a feature-rich JavaScript test framework running on node.js and the browser, making asynchronous testing simple and fun. Mocha tests run serially, allowing for flexible and accurate reporting, while mapping uncaught exceptions to the correct test cases.', tool_type: test_framework})
 active_record = Tool.create({name: 'Active Record', ugly_name: 'activerecord', description: 'Active Record is the M in MVC - the model - which is the layer of the system responsible for representing business data and logic. Active Record facilitates the creation and use of business objects whose data requires persistent storage to a database. It is an implementation of the Active Record pattern which itself is a description of an Object Relational Mapping system.', tool_type: orm})
@@ -91,6 +94,8 @@ bcrypt = Tool.create({name: 'Bcrypt', ugly_name: 'bcrypt', description: 'A Ruby 
 comfy = Tool.create({name: 'Comfortable Mexican Sofa', ugly_name: 'comfortable-mexican-sofa', description: 'A powerful Rails 4 CMS Engine.', tool_type: cms})
 pencil_blue = Tool.create({name: 'PencilBlue', description: 'Full stack online publishing and CMS for Node.js.', tool_type: cms})
 cortex_tool = Tool.create({name: 'Cortex', ugly_name: 'cortex', description: 'A headless CMS.', tool_type: cms})
+redcarpet = Tool.create({name: 'Redcarpet', ugly_name: 'redcarpet', description: 'Redcarpet is a Ruby library for Markdown processing that smells like butterflies and popcorn.', tool_type: parser})
+kramdown = Tool.create({name: 'Kramdown', ugly_name: 'kramdown', description: 'A free MIT-licensed Ruby library for parsing and converting a superset of Markdown. It is completely written in Ruby, supports standard Markdown (with some minor modifications) and various extensions that have been made popular by the PHP Markdown Extra package and Maruku.', tool_type: parser})
 
 puts "Created #{Tool.count} tools."
 
@@ -126,6 +131,7 @@ ProjectsTool.create({project: project_folio, tool: sqlite, notes: "Built-in to R
 ProjectsTool.create({project: project_folio, tool: jquery})
 ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it''s good.'})
 ProjectsTool.create({project: project_folio, tool: coffee_script})
+ProjectsTool.create({project: project_folio, tool: kramdown})
 
 project_tec = Project.create({name: 'Talent Engagement Cloud (TEC)', description: 'The horizontally scalable Career Site Platform for TalentNetwork.', project_type: project_type_webapplication, owner: 'James' })
 UsersProject.create({project: project_tec, user: james})
@@ -173,19 +179,5 @@ ProjectsTool.create({project: project_talentwallet, tool: ionic})
 ProjectsTool.create({project: project_talentwallet, tool: angular_js})
 ProjectsTool.create({project: project_talentwallet, tool: firebase, notes: 'Test'})
 
-project_wikipedia = Project.create({name: 'Wikipedia', description: "Wikipedia is a collaboratively edited, multilingual, free-access, free content Internet encyclopedia that is supported and hosted by the non-profit Wikimedia Foundation. Volunteers worldwide collaboratively write Wikipedia's 30 million articles in 287 languages, including over 4.5 million in the English Wikipedia. Anyone who can access the site can edit almost any of its articles, which on the Internet comprise[4] the largest and most popular general reference work.[5][6][7][8][9] In February 2014, The New York Times reported that Wikipedia is ranked fifth globally among all websites stating, With 18 billion page views and nearly 500 million unique visitors a month..., Wikipedia trails just Yahoo, Facebook, Microsoft and Google, the largest with 1.2 billion unique visitors.", project_type: project_type_wiki, owner: 'James.Tharpe' })
-ProjectsTool.create({project: project_wikipedia, tool: php})
-ProjectsTool.create({project: project_wikipedia, tool: linux})
-ProjectsTool.create({project: project_wikipedia, tool: mysql})
-
-project_wiktionary = Project.create({name: 'Wiktionary', description: "Wiktionary (a blend of the words wiki and dictionary) is a multilingual, web-based project to create a free content dictionary of all words in all languages. It is available in 158 languages and in Simple English. Like its sister project Wikipedia, Wiktionary is run by the Wikimedia Foundation, and is written collaboratively by volunteers, dubbed 'Wiktionarians'. Its wiki software, MediaWiki, allows almost anyone with access to the website to create and edit entries.", project_type: project_type_wiki, owner: 'James.Tharpe' })
-ProjectsTool.create({project: project_wiktionary, tool: php})
-ProjectsTool.create({project: project_wiktionary, tool: linux})
-ProjectsTool.create({project: project_wiktionary, tool: mysql})
-
-project_reddit = Project.create({name: 'Reddit', description: "Reddit is an entertainment, social networking service and news website where registered community members can submit content, such as text posts or direct links. Only registered users can then vote submissions 'up' or 'down' to organize the posts and determine their position on the site's pages. Content entries are organized by areas of interest called subreddits.", project_type: project_type_socialbookmarking, owner: 'James.Tharpe' })
-ProjectsTool.create({project: project_reddit, tool: python})
-ProjectsTool.create({project: project_reddit, tool: jquery})
-ProjectsTool.create({project: project_reddit, tool: postgresql})
 
 puts "Created #{Project.count} projects."
