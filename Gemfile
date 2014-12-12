@@ -49,6 +49,7 @@ end
 group :staging, :production do
   gem 'rails_12factor'
   gem 'therubyracer'
+  gem 'unicorn'
 end
 
 gem 'pg'
