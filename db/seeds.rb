@@ -117,6 +117,7 @@ bcrypt = Tool.create({name: 'Bcrypt', ugly_name: 'bcrypt', description: 'A Ruby 
 comfy = Tool.create({name: 'Comfortable Mexican Sofa', ugly_name: 'comfortable-mexican-sofa', description: 'A powerful Rails 4 CMS Engine.', tool_type: cms})
 pencil_blue = Tool.create({name: 'PencilBlue', description: 'Full stack online publishing and CMS for Node.js.', tool_type: cms})
 cortex_tool = Tool.create({name: 'Cortex', ugly_name: 'cortex', description: 'A headless CMS.', tool_type: cms})
+wordpress = Tool.create({name: 'WordPress', description: 'WordPress is a free and open source blogging tool and a content management system (CMS) based on PHP and MySQL.[5] Features include a plugin architecture and a template system. WordPress was used by more than 23.2% of the top 10 million websites as of August 2013.[6] WordPress is the most popular blogging system in use on the Web,[7] at more than 60 million websites.', tool_type: cms})
 redcarpet = Tool.create({name: 'Redcarpet', ugly_name: 'redcarpet', description: 'Redcarpet is a Ruby library for Markdown processing that smells like butterflies and popcorn.', tool_type: parser})
 kramdown = Tool.create({name: 'Kramdown', ugly_name: 'kramdown', description: 'A free MIT-licensed Ruby library for parsing and converting a superset of Markdown. It is completely written in Ruby, supports standard Markdown (with some minor modifications) and various extensions that have been made popular by the PHP Markdown Extra package and Maruku.', tool_type: parser})
 
@@ -160,6 +161,18 @@ ProjectsTool.create({project: project_folio, tool: kramdown})
 project_luceo = Project.create({name: 'Luceo', description: 'The most amazing applicant tracking system in the world.', project_type: project_type_webapplication, owner: 'Jesse' })
 UsersProject.create({project: project_luceo, user: jesse})
 ProjectsTool.create({project: project_luceo, tool: php})
+
+project_recruitment_edge = Project.create({name: 'Recruitment Edge', description: 'Recruitment Edge will search professional hubs and scan social networks to find the hidden gem of talent that meets your need.', project_type: project_type_webapplication, owner: 'Jesse' })
+# UsersProject.create({project: project_luceo, user: jesse})
+ProjectsTool.create({project: project_recruitment_edge, tool: angular_js})
+
+project_recruitment_edge = Project.create({name: 'The Hiring Site', description: 'CareerBuilder''s blog dedicated to the cutting edge of HR and recruitment strategy.', project_type: project_type_employmentwebsite, owner: 'James' })
+# UsersProject.create({project: project_luceo, user: jesse})
+ProjectsTool.create({project: project_recruitment_edge, tool: wordpress})
+ProjectsTool.create({project: project_recruitment_edge, tool: php})
+ProjectsTool.create({project: project_recruitment_edge, tool: photoshop})
+ProjectsTool.create({project: project_recruitment_edge, tool: mysql})
+ProjectsTool.create({project: project_recruitment_edge, tool: linux})
 
 project_tec = Project.create({name: 'Talent Engagement Cloud (TEC)', description: 'The horizontally scalable Career Site Platform for TalentNetwork.', project_type: project_type_webapplication, owner: 'James' })
 UsersProject.create({project: project_tec, user: james})
