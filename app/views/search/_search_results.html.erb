@@ -1,7 +1,9 @@
+<%= button_to 'Search for "test"', search_path(search_params: 'test'), remote: true %>
+
 <h1>Search Results for "<%=@search_term %>"</h1>
 
-<% unless @results.blank? %>
-    <% @results.each do |result_type, result_group| %>
+<% unless @search_results.blank? %>
+    <% @search_results.each do |result_type, result_group| %>
         <div class="result_type">
           <div class="panel panel-primary">
             <h2 class="panel-heading"><%= result_type.underscore.humanize.split.map(&:capitalize).join(' ') %>s</h2>
@@ -17,3 +19,4 @@
         </div>
     <% end %>
 <% end %>
+

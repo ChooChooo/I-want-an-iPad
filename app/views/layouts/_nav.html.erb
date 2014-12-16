@@ -46,7 +46,7 @@
               <%= link_to('Register', new_user_registration_path)  %>
             </li>
         <% end %>
-        <%= form_tag(search_path, :method => :post, :id => 'search-form', class: 'navbar-form navbar-left', role: 'search') do %>
+        <%= form_tag(search_path, :method => :get, :id => 'search-form', class: 'navbar-form navbar-left', role: 'search') do %>
           <div class="form-group">
             <input name="search_params" id="search_term" type="text" autofocus="autofocus" class="form-control" placeholder="Search" value="<%= params["search_params"] %>" />
           </div>
