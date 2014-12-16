@@ -155,6 +155,7 @@ ProjectsTool.create({project: project_folio, tool: rubymine, notes: "The right b
 ProjectsTool.create({project: project_folio, tool: postgresql, notes: 'Built-in to Rails, and makes development a snap.'})
 ProjectsTool.create({project: project_folio, tool: pg_search})
 ProjectsTool.create({project: project_folio, tool: jquery})
+ProjectsTool.create({project: project_folio, tool: bootstrap})
 ProjectsTool.create({project: project_folio, tool: heroku, notes: 'Alex said it''s good.'})
 ProjectsTool.create({project: project_folio, tool: coffee_script})
 ProjectsTool.create({project: project_folio, tool: kramdown})
